@@ -81,6 +81,24 @@ namespace Models.Graphs
          return false;
       }
 
+      public List<T> GetNeighbors(T vertex)
+      {
+         var neighbors = new List<T>();
+         var matrix = CreateAdjacencyMatrix();
+
+         var row = this.Vertices.IndexOf(new Vertex<T>(vertex));
+         for(int j = 0; j < this.Vertices.Count; j++)
+         {
+            if (matrix[row,j] > 0) 
+            {
+               var item = this.Vertices[j].Value;
+               neighbors.Add(item);
+            }
+         }
+
+         return neighbors;
+      }
+
       public int[,] CreateAdjacencyMatrix()
       {
          var matrix = new int[Vertices.Count, Vertices.Count];
