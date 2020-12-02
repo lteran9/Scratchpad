@@ -74,11 +74,5 @@ namespace DataStructures.Tests.GraphTests
          Assert.Equal(1, graph.GetEdgeWeight(7, 11));
          Assert.Equal(0, graph.GetEdgeWeight(3, 11));
       }
-
-      [Fact]
-      public void AdjacencyMatrixTests()
-      {
-         
-      }
    }
 }

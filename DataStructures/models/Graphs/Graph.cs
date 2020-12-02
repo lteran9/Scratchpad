@@ -54,6 +54,11 @@ namespace Models.Graphs
          return false;
       }
 
+      public bool RemoveVertex(T vertex)
+      {
+         return false;
+      }
+
       public bool AddEdge(T parent, T child, int weight = 1)
       {
          try
@@ -78,6 +83,11 @@ namespace Models.Graphs
             System.Console.Out.WriteLine(ex.Message);
          }
 
+         return false;
+      }
+
+      public bool RemoveEdge(T parent, T child)
+      {
          return false;
       }
 
