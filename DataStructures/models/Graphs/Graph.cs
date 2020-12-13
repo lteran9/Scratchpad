@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Models.Graphs
 {
+   /// <summary>
+   /// Graph Object
+   /// </summary>
    public class Graph<T>
    {
       #region Members
@@ -13,6 +16,9 @@ namespace Models.Graphs
 
       #endregion
 
+      /// <summary>
+      /// Create a new instance of a Graph.
+      /// </summary>
       public Graph()
       {
          this.Vertices = new List<Vertex<T>>();
