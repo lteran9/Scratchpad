@@ -39,7 +39,7 @@ namespace Classes.DFS
       /// <summary>
       /// Return a list of items that are connected to the starting Vertex.
       /// </summary>
-      public List<T> Find(T startingVertex)
+      public List<T> Find(T startingVertex, T targetVertex)
       {
          var visited = new List<T>();
 
