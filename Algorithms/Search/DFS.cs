@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Models.Graphs;
 
-namespace Classes.DFS
+namespace Search
 {
    /// <summary>
    /// Depth First Search
