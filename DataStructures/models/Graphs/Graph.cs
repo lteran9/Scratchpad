@@ -25,12 +25,12 @@ namespace Models.Graphs
          this.Edges = new List<Edge<T>>();
       }
 
-      public int GetEdgeWeight(T parent, T child)
+      public int GetEdgeWeight(T source, T target)
       {
          var matrix = CreateAdjacencyMatrix();
 
-         var row = Vertices.IndexOf(new Vertex<T>(parent));
-         var col = Vertices.IndexOf(new Vertex<T>(child));
+         var row = Vertices.IndexOf(new Vertex<T>(source));
+         var col = Vertices.IndexOf(new Vertex<T>(target));
 
          if (row >= 0 && col >= 0)
          {
@@ -65,13 +65,13 @@ namespace Models.Graphs
          return false;
       }
 
-      public bool AddEdge(T parent, T child, int weight = 1)
+      public bool AddEdge(T source, T target, int weight = 1)
       {
          try
          {
             // Make sure intended vertices exist in graph
-            var startingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(parent));
-            var endingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(child));
+            var startingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(source));
+            var endingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(target));
 
             if (startingVertex != null && endingVertex != null)
             {
@@ -92,8 +92,56 @@ namespace Models.Graphs
          return false;
       }
 
-      public bool RemoveEdge(T parent, T child)
+      public bool RemoveEdge(T source, T target)
       {
+         try
+         {
+            // Make sure intended vertices exist in graph
+            var startingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(source));
+            var endingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(target));
+
+            if (startingVertex != null && endingVertex != null)
+            {
+               // If edge exists in list of edges
+               if (this.Edges.Contains(new Edge<T>(startingVertex, endingVertex)))
+               {
+                  // Remove
+                  this.Edges.Remove(new Edge<T>(startingVertex, endingVertex));
+
+                  return true;
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            System.Console.Out.WriteLine(ex.Message);
+         }
+
+         return false;
+      }
+
+      public bool HasEdge(T source, T target)
+      {
+         try
+         {
+            // Make sure intended vertices exist in graph
+            var startingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(source));
+            var endingVertex = this.Vertices.FirstOrDefault(x => x.Value.Equals(target));
+
+            if (startingVertex != null && endingVertex != null)
+            {
+               // If edge exists in list of edges
+               if (this.Edges.Contains(new Edge<T>(startingVertex, endingVertex)))
+               {
+                  return true;
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            System.Console.Out.WriteLine(ex.Message);
+         }
+
          return false;
       }
 
@@ -103,9 +151,9 @@ namespace Models.Graphs
          var matrix = CreateAdjacencyMatrix();
 
          var row = this.Vertices.IndexOf(new Vertex<T>(vertex));
-         for(int j = 0; j < this.Vertices.Count; j++)
+         for (int j = 0; j < this.Vertices.Count; j++)
          {
-            if (matrix[row,j] > 0) 
+            if (matrix[row, j] > 0)
             {
                var item = this.Vertices[j].Value;
                neighbors.Add(item);
@@ -125,7 +173,7 @@ namespace Models.Graphs
 
             for (int j = 0; j < Vertices.Count; j++)
             {
-               var edge = Edges.FirstOrDefault(x => x.Parent.Equals(vertex) && x.Child.Equals(Vertices[j]));
+               var edge = Edges.FirstOrDefault(x => x.Source.Equals(vertex) && x.Target.Equals(Vertices[j]));
                if (edge != null)
                {
                   matrix[i, j] = edge.Weight;

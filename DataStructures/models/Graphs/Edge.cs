@@ -5,19 +5,19 @@ namespace Models.Graphs
    public class Edge<T> : IEquatable<Edge<T>>
    {
       public int Weight { get; private set; }
-      public Vertex<T> Parent { get; private set; }
-      public Vertex<T> Child { get; private set; }
+      public Vertex<T> Source { get; private set; }
+      public Vertex<T> Target { get; private set; }
 
-      public Edge(Vertex<T> parent, Vertex<T> child, int weight = 0)
+      public Edge(Vertex<T> source, Vertex<T> target, int weight = 0)
       {
-         this.Parent = parent;
-         this.Child = child;
+         this.Source = source;
+         this.Target = target;
          this.Weight = weight;
       }
 
       public bool Equals(Edge<T> other)
       {
-         return Parent.Equals(other.Parent) && Child.Equals(other.Child);
+         return Source.Equals(other.Source) && Target.Equals(other.Target);
       }
    }
 }

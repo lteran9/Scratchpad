@@ -47,9 +47,9 @@ namespace DataStructures.Tests.GraphTests
          Assert.True(graph.Edges.Count == 3);
 
          // Simple directed graph
-         Assert.Contains(graph.Edges, x => x.Parent.Value == "A" && x.Child.Value == "B");
-         Assert.Contains(graph.Edges, x => x.Parent.Value == "B" && x.Child.Value == "C");
-         Assert.Contains(graph.Edges, x => x.Parent.Value == "B" && x.Child.Value == "E");
+         Assert.Contains(graph.Edges, x => x.Source.Value == "A" && x.Target.Value == "B");
+         Assert.Contains(graph.Edges, x => x.Source.Value == "B" && x.Target.Value == "C");
+         Assert.Contains(graph.Edges, x => x.Source.Value == "B" && x.Target.Value == "E");
       }
 
       [Fact]
