@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Models.Graphs;
+using Graphs;
 
 namespace Search
 {
@@ -10,22 +10,14 @@ namespace Search
    /// </summary>
    public class DFS<T>
    {
-      public Graph<T> Graph { get; private set; }
+      public AdjacencyList<T> Graph { get; private set; }
 
       /// <summary>
       /// Create a new instance of the Depth First Search algorithm.
       /// </summary>
       public DFS()
       {
-         this.Graph = new Graph<T>();
-      }
-
-      /// <summary>
-      /// Adds a Vertex of type T to the Graph object.
-      /// </summary>
-      public void AddVertex(T vertex)
-      {
-         this.Graph.AddVertex(vertex);
+         this.Graph = new AdjacencyList<T>();
       }
 
       /// <summary>
@@ -43,7 +35,7 @@ namespace Search
       {
          var visited = new List<T>();
 
-         if (this.Graph.Vertices.Any(x => x.Value.Equals(startingVertex)))
+         if (this.Graph.List.ContainsKey(startingVertex))
          {
             var stack = new Stack<T>();
             stack.Push(startingVertex);
@@ -65,7 +57,7 @@ namespace Search
                      // Add new vertex to stack
                      visited.Add(vertex);
 
-                     foreach (var neighbor in this.Graph.GetNeighbors(vertex))
+                     foreach (var neighbor in this.Graph.OutEdges(vertex))
                      {
                         // Add neighboring vertices to stack
                         if (!visited.Contains(neighbor))

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Models.Graphs;
+using Graphs;
 
 namespace Search
 {
@@ -10,22 +10,14 @@ namespace Search
    /// </summary>
    public class BFS<T>
    {
-      public Graph<T> Graph { get; private set; }
+      public AdjacencyList<T> Graph { get; private set; }
 
       /// <summary>
       /// Create a new instance of the Breadth First Search algorithm.
       /// </summary>
       public BFS()
       {
-         this.Graph = new Graph<T>();
-      }
-
-      /// <summary>
-      /// Adds a Vertex of type T to the Graph object.
-      /// </summary>
-      public void AddVertex(T vertex)
-      {
-         this.Graph.AddVertex(vertex);
+         this.Graph = new AdjacencyList<T>();
       }
 
       /// <summary>
@@ -35,7 +27,5 @@ namespace Search
       {
          this.Graph.AddEdge(parent, child);
       }
-
-      
    }
 }
