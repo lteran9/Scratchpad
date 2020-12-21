@@ -52,14 +52,27 @@ namespace Search
             {
                var vertex = stack.Pop();
 
-               if (!visited.Contains(vertex))
+               if (vertex.Equals(targetVertex))
                {
-                  visited.Add(vertex);
-
-                  foreach (var neighbor in this.Graph.GetNeighbors(vertex))
+                  // Target vertex has been found
+                  return visited;
+               }
+               else
+               {
+                  // Keep looking for target vertex
+                  if (!visited.Contains(vertex))
                   {
-                     if (!visited.Contains(neighbor))
-                        stack.Push(neighbor);
+                     // Add new vertex to stack
+                     visited.Add(vertex);
+
+                     foreach (var neighbor in this.Graph.GetNeighbors(vertex))
+                     {
+                        // Add neighboring vertices to stack
+                        if (!visited.Contains(neighbor))
+                        {
+                           stack.Push(neighbor);
+                        }
+                     }
                   }
                }
             }
