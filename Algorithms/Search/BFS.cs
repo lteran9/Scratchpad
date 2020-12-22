@@ -27,5 +27,48 @@ namespace Search
       {
          this.Graph.AddEdge(parent, child);
       }
+
+      /// <summary>
+      /// Return a list of items that are connected to the starting Vertex.
+      /// </summary>
+      public List<T> Find(T startingVertex, T targetVertex)
+      {
+         var visited = new List<T>();
+
+         try
+         {
+            if (Graph.List.ContainsKey(startingVertex))
+            {
+               var queue = new Queue<T>();
+               queue.Enqueue(startingVertex);
+
+               while(queue.Count > 0)
+               {
+                  var vertex = queue.Dequeue();
+                  visited.Add(vertex);
+
+                  foreach(var neighbor in Graph.OutEdges(vertex)) 
+                  {
+                     if (!visited.Contains(neighbor) && !queue.Contains(neighbor))
+                        queue.Enqueue(neighbor);
+                  }
+
+                  if (vertex.Equals(targetVertex))
+                  {
+                     return visited;
+                  }
+                  else {
+                     continue;
+                  }
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            System.Console.Out.WriteLine(ex.Message);
+         }
+
+         return visited;
+      }
    }
 }

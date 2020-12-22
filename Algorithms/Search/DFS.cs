@@ -35,39 +35,46 @@ namespace Search
       {
          var visited = new List<T>();
 
-         if (this.Graph.List.ContainsKey(startingVertex))
+         try
          {
-            var stack = new Stack<T>();
-            stack.Push(startingVertex);
-
-            while (stack.Count > 0)
+            if (Graph.List.ContainsKey(startingVertex))
             {
-               var vertex = stack.Pop();
+               var stack = new Stack<T>();
+               stack.Push(startingVertex);
 
-               if (vertex.Equals(targetVertex))
+               while (stack.Count > 0)
                {
-                  // Target vertex has been found
-                  return visited;
-               }
-               else
-               {
-                  // Keep looking for target vertex
-                  if (!visited.Contains(vertex))
+                  var vertex = stack.Pop();
+
+                  if (vertex.Equals(targetVertex))
                   {
-                     // Add new vertex to stack
-                     visited.Add(vertex);
-
-                     foreach (var neighbor in this.Graph.OutEdges(vertex))
+                     // Target vertex has been found
+                     return visited;
+                  }
+                  else
+                  {
+                     // Keep looking for target vertex
+                     if (!visited.Contains(vertex))
                      {
-                        // Add neighboring vertices to stack
-                        if (!visited.Contains(neighbor))
+                        // Add new vertex to stack
+                        visited.Add(vertex);
+
+                        foreach (var neighbor in this.Graph.OutEdges(vertex))
                         {
-                           stack.Push(neighbor);
+                           // Add neighboring vertices to stack
+                           if (!visited.Contains(neighbor))
+                           {
+                              stack.Push(neighbor);
+                           }
                         }
                      }
                   }
                }
             }
+         }
+         catch (Exception ex)
+         {
+            System.Console.Out.WriteLine(ex.Message);
          }
 
          return visited;
