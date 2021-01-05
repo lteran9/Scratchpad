@@ -37,7 +37,8 @@ namespace Algorithms.Search
 
          try
          {
-            if (Graph.List.ContainsKey(startingVertex))
+            // If starting and target vertex are part of the Graph
+            if (Graph.List.ContainsKey(startingVertex) && Graph.List.ContainsKey(targetVertex))
             {
                var stack = new Stack<T>();
                stack.Push(startingVertex);
