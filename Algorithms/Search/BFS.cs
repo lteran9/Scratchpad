@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Graphs;
 
-namespace Search
+namespace Algorithms.Search
 {
    /// <summary>
    /// Breadth First Search
@@ -18,6 +18,14 @@ namespace Search
       public BFS()
       {
          this.Graph = new AdjacencyList<T>();
+      }
+
+      /// <summary>
+      /// Create a new instance of the Breadth First Search algorithm using the passed in Graph data structure.
+      /// </summary>
+      public BFS(AdjacencyList<T> graph)
+      {
+         this.Graph = graph;
       }
 
       /// <summary>
@@ -37,17 +45,17 @@ namespace Search
 
          try
          {
-            if (Graph.List.ContainsKey(startingVertex))
+            if (Graph.List.ContainsKey(startingVertex) && Graph.List.ContainsKey(targetVertex))
             {
                var queue = new Queue<T>();
                queue.Enqueue(startingVertex);
 
-               while(queue.Count > 0)
+               while (queue.Count > 0)
                {
                   var vertex = queue.Dequeue();
                   visited.Add(vertex);
 
-                  foreach(var neighbor in Graph.OutEdges(vertex)) 
+                  foreach (var neighbor in Graph.OutEdges(vertex))
                   {
                      if (!visited.Contains(neighbor) && !queue.Contains(neighbor))
                         queue.Enqueue(neighbor);
@@ -57,7 +65,8 @@ namespace Search
                   {
                      return visited;
                   }
-                  else {
+                  else
+                  {
                      continue;
                   }
                }
