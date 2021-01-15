@@ -15,21 +15,42 @@ namespace Trees
 
       public void AddNode(T data)
       {
+         // Get reference to root node
          var node = Root;
 
-         if (Comparer.Compare(data, node.Data) == 0)
+         while (true)
          {
+            // If data is greater than node data
+            if (Comparer.Compare(data, node.Data) > 0)
+            {
+               // If right child null then add data as right child
+               if (node.RightChild == null)
+               {
+                  node.RightChild = new Node<T>(data);
+                  break;
+               }
+               else
+               {
+                  // Follow right child node
+                  node = node.RightChild;
+               }
+            }
 
-         }
-         
-         if (Comparer.Compare(data, node.Data) > 0)
-         {
-
-         }
-
-         if (Comparer.Compare(data, node.Data) < 0)
-         {
-
+            // If data is less than node ndata
+            if (Comparer.Compare(data, node.Data) < 0)
+            {
+               // If left child null then add data as left child
+               if (node.LeftChild == null)
+               {
+                  node.LeftChild = new Node<T>(data);
+                  break;
+               }
+               else
+               {
+                  // Follow left child node
+                  node = node.LeftChild;
+               }
+            }
          }
       }
    }
