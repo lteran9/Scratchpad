@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Graphs;
+using DataStructures.Graphs;
 
 namespace Algorithms.Search
 {

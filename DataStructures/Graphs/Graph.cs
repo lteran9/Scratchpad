@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Graphs
+namespace DataStructures.Graphs
 {
    interface Graph<T>
    {
@@ -11,7 +11,7 @@ namespace Graphs
       bool HasEdge(T source, T target);
 
       decimal GetWeight(T source, T target);
-      
+
       List<T> OutEdges(T source);
       List<T> InEdges(T source);
    }

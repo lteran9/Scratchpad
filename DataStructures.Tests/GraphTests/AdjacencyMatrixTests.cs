@@ -1,4 +1,4 @@
-using Graphs;
+using DataStructures.Graphs;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -6,7 +6,7 @@ using Xunit;
 namespace DataStructures.GraphTests
 {
    public class AdjacencyMatrixTests
-   {  
+   {
       [Fact]
       public void BaseTest()
       {

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Graphs
+namespace DataStructures.Graphs
 {
    /// <summary>
    /// Adjacenty List

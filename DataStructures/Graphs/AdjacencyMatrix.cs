@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Graphs
+namespace DataStructures.Graphs
 {
    /// <summary>
    /// Adjacenty Matrix
@@ -23,7 +23,8 @@ namespace Graphs
       {
          try
          {
-            if (!HasEdge(source, target)){
+            if (!HasEdge(source, target))
+            {
                Matrix[source, target] = weight;
                Matrix[target, source] = weight;
 

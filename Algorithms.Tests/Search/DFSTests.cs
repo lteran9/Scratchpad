@@ -1,5 +1,5 @@
 using System;
-using Graphs;
+using DataStructures.Graphs;
 using Algorithms.Search;
 using System.Collections.Generic;
 using Xunit;
@@ -32,7 +32,7 @@ namespace Algorithms.Tests
          dfs.AddEdge(2, 3);
          dfs.AddEdge(3, 3);
 
-         
+
       }
    }
 }

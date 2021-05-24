@@ -1,4 +1,4 @@
-using Graphs;
+using DataStructures.Graphs;
 using System;
 using System.Collections.Generic;
 using Xunit;
