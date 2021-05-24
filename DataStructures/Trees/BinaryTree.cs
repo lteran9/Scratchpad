@@ -1,18 +1,31 @@
 using System;
 using System.Collections.Generic;
 
-namespace Trees
+namespace DataStructures.Trees
 {
+   /// <summary>
+   /// Binary tree used to represent data in a hierarchical format; every node has two children (at most)
+   /// and is either a a branch or a leaf.
+   /// </summary>
    public class BinaryTree<T>
    {
-      public Comparer<T> Comparer = Comparer<T>.Default;
+      /// <summary>
+      /// Root node; starting point of the tree.
+      /// </summary>
       public Node<T> Root { get; set; }
+      public Comparer<T> Comparer = Comparer<T>.Default;
 
+      /// <summary>
+      /// Initialize a new binary tree with the given data at the root node.
+      /// </summary>
       public BinaryTree(T data)
       {
          Root = new Node<T>(data);
       }
 
+      /// <summary>
+      /// 
+      /// </summary>
       public void AddNode(T data)
       {
          // Get reference to root node

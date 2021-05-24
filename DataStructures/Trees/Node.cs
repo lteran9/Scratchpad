@@ -1,6 +1,6 @@
 using System;
 
-namespace Trees
+namespace DataStructures.Trees
 {
    public class Node<T>
    {
