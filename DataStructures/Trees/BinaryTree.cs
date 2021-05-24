@@ -9,6 +9,8 @@ namespace DataStructures.Trees
    /// </summary>
    public class BinaryTree<T>
    {
+      public int Length { get; set; }
+
       /// <summary>
       /// Root node; starting point of the tree.
       /// </summary>
@@ -21,11 +23,9 @@ namespace DataStructures.Trees
       public BinaryTree(T data)
       {
          Root = new Node<T>(data);
+         Length = 1;
       }
 
-      /// <summary>
-      /// 
-      /// </summary>
       public void AddNode(T data)
       {
          // Get reference to root node
@@ -40,6 +40,7 @@ namespace DataStructures.Trees
                if (node.RightChild == null)
                {
                   node.RightChild = new Node<T>(data);
+                  Length++;
                   break;
                }
                else
@@ -56,6 +57,7 @@ namespace DataStructures.Trees
                if (node.LeftChild == null)
                {
                   node.LeftChild = new Node<T>(data);
+                  Length++;
                   break;
                }
                else
@@ -64,6 +66,46 @@ namespace DataStructures.Trees
                   node = node.LeftChild;
                }
             }
+
+            // Cannot add the same data again 
+            if (Comparer.Compare(data, node.Data) == 0)
+               break;
+         }
+      }
+
+      public void Rebalance()
+      {
+         void RotateLeft()
+         {
+
+         }
+
+         void RotateRight()
+         {
+
+         }
+      }
+
+      public int GetHeight()
+      {
+         return GetHeight(Root);
+      }
+
+      int GetHeight(Node<T> node)
+      {
+         if (node == null)
+            return -1;
+
+         int lefth = GetHeight(node.LeftChild);
+         int righth = GetHeight(node.RightChild);
+
+         if (lefth > righth)
+         {
+            return lefth + 1;
+         }
+         else
+         {
+            return righth + 1;
          }
       }
    }
