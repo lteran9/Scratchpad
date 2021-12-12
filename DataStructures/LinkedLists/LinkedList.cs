@@ -7,19 +7,19 @@ namespace DataStructures.LinkedLists
    public class LinkedList
    {
       public int Size { get; private set; }
-      public Node<string> Head { get; private set; }
+      public Node<string> Root { get; private set; }
 
       public LinkedList()
       {
-         Head = new Node<string>("HEAD");
-         Size = 1;
+         Root = new Node<string>("HEAD");
+         Size = 0;
       }
 
       public void Add(string value)
       {
          if (!string.IsNullOrEmpty(value))
          {
-            var runner = Head;
+            var runner = Root;
 
             while (runner.Next != null)
             {
@@ -34,9 +34,9 @@ namespace DataStructures.LinkedLists
 
       public string Get()
       {
-         if (Head != null)
+         if (Root != null)
          {
-            var runner = Head;
+            var runner = Root;
             var result = new StringBuilder();
             while (runner != null)
             {
@@ -61,9 +61,9 @@ namespace DataStructures.LinkedLists
       public void Remove(string value)
       {
          // Do not allow the removal of the Head node
-         if (Head.Data != value)
+         if (Root.Data != value)
          {
-            var runner = Head;
+            var runner = Root;
             while (runner.Next != null)
             {
                if (runner.Next.Data == value)
@@ -79,9 +79,9 @@ namespace DataStructures.LinkedLists
 
       public void RemoveDuplicates()
       {
-         if (Head != null)
+         if (Root != null)
          {
-            var runner = Head;
+            var runner = Root;
             // Keep track of values observed
             var list = new List<string>();
 
@@ -111,14 +111,9 @@ namespace DataStructures.LinkedLists
          }
       }
 
-      public Node<string> ReturnKthToLast(int kth)
-      {
-         return null;
-      }
-
       public void Clear()
       {
-         Head = new Node<string>("HEAD");
+         Root = new Node<string>("HEAD");
       }
    }
 }

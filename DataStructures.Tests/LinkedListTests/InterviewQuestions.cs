@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DataStructures.LinkedLists;
 using Xunit;
 
@@ -7,6 +8,23 @@ namespace DataStructures.LinkedListTests
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions
    {
+      private LinkedList SinglyLinkedList
+      {
+         get
+         {
+            #region Set Up
+            var linkedList = new LinkedList();
+            linkedList.Add("Child1");
+            linkedList.Add("Child2");
+            linkedList.Add("Child3");
+            linkedList.Add("Child4");
+            linkedList.Add("Child5");
+            #endregion
+
+            return linkedList;
+         }
+      }
+
       /// <summary>
       /// Remove duplicates from an unsorted linked list.
       /// </summary>
@@ -21,7 +39,7 @@ namespace DataStructures.LinkedListTests
 
          linkedList.RemoveDuplicates();
 
-         Assert.Equal(5, linkedList.Size);
+         Assert.Equal(4, linkedList.Size);
 
          linkedList.Add("Child2");
          linkedList.Add("Child5");
@@ -29,7 +47,7 @@ namespace DataStructures.LinkedListTests
 
          linkedList.RemoveDuplicates();
 
-         Assert.Equal(6, linkedList.Size);
+         Assert.Equal(5, linkedList.Size);
       }
 
       /// <summary> 
@@ -39,7 +57,26 @@ namespace DataStructures.LinkedListTests
       [Fact]
       public void ReturnKthToLast()
       {
-         //
+         int k = 3;
+
+         var local = SinglyLinkedList.Root;
+         var stack = new Stack<Node<string>>();
+
+         while (local != null)
+         {
+            stack.Push(local);
+            local = local.Next;
+         }
+
+         Node<string> result = null;
+
+         while (k > 0)
+         {
+            result = stack.Pop();
+            k--;
+         }
+
+         Assert.Equal("Child3", result.Data);
       }
 
       /// <summary>
