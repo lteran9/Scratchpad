@@ -12,7 +12,7 @@ namespace DataStructures.LinkedLists
       public LinkedList()
       {
          Root = new Node<string>("HEAD");
-         Size = 0;
+         Size = 1; // Head node counts as a node
       }
 
       public void Add(string value)
