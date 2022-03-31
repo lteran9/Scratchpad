@@ -4,7 +4,7 @@ using Algorithms.Search;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Algorithms.Tests
+namespace Algorithms.Tests.Search
 {
    public class DFSTests
    {
