@@ -4,7 +4,7 @@ namespace Algorithms.Sorting
 {
    public class InsertionSort
    {
-      public static List<int> Sort(List<int> collection)
+      public static List<int> Sort(List<int> collection, SortOrder order = SortOrder.ASC)
       {
          for (int i = 0; i < collection.Count - 1; i++)
          {

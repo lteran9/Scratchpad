@@ -4,10 +4,7 @@ namespace Algorithms.Sorting
 {
    public class SelectionSort
    {
-      /// <summary>
-      /// This method applies selection sort on the given collection.
-      /// </summary>
-      public static List<int> Sort(List<int> collection)
+      public static List<int> Sort(List<int> collection, SortOrder order = SortOrder.ASC)
       {
          int minIndex;
 
