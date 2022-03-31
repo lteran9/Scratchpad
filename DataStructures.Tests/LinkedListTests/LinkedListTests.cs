@@ -67,7 +67,7 @@ namespace DataStructures.LinkedListTests
          list.Remove("A");
 
          Assert.Equal("HEAD", list.Get());
-         Assert.Equal(0, list.Size);
+         Assert.Equal(1, list.Size);
       }
    }
 }
