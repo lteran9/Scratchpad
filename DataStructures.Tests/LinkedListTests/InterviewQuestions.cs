@@ -39,7 +39,7 @@ namespace DataStructures.LinkedListTests
 
          linkedList.RemoveDuplicates();
 
-         Assert.Equal(4, linkedList.Size);
+         Assert.Equal(5, linkedList.Size);
 
          linkedList.Add("Child2");
          linkedList.Add("Child5");
@@ -47,7 +47,7 @@ namespace DataStructures.LinkedListTests
 
          linkedList.RemoveDuplicates();
 
-         Assert.Equal(5, linkedList.Size);
+         Assert.Equal(6, linkedList.Size);
       }
 
       /// <summary> 
