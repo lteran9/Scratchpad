@@ -6,6 +6,8 @@ namespace DataStructures.Trees
    /// <summary>
    /// Binary tree used to represent data in a hierarchical format; every node has two children (at most)
    /// and is either a a branch or a leaf.
+   ///
+   /// https://www.programiz.com/dsa/trees
    /// </summary>
    public class BinaryTree<T>
    {
@@ -89,6 +91,47 @@ namespace DataStructures.Trees
       public int GetHeight()
       {
          return GetHeight(Root);
+      }
+
+      /// <summary> 
+      /// A full binary tree is a special type of binary tree in which every parent node and child node has either two or no children.
+      /// <br/>
+      /// Theorem:<br/> Let i = number of internal nodes, n = number of nodes, l = number of leaves, a = number of levels <br/>
+      ///   - The number of leaves is `i + 1`<br/>
+      ///   - The number of total nodes is `2i + 1`<br/>
+      ///   - The number of internal nodes is `(n - 1) / 2`<br/>
+      ///   - The number of leaves is `(n + 1) / 2`<br/>
+      ///   - The total number of nodes is `2l - 1`<br/>
+      ///   - The number of internal nodes is `l - 1`<br/>
+      ///   - The number of leaves is at most `2^(a - 1)`
+      /// </summary>
+      public bool IsFullBinaryTree(Node<T> node)
+      {
+         if (node == null)
+            return true;
+
+         if (node.LeftChild == null && node.RightChild == null)
+            return true;
+
+         if ((node.LeftChild != null) && (node.RightChild != null))
+            return (IsFullBinaryTree(node.LeftChild) && IsFullBinaryTree(node.RightChild));
+
+         return false;
+      }
+
+      public bool IsPerfectBinaryTree()
+      {
+         return false;
+      }
+
+      public bool IsCompleteBinaryTree()
+      {
+         return false;
+      }
+
+      public bool IsBalancedBinaryTree()
+      {
+         return false;
       }
 
       int GetHeight(Node<T> node)
