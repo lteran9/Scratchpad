@@ -126,7 +126,7 @@ namespace DataStructures.Trees
       ///   - If a single node has no children, it is a perfect binary tree of height `h = 0`<br/>
       ///   - If a node has `h > 0`, it is a perfect binary tree if both of its subtrees are of height `h - 1` and are non-overlapping.
       /// </summary>
-      public bool IsPerfectBinaryTree(Node<T> root, int depth, int level)
+      public bool IsPerfectBinaryTree(Node<T> root, int depth, int level = 0)
       {
          if (root == null)
             return true;
@@ -140,11 +140,17 @@ namespace DataStructures.Trees
          return IsPerfectBinaryTree(root.LeftChild, depth, level + 1) && IsPerfectBinaryTree(root.RightChild, depth, level + 1);
       }
 
+      /// <summary>
+      /// A complete binary tree...
+      /// </summary>
       public bool IsCompleteBinaryTree()
       {
          return false;
       }
 
+      /// <summary>
+      /// A balanced binary tree...
+      /// </summary>
       public bool IsBalancedBinaryTree()
       {
          return false;
