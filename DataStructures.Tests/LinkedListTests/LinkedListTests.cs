@@ -2,7 +2,7 @@ using System;
 using DataStructures.LinkedLists;
 using Xunit;
 
-namespace DataStructures.LinkedListTests
+namespace DataStructures.Tests.LinkedListTests
 {
    public class LinkedListTests
    {

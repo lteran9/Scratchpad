@@ -94,8 +94,8 @@ namespace DataStructures.Trees
       }
 
       /// <summary> 
-      /// A full binary tree is a special type of binary tree in which every parent node and child node has either two or no children.
-      /// <br/>
+      /// A full binary tree is a special type of binary tree in which every parent node and child node has either two or no children.<br/>
+      ///
       /// Theorem:<br/> Let i = number of internal nodes, n = number of nodes, l = number of leaves, a = number of levels <br/>
       ///   - The number of leaves is `i + 1`<br/>
       ///   - The number of total nodes is `2i + 1`<br/>
@@ -119,9 +119,25 @@ namespace DataStructures.Trees
          return false;
       }
 
-      public bool IsPerfectBinaryTree()
+      /// <summary>
+      /// A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.<br/>
+      ///
+      /// Theorem:<br/>
+      ///   - If a single node has no children, it is a perfect binary tree of height `h = 0`<br/>
+      ///   - If a node has `h > 0`, it is a perfect binary tree if both of its subtrees are of height `h - 1` and are non-overlapping.
+      /// </summary>
+      public bool IsPerfectBinaryTree(Node<T> root, int depth, int level)
       {
-         return false;
+         if (root == null)
+            return true;
+
+         if (root.LeftChild == null && root.RightChild == null)
+            return (depth == level + 1);
+
+         if (root.LeftChild == null || root.RightChild == null)
+            return false;
+
+         return IsPerfectBinaryTree(root.LeftChild, depth, level + 1) && IsPerfectBinaryTree(root.RightChild, depth, level + 1);
       }
 
       public bool IsCompleteBinaryTree()
@@ -139,16 +155,16 @@ namespace DataStructures.Trees
          if (node == null)
             return -1;
 
-         int lefth = GetHeight(node.LeftChild);
-         int righth = GetHeight(node.RightChild);
+         int leftH = GetHeight(node.LeftChild);
+         int rightH = GetHeight(node.RightChild);
 
-         if (lefth > righth)
+         if (leftH > rightH)
          {
-            return lefth + 1;
+            return leftH + 1;
          }
          else
          {
-            return righth + 1;
+            return rightH + 1;
          }
       }
    }

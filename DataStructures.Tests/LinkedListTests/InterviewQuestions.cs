@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DataStructures.LinkedLists;
 using Xunit;
 
-namespace DataStructures.LinkedListTests
+namespace DataStructures.Tests.LinkedListTests
 {
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions
