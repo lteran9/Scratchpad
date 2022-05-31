@@ -7,59 +7,70 @@ namespace Algorithms.Sorting
       public static List<int> Sort(List<int> collection)
       {
          // Perform recursive sort on collection
-         Sort(collection, 0, collection.Count - 1);
-
-         return collection;
+         return Sort(collection, 0, collection.Count - 1);
       }
 
-      private static void Sort(List<int> collection, int left, int right)
+      private static List<int> Sort(List<int> collection, int left, int right)
       {
-         if (right > left)
+         if (left < right)
          {
-            int mid = (right + left) / 2;
+            int mid = left + (right - left) / 2;
 
             Sort(collection, left, mid);
             Sort(collection, mid + 1, right);
 
-            Merge(collection, left, mid + 1, right);
+            Merge(collection, left, mid, right);
          }
+
+         return collection;
       }
 
       private static void Merge(List<int> collection, int left, int middle, int right)
       {
-         int leftEnd = (middle - 1);
-         int tmpPos = left;
-         int numElements = (right - left + 1);
+         int leftArrayLen = middle - left + 1;
+         int rightArrayLen = right - middle;
 
-         var temp = new int[numElements + 1];
+         var leftTempArray = new int[leftArrayLen];
+         var rightTempArray = new int[rightArrayLen];
 
-         while ((left <= leftEnd) && (middle <= right))
+         int i, j;
+
+         for (i = 0; i < leftArrayLen; i++)
          {
-            if (collection[left] <= collection[middle])
+            leftTempArray[i] = collection[left + i];
+         }
+
+         for (j = 0; j < rightArrayLen; j++)
+         {
+            rightTempArray[j] = collection[middle + 1 + j];
+         }
+
+         i = 0;
+         j = 0;
+         int k = left;
+
+         while (i < leftArrayLen && j < rightArrayLen)
+         {
+            if (leftTempArray[i] <= rightTempArray[j])
             {
-               temp[tmpPos++] = collection[left++];
+               collection[k++] = leftTempArray[i++];
             }
             else
             {
-               temp[tmpPos++] = collection[middle++];
+               collection[k++] = rightTempArray[j++];
             }
          }
 
-         while (left <= leftEnd)
+         while (i < leftArrayLen)
          {
-            temp[tmpPos++] = collection[left++];
+            collection[k++] = leftTempArray[i++];
          }
 
-         while (middle <= right)
+         while (j < rightArrayLen)
          {
-            temp[tmpPos++] = collection[middle++];
+            collection[k++] = rightTempArray[j++];
          }
 
-         for (int i = 0; i < numElements; i++)
-         {
-            collection[right] = temp[right];
-            right--;
-         }
       }
    }
 }
