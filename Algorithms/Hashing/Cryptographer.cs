@@ -6,9 +6,9 @@ namespace Algorithms.Hashing
 {
    public class Cryptographer
    {
-      public static MD5 md5 = MD5.Create();
-      public static SHA256 sha256 = SHA256.Create();
-      public static SHA512 sha512 = SHA512.Create();
+      static MD5 md5 = MD5.Create();
+      static SHA256 sha256 = SHA256.Create();
+      static SHA512 sha512 = SHA512.Create();
 
       protected byte[] Hash(HashType hash, string plainText)
       {
