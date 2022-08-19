@@ -35,6 +35,20 @@ namespace DataStructures.Tests.StringTests
          Assert.False(DataStructures.Strings.String.HasAllUniqueCharacters(nonUnique));
          Assert.False(DataStructures.Strings.String.HasAllUniqueCharacters(nonUnique2));
       }
+
+      [Fact]
+      public void IsUnique_Hard()
+      {
+         string nonUnique = "aabbcc";
+         string nonUnique2 = "1abc1";
+         string unique = "abcdefgh";
+         string unique2 = "123456";
+
+         Assert.True(DataStructures.Strings.String.HasAllUniqueCharacters_ASCII(unique));
+         Assert.True(DataStructures.Strings.String.HasAllUniqueCharacters_ASCII(unique2));
+         Assert.False(DataStructures.Strings.String.HasAllUniqueCharacters_ASCII(nonUnique));
+         Assert.False(DataStructures.Strings.String.HasAllUniqueCharacters_ASCII(nonUnique2));
+      }
       #endregion
    }
 }
