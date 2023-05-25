@@ -77,15 +77,15 @@ namespace DataStructures.Trees
 
       public void Rebalance()
       {
-         void RotateLeft()
-         {
+         // void RotateLeft()
+         // {
 
-         }
+         // }
 
-         void RotateRight()
-         {
+         // void RotateRight()
+         // {
 
-         }
+         // }
       }
 
       public int GetHeight()
