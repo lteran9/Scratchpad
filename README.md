@@ -15,4 +15,20 @@ If you code with C# odds are you often declare List datatypes very much like I d
 ## Discovery #2: Cryptography
 
 
+## Discovery #3: Struct cannot be cyclic
+A "Node" datatype cannot be declared as a struct because it cannot contain a member reference to itself. Struct member 'Node<T>.Next' of type 'Node<T>' causes a cycle in the struct layout.
+```
+public struct Node<T>
+   {
+      public T Data { get; set; }
+
+      public Node<T> Next { get; set; }
+
+      public Node()
+      {
+
+      }
+   }
+```
+
 

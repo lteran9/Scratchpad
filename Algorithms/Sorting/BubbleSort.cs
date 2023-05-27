@@ -11,9 +11,11 @@ namespace Algorithms.Sorting
             for (int j = collection.Count - 1; j > i; j--)
             {
                if (
+                  // Only perform swap if j < j - 1 and sort ascending
                   (collection[j] < collection[j - 1] && order == SortOrder.ASC)
                   ||
                   (collection[j] > collection[j - 1] && order == SortOrder.DESC)
+                  // Only perform swap if j > j - 1 and sort descending
                   )
                {
                   int temp = collection[j];
