@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DataStructures.Strings
-{
-   /// <summary>
-   /// Be aware this class hides the .NET framework String implementation. Only reference this object through it's namespace.
-   /// </summary>
-   public class String
+{    
+    /// <summary>
+    /// Be aware this class hides the .NET framework String implementation. Only reference this object through it's namespace.
+    /// </summary>
+    public class String
    {
       #region Chapter 1.1
       public static bool HasAllUniqueCharacters(string value)

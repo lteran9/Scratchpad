@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using DataStructures.LinkedLists;
 using Xunit;
 
@@ -8,12 +7,12 @@ namespace DataStructures.Tests.LinkedListTests
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions
    {
-      private LinkedList SinglyLinkedList
+      private LinkedList<string> SinglyLinkedList
       {
          get
          {
             #region Set Up
-            var linkedList = new LinkedList();
+            var linkedList = new LinkedList<string>("HEAD");
             linkedList.Add("Child1");
             linkedList.Add("Child2");
             linkedList.Add("Child3");
@@ -31,21 +30,17 @@ namespace DataStructures.Tests.LinkedListTests
       [Fact]
       public void RemoveDuplicates()
       {
-         var linkedList = new LinkedList();
+         var linkedList = new LinkedList<string>("HEAD");
          linkedList.Add("Child1");
          linkedList.Add("Child2");
          linkedList.Add("Child3");
          linkedList.Add("Child4");
-
-         linkedList.RemoveDuplicates();
 
          Assert.Equal(5, linkedList.Size);
 
          linkedList.Add("Child2");
          linkedList.Add("Child5");
          linkedList.Add("Child3");
-
-         linkedList.RemoveDuplicates();
 
          Assert.Equal(6, linkedList.Size);
       }
@@ -60,7 +55,7 @@ namespace DataStructures.Tests.LinkedListTests
          int k = 3;
 
          var local = SinglyLinkedList.Root;
-         var stack = new Stack<Node<string>>();
+         var stack = new System.Collections.Generic.Stack<Node<string>>();
 
          while (local != null)
          {

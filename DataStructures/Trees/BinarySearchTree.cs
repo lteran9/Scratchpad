@@ -9,7 +9,7 @@ namespace DataStructures.Trees
    ///
    /// https://www.programiz.com/dsa/trees
    /// </summary>
-   public class BinaryTree<T>
+   public class BinarySearchTree<T>
    {
       public int Length { get; set; }
 
@@ -22,7 +22,7 @@ namespace DataStructures.Trees
       /// <summary>
       /// Initialize a new binary tree with the given data at the root node.
       /// </summary>
-      public BinaryTree(T data)
+      public BinarySearchTree(T data)
       {
          Root = new Node<T>(data);
          Length = 1;
