@@ -5,10 +5,13 @@ using Xunit;
 
 namespace Algorithms.Tests.Hashing
 {
-   public class CryptographicTests : Cryptographer
+   /// <summary>
+   /// Inherits all functionality to be tested.
+   /// </summary>
+   public class CryptographerTests : Cryptographer
    {
       [Fact]
-      public void BaseTests()
+      public void EmptyStringTests()
       {
          var emptyString = string.Empty;
 
@@ -29,9 +32,12 @@ namespace Algorithms.Tests.Hashing
       }
 
       [Fact]
-      public void AdvancedTests()
+      public void PasswordHashingTests()
       {
-         var password = "a@4bs9vvKL";
+         string password = "a@4bs9&vKL_33!;";
+         string internetMD5 = string.Empty; // Get from a website to compare result
+         string internetSHA256 = string.Empty; // Get from a website to compare result
+         string internetSha512 = string.Empty; // Get from a website to compare result
 
          var md5HashResult = Hash(HashType.MD5, password);
 

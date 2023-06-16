@@ -10,7 +10,7 @@ namespace Algorithms.Search
    /// </summary>
    public class BFS<T>
    {
-      public AdjacencyList<T> Graph { get; private set; }
+      private readonly AdjacencyList<T> Graph = default;
 
       /// <summary>
       /// Create a new instance of the Breadth First Search algorithm.

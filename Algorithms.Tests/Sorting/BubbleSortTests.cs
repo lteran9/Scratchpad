@@ -5,13 +5,13 @@ using Xunit;
 
 namespace Algorithms.Tests.Sorting
 {
-   public class BubbleSortTests
+   public class BubbleSortTests : BubbleSort<int>
    {
       [Fact]
       public void AscendingOrderTest()
       {
          var collection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
-         var sortedCollection = BubbleSort.Sort(collection);
+         var sortedCollection = Sort(collection);
 
          Assert.Equal(-4, sortedCollection[0]);
          Assert.Equal(0, sortedCollection[1]);
@@ -29,7 +29,7 @@ namespace Algorithms.Tests.Sorting
       public void DescendingOrderTest()
       {
          var collection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
-         var sortedCollection = BubbleSort.Sort(collection, SortOrder.DESC);
+         var sortedCollection = Sort(collection, SortOrder.DESC);
 
          Assert.Equal(67, sortedCollection[0]);
          Assert.Equal(51, sortedCollection[1]);

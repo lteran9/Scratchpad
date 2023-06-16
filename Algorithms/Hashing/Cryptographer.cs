@@ -6,11 +6,11 @@ namespace Algorithms.Hashing
 {
    public class Cryptographer
    {
-      static MD5 md5 = MD5.Create();
-      static SHA256 sha256 = SHA256.Create();
-      static SHA512 sha512 = SHA512.Create();
+      static readonly MD5 md5 = MD5.Create();
+      static readonly SHA256 sha256 = SHA256.Create();
+      static readonly SHA512 sha512 = SHA512.Create();
 
-      protected byte[] Hash(HashType hash, string plainText)
+      public byte[] Hash(HashType hash, string plainText)
       {
          if (!string.IsNullOrEmpty(plainText))
          {

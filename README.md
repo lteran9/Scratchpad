@@ -6,13 +6,11 @@ This repository houses a .NET Core project with common data structures and algor
 
 Each project has it's own testing suite to help with development and testing. 
 
-# Noteworthy
-Below are quick explanations about design decisions for this project.
+## GitHub Actions
 
-## Discovery #1: Arrays vs Lists
-If you code with C# odds are you often declare List datatypes very much like I do. They provide quite a few useful operations right out of the box. However, when dealing with complex data structures and algorithms you mainly want to perform all operations in-place (with regards to memory). This is because there are time and memory considerations for most algorithms (i.e. asymptotic analysis). Lists use a secondary object behind the scenes to complete a lot of operations which will introduce an unncessary layer of complexity. Using Arrays will allow our algorithms to run faster and with less memory.
+Using GitHub Actions to automate tests on the master branch. Details can be found in the dotnet.yml file within the .github folder.
 
-## Discovery #2: Cryptography
+
 
 
 
