@@ -16,7 +16,7 @@ namespace DataStructures.Tests.TreeTests
       [Fact]
       public void TreeHeightTests()
       {
-         var tree = new BinaryTree<int>(2);
+         var tree = new BinarySearchTree<int>(2);
 
          Assert.Equal(0, tree.GetHeight());
 
@@ -29,7 +29,7 @@ namespace DataStructures.Tests.TreeTests
       [Fact]
       public void SimpleAddTest()
       {
-         var tree = new BinaryTree<int>(10);
+         var tree = new BinarySearchTree<int>(10);
 
          tree.AddNode(7);
          tree.AddNode(12);
@@ -45,7 +45,7 @@ namespace DataStructures.Tests.TreeTests
       [Fact]
       public void PreventDuplicatesTest()
       {
-         var tree = new BinaryTree<int>(5);
+         var tree = new BinarySearchTree<int>(5);
 
          tree.AddNode(5);
          tree.AddNode(6);

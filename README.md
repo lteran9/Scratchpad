@@ -13,4 +13,20 @@ Using GitHub Actions to automate tests on the master branch. Details can be foun
 
 
 
+## Discovery #3: Struct cannot be cyclic
+A "Node" datatype cannot be declared as a struct because it cannot contain a member reference to itself. Struct member 'Node<T>.Next' of type 'Node<T>' causes a cycle in the struct layout.
+```
+public struct Node<T>
+   {
+      public T Data { get; set; }
+
+      public Node<T> Next { get; set; }
+
+      public Node()
+      {
+
+      }
+   }
+```
+
 

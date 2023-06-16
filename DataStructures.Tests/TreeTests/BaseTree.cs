@@ -8,11 +8,11 @@ namespace DataStructures.Tests.TreeTests
    /// </summary>
    public class BaseTree
    {
-      protected BinaryTree<int> BalancedTree
+      protected BinarySearchTree<int> BalancedTree
       {
          get
          {
-            return new BinaryTree<int>(0);
+            return new BinarySearchTree<int>(0);
          }
       }
    }

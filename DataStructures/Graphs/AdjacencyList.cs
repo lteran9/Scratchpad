@@ -45,6 +45,7 @@ namespace DataStructures.Graphs
 
          return false;
       }
+
       public bool RemoveEdge(T source, T target)
       {
          try
@@ -63,6 +64,7 @@ namespace DataStructures.Graphs
 
          return false;
       }
+
       public bool HasEdge(T source, T target)
       {
          try
@@ -98,6 +100,7 @@ namespace DataStructures.Graphs
 
          return new List<T>();
       }
+
       public List<T> InEdges(T source)
       {
          var edges = new List<T>();
