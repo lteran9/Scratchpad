@@ -11,7 +11,11 @@ namespace Algorithms.Sorting
          {
             for (int j = i + 1; j > 0; j--)
             {
-               if (collection[j - 1].CompareTo(collection[j]) > 0)
+               if (
+                  (collection[j - 1].CompareTo(collection[j]) > 0 && order == SortOrder.ASC)
+                  ||
+                  (collection[j - 1].CompareTo(collection[j]) < 0 && order == SortOrder.DESC)
+                  )
                {
                   T temp = collection[j - 1];
                   collection[j - 1] = collection[j];

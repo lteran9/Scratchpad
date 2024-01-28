@@ -1,22 +1,27 @@
+using System;
 using System.Collections.Generic;
 
 namespace Algorithms.Sorting
 {
    public class MergeSort
    {
-      public static List<int> Sort(List<int> collection)
+      //private static SortOrder sortOrder = SortOrder.ASC;
+
+      public static List<T> Sort<T>(List<T> collection) where T : IComparable
       {
          // Perform recursive sort on collection
          return Sort(collection, 0, collection.Count - 1);
       }
 
-      private static List<int> Sort(List<int> collection, int left, int right)
+      private static List<T> Sort<T>(List<T> collection, int left, int right) where T : IComparable
       {
          if (left < right)
          {
             int mid = left + (right - left) / 2;
 
+            // Left side
             Sort(collection, left, mid);
+            // Right side
             Sort(collection, mid + 1, right);
 
             Merge(collection, left, mid, right);
@@ -25,13 +30,13 @@ namespace Algorithms.Sorting
          return collection;
       }
 
-      private static void Merge(List<int> collection, int left, int middle, int right)
+      private static void Merge<T>(List<T> collection, int left, int middle, int right) where T : IComparable
       {
          int leftArrayLen = middle - left + 1;
          int rightArrayLen = right - middle;
 
-         var leftTempArray = new int[leftArrayLen];
-         var rightTempArray = new int[rightArrayLen];
+         var leftTempArray = new T[leftArrayLen];
+         var rightTempArray = new T[rightArrayLen];
 
          int i, j;
 
@@ -51,7 +56,7 @@ namespace Algorithms.Sorting
 
          while (i < leftArrayLen && j < rightArrayLen)
          {
-            if (leftTempArray[i] <= rightTempArray[j])
+            if (leftTempArray[i].CompareTo(rightTempArray[j]) <= 0)
             {
                collection[k++] = leftTempArray[i++];
             }
