@@ -1,18 +1,19 @@
+using System;
 using System.Collections.Generic;
 
 namespace Algorithms.Sorting
 {
-   public class InsertionSort
+   public static class InsertionSort
    {
-      public static List<int> Sort(List<int> collection, SortOrder order = SortOrder.ASC)
+      public static List<T> Sort<T>(List<T> collection, SortOrder order = SortOrder.ASC) where T : IComparable
       {
          for (int i = 0; i < collection.Count - 1; i++)
          {
             for (int j = i + 1; j > 0; j--)
             {
-               if (collection[j - 1] > collection[j])
+               if (collection[j - 1].CompareTo(collection[j]) > 0)
                {
-                  int temp = collection[j - 1];
+                  T temp = collection[j - 1];
                   collection[j - 1] = collection[j];
                   collection[j] = temp;
                }

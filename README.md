@@ -10,9 +10,6 @@ Each project has it's own testing suite to help with development and testing.
 
 Using GitHub Actions to automate tests on the master branch. Details can be found in the dotnet.yml file within the .github folder.
 
-
-
-
 ## Discovery #3: Struct cannot be cyclic
 A "Node" datatype cannot be declared as a struct because it cannot contain a member reference to itself. Struct member 'Node<T>.Next' of type 'Node<T>' causes a cycle in the struct layout.
 ```

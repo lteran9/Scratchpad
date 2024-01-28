@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Sorting
 {
-   public class BubbleSort<T> where T : IComparable
+   public static class BubbleSort
    {
-      public List<T> Sort(List<T> collection, SortOrder order = SortOrder.ASC)
+      public static List<T> Sort<T>(List<T> collection, SortOrder order = SortOrder.ASC) where T : IComparable
       {
          for (int i = 0; i < collection.Count; i++)
          {

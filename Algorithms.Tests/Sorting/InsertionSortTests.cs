@@ -5,24 +5,33 @@ using Xunit;
 
 namespace Algorithms.Tests.Sorting
 {
-   public class InsertionSortTests
+   public class InsertionSortTests : BaseSortTest
    {
-      [Fact]
-      public void BaseTest()
-      {
-         var collection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
-         var sortedCollection = InsertionSort.Sort(collection);
+      private readonly List<int> _intCollection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
+      private readonly List<char> _charCollection = new List<char>() { '4', 'B', 'R', 'T', 'X', '!' };
 
-         Assert.Equal(-4, sortedCollection[0]);
-         Assert.Equal(0, sortedCollection[1]);
-         Assert.Equal(2, sortedCollection[2]);
-         Assert.Equal(5, sortedCollection[3]);
-         Assert.Equal(6, sortedCollection[4]);
-         Assert.Equal(11, sortedCollection[5]);
-         Assert.Equal(18, sortedCollection[6]);
-         Assert.Equal(22, sortedCollection[7]);
-         Assert.Equal(51, sortedCollection[8]);
-         Assert.Equal(67, sortedCollection[9]);
+      [Fact]
+      public void Integer_AscendingOrderTest()
+      {
+         BaseAscendingTest(_intCollection, InsertionSort.Sort(_intCollection));
+      }
+
+      [Fact]
+      public void Integer_DescendingOrderTest()
+      {
+         BaseDescendingTest(_intCollection, InsertionSort.Sort(_intCollection, SortOrder.DESC));
+      }
+
+      [Fact]
+      public void Character_AscendingOrderTest()
+      {
+         BaseAscendingTest(_charCollection, InsertionSort.Sort(_charCollection));
+      }
+
+      [Fact]
+      public void Character_DescendingOrderTest()
+      {
+         BaseDescendingTest(_charCollection, InsertionSort.Sort(_charCollection, SortOrder.DESC));
       }
    }
 }
