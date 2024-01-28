@@ -5,10 +5,12 @@ namespace Algorithms.Sorting
 {
    public class MergeSort
    {
-      //private static SortOrder sortOrder = SortOrder.ASC;
+      private static SortOrder sortOrder = SortOrder.ASC;
 
-      public static List<T> Sort<T>(List<T> collection) where T : IComparable
+      public static List<T> Sort<T>(List<T> collection, SortOrder order = SortOrder.ASC) where T : IComparable
       {
+         sortOrder = order;
+
          // Perform recursive sort on collection
          return Sort(collection, 0, collection.Count - 1);
       }
@@ -56,7 +58,11 @@ namespace Algorithms.Sorting
 
          while (i < leftArrayLen && j < rightArrayLen)
          {
-            if (leftTempArray[i].CompareTo(rightTempArray[j]) <= 0)
+            if (
+               (leftTempArray[i].CompareTo(rightTempArray[j]) <= 0 && sortOrder == SortOrder.ASC)
+               ||
+               (leftTempArray[i].CompareTo(rightTempArray[j]) > 0 && sortOrder == SortOrder.DESC)
+               )
             {
                collection[k++] = leftTempArray[i++];
             }

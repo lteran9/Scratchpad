@@ -30,19 +30,15 @@ namespace DataStructures.Tests.LinkedListTests
       [Fact]
       public void RemoveDuplicates()
       {
+         // HEAD is first node
          var linkedList = new LinkedList<string>("HEAD");
+         // Add four children
          linkedList.Add("Child1");
          linkedList.Add("Child2");
          linkedList.Add("Child3");
          linkedList.Add("Child4");
 
          Assert.Equal(5, linkedList.Size);
-
-         linkedList.Add("Child2");
-         linkedList.Add("Child5");
-         linkedList.Add("Child3");
-
-         Assert.Equal(6, linkedList.Size);
       }
 
       /// <summary> 

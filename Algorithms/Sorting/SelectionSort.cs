@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace Algorithms.Sorting
 {
    public class SelectionSort
    {
-      public static List<int> Sort(List<int> collection, SortOrder order = SortOrder.ASC)
+      public static List<T> Sort<T>(List<T> collection, SortOrder order = SortOrder.ASC) where T : IComparable
       {
          int minIndex;
 
@@ -15,7 +16,11 @@ namespace Algorithms.Sorting
             // Find min value before swapping
             for (int j = i + 1; j < collection.Count; j++)
             {
-               if (collection[j] < collection[minIndex])
+               if (
+                  (collection[j].CompareTo(collection[minIndex]) < 0 && order == SortOrder.ASC)
+                  ||
+                  (collection[j].CompareTo(collection[minIndex]) > 0 && order == SortOrder.DESC)
+                  )
                {
                   minIndex = j;
                }
