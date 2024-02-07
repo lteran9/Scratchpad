@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Algorithms.Tests.Search
 {
-   public class DFSIntegerTests : DFS<int>
+   public class DFSIntegerTests : DepthFirstSearch<int>
    {
       [Fact]
       public void EmptyListTests()

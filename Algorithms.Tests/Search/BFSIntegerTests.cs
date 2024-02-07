@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Algorithms.Tests.Search
 {
-   public class BFSIntegerTests : BFS<int>
+   public class BFSIntegerTests : BreadthFirstSearch<int>
    {
       [Fact]
       public void EmptyListTests()

@@ -10,6 +10,7 @@ namespace DataStructures.Strings
    public class String
    {
       #region Chapter 1.1
+
       public static bool HasAllUniqueCharacters(string value)
       {
          try
@@ -98,6 +99,7 @@ namespace DataStructures.Strings
 
          return false;
       }
+
       #endregion
 
       #region Chapter 1.2
@@ -195,6 +197,11 @@ namespace DataStructures.Strings
 
          return false;
       }
+
+      #endregion
+
+      #region Chapter 1.3
+
       #endregion
    }
 }

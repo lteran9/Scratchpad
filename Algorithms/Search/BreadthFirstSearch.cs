@@ -8,14 +8,14 @@ namespace Algorithms.Search
    /// <summary>
    /// Breadth First Search
    /// </summary>
-   public class BFS<T>
+   public class BreadthFirstSearch<T>
    {
       private readonly AdjacencyList<T> Graph = default;
 
       /// <summary>
       /// Create a new instance of the Breadth First Search algorithm.
       /// </summary>
-      public BFS()
+      public BreadthFirstSearch()
       {
          this.Graph = new AdjacencyList<T>();
       }
@@ -23,7 +23,7 @@ namespace Algorithms.Search
       /// <summary>
       /// Create a new instance of the Breadth First Search algorithm using the passed in Graph data structure.
       /// </summary>
-      public BFS(AdjacencyList<T> graph)
+      public BreadthFirstSearch(AdjacencyList<T> graph)
       {
          this.Graph = graph;
       }

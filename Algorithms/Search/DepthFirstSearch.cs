@@ -8,14 +8,14 @@ namespace Algorithms.Search
    /// <summary>
    /// Depth First Search
    /// </summary>
-   public class DFS<T>
+   public class DepthFirstSearch<T>
    {
       public AdjacencyList<T> Graph { get; private set; }
 
       /// <summary>
       /// Create a new instance of the Depth First Search algorithm.
       /// </summary>
-      public DFS()
+      public DepthFirstSearch()
       {
          this.Graph = new AdjacencyList<T>();
       }
