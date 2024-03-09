@@ -1,32 +1,47 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 namespace DataStructures.Graphs
 {
    /// <summary>
-   /// Adjacenty Matrix
+   /// Adjacenty Matrix Implementation
    /// - Represents an N vertex graph using an NxN matrix.
    /// </summary>
-   public class AdjacencyMatrix : Graph<Int32>
+   public class AdjacencyMatrix<T> : Graph<T>
    {
-      public int Nodes { get; private set; }
+      public int NumberOfNodes { get; private set; }
       public decimal[,] Matrix { get; private set; }
+      public Dictionary<T, int> LookUpTable { get; private set; }
+
+      private int index { get; set; }
 
       public AdjacencyMatrix(int nodes)
       {
-         this.Nodes = nodes;
+         this.NumberOfNodes = nodes;
+         this.LookUpTable = new Dictionary<T, int>();
          this.Matrix = new decimal[nodes, nodes];
+         this.index = 0;
       }
 
-      public bool AddEdge(int source, int target, decimal weight = 1)
+      public bool AddEdge(T source, T target, decimal weight = 1)
       {
          try
          {
+            if (LookUpTable.ContainsKey(source) == false)
+            {
+               LookUpTable.Add(source, index++);
+            }
+            if (LookUpTable.ContainsKey(target) == false)
+            {
+               LookUpTable.Add(target, index++);
+            }
             if (!HasEdge(source, target))
             {
-               Matrix[source, target] = weight;
-               Matrix[target, source] = weight;
+               Matrix[LookUpTable[source], LookUpTable[target]] = weight;
+               Matrix[LookUpTable[target], LookUpTable[source]] = weight;
 
                return true;
             }
@@ -39,14 +54,14 @@ namespace DataStructures.Graphs
          return false;
       }
 
-      public bool RemoveEdge(int source, int target)
+      public bool RemoveEdge(T source, T target)
       {
          try
          {
             if (HasEdge(source, target))
             {
-               Matrix[source, target] = 0;
-               Matrix[target, source] = 0;
+               Matrix[LookUpTable[source], LookUpTable[target]] = 0;
+               Matrix[LookUpTable[target], LookUpTable[source]] = 0;
 
                return true;
             }
@@ -59,11 +74,11 @@ namespace DataStructures.Graphs
          return false;
       }
 
-      public bool HasEdge(int source, int target)
+      public bool HasEdge(T source, T target)
       {
          try
          {
-            return Matrix[source, target] > 0 || Matrix[target, source] > 0;
+            return Matrix[LookUpTable[source], LookUpTable[target]] > 0 || Matrix[LookUpTable[target], LookUpTable[source]] > 0;
          }
          catch (Exception ex)
          {
@@ -73,11 +88,11 @@ namespace DataStructures.Graphs
          return false;
       }
 
-      public decimal GetWeight(int source, int target)
+      public decimal GetWeight(T source, T target)
       {
          try
          {
-            return Matrix[source, target];
+            return Matrix[LookUpTable[source], LookUpTable[target]];
          }
          catch (Exception ex)
          {
@@ -87,16 +102,18 @@ namespace DataStructures.Graphs
          return decimal.Zero;
       }
 
-      public List<int> OutEdges(int source)
+      public List<T> OutEdges(T source)
       {
-         var edges = new List<int>();
+         var edges = new List<T>();
 
          try
          {
-            for (int j = 0; j < Nodes; j++)
+            for (int j = 0; j < NumberOfNodes; j++)
             {
-               if (Matrix[source, j] > 0)
-                  edges.Add(j);
+               if (Matrix[LookUpTable[source], j] > 0)
+               {
+                  edges.Add(LookUpTable.Keys.ToArray()[j]);
+               }
             }
          }
          catch (Exception ex)
@@ -107,16 +124,18 @@ namespace DataStructures.Graphs
          return edges;
       }
 
-      public List<int> InEdges(int source)
+      public List<T> InEdges(T source)
       {
-         var edges = new List<int>();
+         var edges = new List<T>();
 
          try
          {
-            for (int j = 0; j < Nodes; j++)
+            for (int i = 0; i < NumberOfNodes; i++)
             {
-               if (Matrix[j, source] > 0)
-                  edges.Add(j);
+               if (Matrix[i, LookUpTable[source]] > 0)
+               {
+                  edges.Add(LookUpTable.Keys.ToArray()[i]);
+               }
             }
          }
          catch (Exception ex)

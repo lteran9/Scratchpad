@@ -10,16 +10,16 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void BaseTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          // Same node count
-         Assert.True(matrix.Nodes == 3);
+         Assert.True(matrix.NumberOfNodes == 3);
       }
 
       [Fact]
       public void AddEdgeTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          // Add edges
          Assert.True(matrix.AddEdge(0, 1));
@@ -33,7 +33,7 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void RemoveEdgeTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          matrix.AddEdge(0, 1);
          matrix.AddEdge(0, 2);
@@ -49,7 +49,7 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void HasEdgeTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          matrix.AddEdge(0, 1);
          matrix.AddEdge(0, 2);
@@ -65,7 +65,7 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void ReflectiveEdgeTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          // Add edges
          Assert.True(matrix.AddEdge(0, 1));
@@ -81,7 +81,7 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void OutEdgesTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          matrix.AddEdge(0, 1);
          matrix.AddEdge(0, 2);
@@ -96,7 +96,7 @@ namespace DataStructures.Tests.GraphTests
       [Fact]
       public void InEdgesTest()
       {
-         var matrix = new AdjacencyMatrix(3);
+         var matrix = new AdjacencyMatrix<int>(3);
 
          matrix.AddEdge(0, 1);
          matrix.AddEdge(0, 2);
@@ -106,7 +106,6 @@ namespace DataStructures.Tests.GraphTests
          Assert.Equal(new List<int>() { 1, 2 }, matrix.InEdges(0));
          Assert.Equal(new List<int>() { 0, 2 }, matrix.InEdges(1));
          Assert.Equal(new List<int>() { 0, 1 }, matrix.InEdges(2));
-
       }
    }
 }

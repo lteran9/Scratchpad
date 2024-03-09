@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DataStructures.Graphs
 {
    /// <summary>
-   /// Adjacenty List
+   /// Adjacenty List Implementation
    /// - Represents a graph using a dictionary list.
    /// </summary>
    public class AdjacencyList<T> : Graph<T>

@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace Algorithms.Hashing
 {
-   public class Cryptographer
+   public abstract class Cryptographer
    {
       static readonly MD5 md5 = MD5.Create();
       static readonly SHA256 sha256 = SHA256.Create();

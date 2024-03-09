@@ -77,15 +77,7 @@ namespace DataStructures.Trees
 
       public void Rebalance()
       {
-         // void RotateLeft()
-         // {
 
-         // }
-
-         // void RotateRight()
-         // {
-
-         // }
       }
 
       public int GetHeight()
@@ -114,7 +106,7 @@ namespace DataStructures.Trees
             return true;
 
          if ((node.LeftChild != null) && (node.RightChild != null))
-            return (IsFullBinaryTree(node.LeftChild) && IsFullBinaryTree(node.RightChild));
+            return IsFullBinaryTree(node.LeftChild) && IsFullBinaryTree(node.RightChild);
 
          return false;
       }
@@ -132,7 +124,7 @@ namespace DataStructures.Trees
             return true;
 
          if (root.LeftChild == null && root.RightChild == null)
-            return (depth == level + 1);
+            return depth == (level + 1);
 
          if (root.LeftChild == null || root.RightChild == null)
             return false;
@@ -145,7 +137,7 @@ namespace DataStructures.Trees
       /// </summary>
       public bool IsCompleteBinaryTree()
       {
-         return false;
+         throw new NotImplementedException();
       }
 
       /// <summary>
@@ -153,7 +145,7 @@ namespace DataStructures.Trees
       /// </summary>
       public bool IsBalancedBinaryTree()
       {
-         return false;
+         throw new NotImplementedException();
       }
 
       int GetHeight(Node<T> node)
