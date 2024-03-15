@@ -20,10 +20,10 @@ namespace DataStructures.Graphs
 
       public AdjacencyMatrix(int nodes)
       {
-         this.NumberOfNodes = nodes;
-         this.LookUpTable = new Dictionary<T, int>();
-         this.Matrix = new decimal[nodes, nodes];
-         this.index = 0;
+         NumberOfNodes = nodes;
+         LookUpTable = new Dictionary<T, int>();
+         Matrix = new decimal[nodes, nodes];
+         index = 0;
       }
 
       public bool AddEdge(T source, T target, decimal weight = 1)
