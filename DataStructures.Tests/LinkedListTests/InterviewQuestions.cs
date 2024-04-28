@@ -7,37 +7,57 @@ namespace DataStructures.Tests.LinkedListTests
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions
    {
-      private LinkedList<string> SinglyLinkedList
-      {
-         get
-         {
-            #region Set Up
-            var linkedList = new LinkedList<string>("HEAD");
-            linkedList.Add("Child1");
-            linkedList.Add("Child2");
-            linkedList.Add("Child3");
-            linkedList.Add("Child4");
-            linkedList.Add("Child5");
-            #endregion
-
-            return linkedList;
-         }
-      }
-
       /// <summary>
-      /// Remove duplicates from an unsorted linked list.
+      /// Remove duplicates from an unsorted singly linked list.
       /// </summary>
       [Fact]
-      public void RemoveDuplicates()
+      public void RemoveDuplicates_Easy()
       {
-         // HEAD is first node
-         var linkedList = new LinkedList<string>("HEAD");
-         // Add four children
-         linkedList.Add("Child1");
-         linkedList.Add("Child2");
-         linkedList.Add("Child3");
-         linkedList.Add("Child4");
+         var linkedList = new LinkedList<int>(3);
+         linkedList.Add(1);
+         linkedList.Add(7);
+         linkedList.Add(5);
+         linkedList.Add(3);
+         linkedList.Add(11);
+         linkedList.Add(1);
 
+         Assert.Equal(7, linkedList.Count());
+         linkedList.RemoveDuplicates();
+         Assert.Equal(5, linkedList.Count());
+      }
+
+      [Fact]
+      public void RemoveDuplicates_Medium()
+      {
+         var linkedList = new LinkedList<int>(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+         linkedList.Add(1);
+
+         Assert.Equal(9, linkedList.Size);
+         linkedList.RemoveDuplicates();
+         Assert.Equal(1, linkedList.Size);
+      }
+
+      [Fact]
+      public void RemoveDuplicates_Hard()
+      {
+         var linkedList = new LinkedList<int>(0);
+         linkedList.Add(0);
+         linkedList.Add(27);
+         linkedList.Add(19);
+         linkedList.Add(5);
+         linkedList.Add(7);
+         linkedList.Add(7);
+         linkedList.Add(0);
+
+         Assert.Equal(8, linkedList.Size);
+         linkedList.RemoveDuplicates();
          Assert.Equal(5, linkedList.Size);
       }
 
@@ -46,28 +66,52 @@ namespace DataStructures.Tests.LinkedListTests
       /// Implement an algorithm to find the kth to last element of a singly linked list.
       /// </summary>
       [Fact]
-      public void ReturnKthToLast()
+      public void ReturnKthToLast_Easy()
       {
          int k = 3;
+         var linkedList = new LinkedList<int>(0);
+         linkedList.Add(1);
+         linkedList.Add(2);
+         linkedList.Add(3);
+         linkedList.Add(4);
+         linkedList.Add(6);
 
-         var local = SinglyLinkedList.Root;
-         var stack = new System.Collections.Generic.Stack<Node<string>>();
+         var kthToLast = linkedList.ReturnKthToLast(k);
+         Assert.Equal(3, kthToLast.Data);
+      }
 
-         while (local != null)
-         {
-            stack.Push(local);
-            local = local.Next;
-         }
+      [Fact]
+      public void ReturnKthToLast_Medium()
+      {
+         // First element, k is the size of the LinkedList
+         int k = 7;
+         var linkedList = new LinkedList<int>(0);
+         linkedList.Add(1);
+         linkedList.Add(2);
+         linkedList.Add(3);
+         linkedList.Add(4);
+         linkedList.Add(5);
+         linkedList.Add(6);
 
-         Node<string> result = null;
+         var kthToLast = linkedList.ReturnKthToLast(k);
+         Assert.Equal(0, kthToLast.Data);
+      }
 
-         while (k > 0)
-         {
-            result = stack.Pop();
-            k--;
-         }
+      [Fact]
+      public void ReturnKthToLast_Hard()
+      {
+         // Last element, k is 0
+         int k = 0;
+         var linkedList = new LinkedList<int>(0);
+         linkedList.Add(1);
+         linkedList.Add(2);
+         linkedList.Add(3);
+         linkedList.Add(4);
+         linkedList.Add(5);
+         linkedList.Add(6);
 
-         Assert.Equal("Child3", result.Data);
+         var kthToLast = linkedList.ReturnKthToLast(k);
+         Assert.Equal(6, kthToLast.Data);
       }
 
       /// <summary>
@@ -77,7 +121,7 @@ namespace DataStructures.Tests.LinkedListTests
       [Fact]
       public void DeleteMiddleNode()
       {
-         //
+
       }
 
       /// <summary>

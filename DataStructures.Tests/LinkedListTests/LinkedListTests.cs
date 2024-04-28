@@ -51,7 +51,7 @@ namespace DataStructures.Tests.LinkedListTests
          Assert.Equal(1, list.Size);
 
          list.Remove("HEAD");
-         Assert.Equal(1, list.Size);
+         Assert.Equal(0, list.Size);
       }
 
       [Fact]
@@ -66,8 +66,35 @@ namespace DataStructures.Tests.LinkedListTests
          list.Remove("B");
          list.Remove("A");
 
-         //Assert.Equal("HEAD", list.Get());
          Assert.Equal(1, list.Size);
       }
+
+      [Fact]
+      public void SizeMatchesCount()
+      {
+         var linkedList = new LinkedList<short>(0);
+
+         // ADD
+         linkedList.Add(24);
+         linkedList.Add(11);
+         linkedList.Add(7);
+
+         Assert.Equal(4, linkedList.Size);
+         Assert.Equal(linkedList.Size, linkedList.Count());
+
+         // REMOVE
+         linkedList.Remove(0);
+
+         Assert.Equal(3, linkedList.Size);
+         Assert.Equal(linkedList.Size, linkedList.Count());
+
+         // REMOVE DUPLICATES 
+         linkedList.Add(7);
+         linkedList.RemoveDuplicates();
+
+         Assert.Equal(3, linkedList.Size);
+         Assert.Equal(linkedList.Size, linkedList.Count());
+      }
+
    }
 }
