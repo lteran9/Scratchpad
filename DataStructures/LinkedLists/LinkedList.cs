@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 
 namespace DataStructures.LinkedLists
 {
@@ -7,6 +8,8 @@ namespace DataStructures.LinkedLists
       public int Size { get; private set; }
 
       public Node<T> Root { get; private set; }
+
+      private LinkedList() { }
 
       public LinkedList(T head)
       {
@@ -26,6 +29,30 @@ namespace DataStructures.LinkedLists
             }
 
             runner.Next = new Node<T>(value);
+
+            Size++;
+         }
+      }
+
+      public void Add(Node<T> node)
+      {
+         if (node != null)
+         {
+            if (Size == 0)
+            {
+               Root = node;
+            }
+            else
+            {
+               var runner = Root;
+
+               while (runner.Next != null)
+               {
+                  runner = runner.Next;
+               }
+
+               runner.Next = node;
+            }
 
             Size++;
          }
@@ -175,6 +202,17 @@ namespace DataStructures.LinkedLists
          return null;
       }
 
+      public void DeleteMiddleNode(Node<T> middle)
+      {
+         if (middle != null)
+         {
+            var overwrite = middle.Next;
+            middle.Data = overwrite.Data;
+            middle.Next = overwrite.Next;
+            Size--;
+         }
+      }
+
       public int Count()
       {
          int count = 0;
@@ -196,6 +234,55 @@ namespace DataStructures.LinkedLists
       {
          Size = 0;
          Root = null;
+      }
+
+      public static LinkedList<int> SumLists(LinkedList<int> a, LinkedList<int> b)
+      {
+         if (a != null && b != null)
+         {
+            var aLength = a.Count();
+            var bLength = b.Count();
+            var result = new LinkedList<int>();
+
+            result.Root = AddNodes(a.Root, b.Root, 0);
+
+            return result;
+         }
+
+         return null;
+      }
+
+      private static Node<int> AddNodes(Node<int> l1, Node<int> l2, int carry)
+      {
+         if (l1 == null && l2 == null && carry == 0)
+         {
+            return null;
+         }
+
+         var result = new Node<int>(0);
+         int value = carry;
+         if (l1 != null)
+         {
+            value += l1.Data;
+         }
+
+         if (l2 != null)
+         {
+            value += l2.Data;
+         }
+
+         result.Data = value % 10;
+
+         /* Recurse */
+         if (l1 != null || l2 != null)
+         {
+            result.Next = AddNodes(
+               l1 != null ? l1.Next : null,
+               l2 != null ? l2.Next : null,
+               value > 10 ? 1 : 0);
+         }
+
+         return result;
       }
    }
 }

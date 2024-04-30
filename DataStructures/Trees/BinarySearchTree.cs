@@ -71,7 +71,9 @@ namespace DataStructures.Trees
 
             // Cannot add the same data again 
             if (Comparer.Compare(data, node.Data) == 0)
+            {
                break;
+            }
          }
       }
 
@@ -151,7 +153,9 @@ namespace DataStructures.Trees
       int GetHeight(Node<T> node)
       {
          if (node == null)
+         {
             return -1;
+         }
 
          int leftH = GetHeight(node.LeftChild);
          int rightH = GetHeight(node.RightChild);

@@ -85,24 +85,24 @@ namespace DataStructures.Arrays
       {
          if (arr.Length > 0)
          {
-            var auxiliary = new int[arr.Length];
+            var result = new int[arr.Length];
             int leftIdx = 0, rightIdx = arr.Length - 1;
 
             for (int i = 0; i < arr.Length; i++)
             {
                if (i % 2 == 0)
                {
-                  auxiliary[i] = arr[rightIdx];
+                  result[i] = arr[rightIdx];
                   rightIdx--;
                }
                else
                {
-                  auxiliary[i] = arr[leftIdx];
+                  result[i] = arr[leftIdx];
                   leftIdx++;
                }
             }
 
-            return auxiliary;
+            return result;
          }
 
          return arr;

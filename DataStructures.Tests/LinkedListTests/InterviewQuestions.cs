@@ -121,12 +121,22 @@ namespace DataStructures.Tests.LinkedListTests
       [Fact]
       public void DeleteMiddleNode()
       {
+         var linkedList = new LinkedList<char>('a');
+         var bNode = new Node<char>('b');
+         linkedList.Add(bNode);
+         var cNode = new Node<char>('c');
+         linkedList.Add(cNode);
+         var dNode = new Node<char>('d');
+         linkedList.Add(dNode);
 
+         Assert.Equal(4, linkedList.Size);
+         linkedList.DeleteMiddleNode(cNode);
+         Assert.Equal(3, linkedList.Size);
       }
 
       /// <summary>
-      /// Partition:
-      /// Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes grater than or equal to x. If x is contained within the list, the values of x only need to be after the elements less than x (see below).
+      /// Partition: 
+      /// Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes grater than or equal to x. If x is contained within the list, the values of x only need to be after the elements less than x.
       /// </summary>
       [Fact]
       public void Partition()
@@ -139,9 +149,44 @@ namespace DataStructures.Tests.LinkedListTests
       /// You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
       /// </summary>
       [Fact]
-      public void SumLists()
+      public void SumLists_Easy()
       {
-         //
+         // Single digit number
+
+         var firstNumber = new LinkedList<int>(7);
+         var secondNumber = new LinkedList<int>(5);
+
+         var addition = LinkedList<int>.SumLists(firstNumber, secondNumber);
+         Assert.Equal(2, addition.Count());
+         Assert.Equal(2, addition.Root.Data);
+         Assert.Equal(1, addition.Root.Next.Data);
+      }
+
+      [Fact]
+      public void SumLists_Medium()
+      {
+         // Same length lists 
+
+         var firstNumber = new LinkedList<int>(7);
+         firstNumber.Add(1);
+         firstNumber.Add(6);
+
+         var secondNumber = new LinkedList<int>(5);
+         secondNumber.Add(9);
+         secondNumber.Add(2);
+
+         var addition = LinkedList<int>.SumLists(firstNumber, secondNumber);
+         Assert.Equal(3, addition.Count());
+         Assert.Equal(2, addition.Root.Data);
+         Assert.Equal(1, addition.Root.Next.Data);
+         Assert.Equal(9, addition.Root.Next.Next.Data);
+      }
+
+      [Fact]
+      public void SumLists_Hard()
+      {
+         // Different length lists
+
       }
 
       /// <summary>
