@@ -154,7 +154,7 @@ namespace DataStructures.Trees
       {
          if (node == null)
          {
-            return -1;
+            return 0;
          }
 
          int leftH = GetHeight(node.LeftChild);
