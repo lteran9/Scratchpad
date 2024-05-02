@@ -77,6 +77,11 @@ namespace DataStructures.Trees
          }
       }
 
+      public void HasNode(T data)
+      {
+
+      }
+
       public void Rebalance()
       {
 
