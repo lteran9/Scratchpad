@@ -16,12 +16,17 @@ namespace Algorithms.Search
          Data = data;
       }
 
+      public bool HasValue(T value)
+      {
+         return Comparer.Compare(Find(value), value) == 0;
+      }
+
       /// <summary>
       /// Will return true if needle is found in Data array, false otherwise.
       /// </summary>
       /// <param name="needle"></param>
       /// <returns></returns>
-      public bool Find(T needle)
+      public T Find(T needle)
       {
          if (Data.Length > 0)
          {
@@ -41,12 +46,12 @@ namespace Algorithms.Search
                }
                else
                {
-                  return true;
+                  return Data[mid];
                }
             }
          }
 
-         return false;
+         return default(T);
       }
    }
 }
