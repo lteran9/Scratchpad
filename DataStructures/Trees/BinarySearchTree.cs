@@ -155,11 +155,11 @@ namespace DataStructures.Trees
          throw new NotImplementedException();
       }
 
-      int GetHeight(Node<T> node)
+      private int GetHeight(Node<T> node)
       {
          if (node == null)
          {
-            return 0;
+            return -1;
          }
 
          int leftH = GetHeight(node.LeftChild);

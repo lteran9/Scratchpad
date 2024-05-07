@@ -16,7 +16,7 @@ namespace Algorithms.Tests.Search
          // Algorithm
          var search = new BinarySearch<int>(haystack);
 
-         Assert.False(search.HasValue(0));
+         Assert.False(search.HasValue(10));
       }
 
       [Fact]
