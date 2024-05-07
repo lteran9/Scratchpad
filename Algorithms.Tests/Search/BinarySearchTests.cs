@@ -16,7 +16,7 @@ namespace Algorithms.Tests.Search
          // Algorithm
          var search = new BinarySearch<int>(haystack);
 
-         Assert.False(search.Find(0));
+         Assert.False(search.HasValue(0));
       }
 
       [Fact]
@@ -27,15 +27,15 @@ namespace Algorithms.Tests.Search
          // Algorithm
          var search = new BinarySearch<int>(haystack);
 
-         Assert.True(search.Find(1));
-         Assert.True(search.Find(2));
-         Assert.True(search.Find(3));
-         Assert.True(search.Find(4));
-         Assert.True(search.Find(5));
-         Assert.True(search.Find(6));
-         Assert.True(search.Find(7));
-         Assert.True(search.Find(8));
-         Assert.True(search.Find(9));
+         Assert.True(search.HasValue(1));
+         Assert.True(search.HasValue(2));
+         Assert.True(search.HasValue(3));
+         Assert.True(search.HasValue(4));
+         Assert.True(search.HasValue(5));
+         Assert.True(search.HasValue(6));
+         Assert.True(search.HasValue(7));
+         Assert.True(search.HasValue(8));
+         Assert.True(search.HasValue(9));
       }
    }
 }
