@@ -13,13 +13,28 @@ namespace DataStructures.Arrays
    /// </summary>
    public class HashTable<TKey, TValue>
    {
-
-      public List<TKey> Keys { get; private set; }
-      public List<TValue> Values { get; private set; }
+      public Dictionary<TKey, TValue> Table { get; private set; }
 
       public HashTable()
       {
+         Table = new Dictionary<TKey, TValue>();
+      }
 
+      public void Add(TKey key, TValue value)
+      {
+         if (Table.ContainsKey(key))
+         {
+            Table[key] = value;
+         }
+         else
+         {
+            Table.Add(key, value);
+         }
+      }
+
+      public void Remove(TKey key)
+      {
+         Table.Remove(key);
       }
    }
 }
