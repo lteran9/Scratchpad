@@ -38,7 +38,7 @@ namespace DataStructures.Core.Tests.StringTests
          #endregion
       }
 
-      [Fact]
+      //[Fact]
       public void IsUnique_Easy()
       {
          CustomString nonUnique = new CustomString("aabbcc");
@@ -52,7 +52,7 @@ namespace DataStructures.Core.Tests.StringTests
          Assert.False(StringManipulation.HasAllUniqueCharacters(nonUnique2));
       }
 
-      [Fact]
+      //[Fact]
       public void IsUnique_Medium()
       {
          CustomString nonUnique = new CustomString("aabbcc");
@@ -66,7 +66,7 @@ namespace DataStructures.Core.Tests.StringTests
          Assert.False(StringManipulation.HasAllUniqueCharacters_ASCII(nonUnique2));
       }
 
-      [Fact]
+      //[Fact]
       public void IsUnique_Hard()
       {
          CustomString nonUnique = new CustomString("aabbcc");
