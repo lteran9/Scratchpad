@@ -11,5 +11,4 @@ namespace DataStructures.HashMaps
 
       TValue Get(TKey key);
    }
-
 }
