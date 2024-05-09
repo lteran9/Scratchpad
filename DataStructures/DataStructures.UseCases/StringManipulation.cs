@@ -1,21 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using CustomString = DataStructures.Core.Strings.ArrayString;
 
-namespace DataStructures.Core.Strings
+namespace DataStructures.UseCases
 {
-   /// <summary>
-   /// Be aware this class hides the .NET framework String implementation. Only reference this object through it's namespace.
-   /// </summary>
-   public class String
+   public class StringManipulation
    {
       #region Chapter 1.1
 
-      public static bool HasAllUniqueCharacters(string value)
+      public static bool HasAllUniqueCharacters(CustomString value)
       {
          try
          {
-            // Validate passed in value is not empty
+            // Validate passed in value is not null
             if (value != null)
             {
                // Only account for ASCII characters which have a maximum range of 128
@@ -46,7 +42,7 @@ namespace DataStructures.Core.Strings
          return false;
       }
 
-      public static bool HasAllUniqueCharacters_Linq(string value)
+      public static bool HasAllUniqueCharacters_Linq(CustomString value)
       {
          try
          {
@@ -65,7 +61,7 @@ namespace DataStructures.Core.Strings
          return false;
       }
 
-      public static bool HasAllUniqueCharacters_ASCII(string value)
+      public static bool HasAllUniqueCharacters_ASCII(CustomString value)
       {
          try
          {

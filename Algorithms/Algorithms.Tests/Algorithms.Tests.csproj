@@ -20,7 +20,7 @@
    </ItemGroup>
 
    <ItemGroup>
-     <ProjectReference Include="..\Algorithms.Core\Algorithms.Core.csproj" />
+     <ProjectReference Include="..\Algorithms.UseCases\Algorithms.UseCases.csproj" />
    </ItemGroup>
 
 </Project>

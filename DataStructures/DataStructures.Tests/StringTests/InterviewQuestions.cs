@@ -1,6 +1,7 @@
-using DataStructures.Core.Strings;
 using System;
 using Xunit;
+using DataStructures.UseCases;
+using CustomString = DataStructures.Core.Strings.ArrayString;
 
 namespace DataStructures.Core.Tests.StringTests
 {
@@ -12,71 +13,71 @@ namespace DataStructures.Core.Tests.StringTests
       [Fact]
       public void Basic_UniqueTests()
       {
-         string empty = string.Empty;
-         string nullString = null;
+         CustomString empty = CustomString.Empty;
+         CustomString nullString = null;
 
          #region Easy
          // An empty string is unique by definition
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters(empty));
+         Assert.True(StringManipulation.HasAllUniqueCharacters(empty));
          // A null string cannot be unique because it does not have or represent a value
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters(nullString));
+         Assert.False(StringManipulation.HasAllUniqueCharacters(nullString));
          #endregion
 
          #region Medium
          // An empty string is unique by definition
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(empty));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(empty));
          // A null string cannot be unique because it does not have or represent a value
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(nullString));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_ASCII(nullString));
          #endregion
 
          #region Hard
          // An empty string is unique by definition
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(empty));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(empty));
          // A null string cannot be unique because it does not have or represent a value
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(nullString));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nullString));
          #endregion
       }
 
       [Fact]
       public void IsUnique_Easy()
       {
-         string nonUnique = "aabbcc";
-         string nonUnique2 = "1abc1";
-         string unique = "abcdefgh";
-         string unique2 = "123456";
+         CustomString nonUnique = new CustomString("aabbcc");
+         CustomString nonUnique2 = new CustomString("1abc1");
+         CustomString unique = new CustomString("abcdefgh");
+         CustomString unique2 = new CustomString("123456");
 
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters(unique));
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters(unique2));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters(nonUnique));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters(nonUnique2));
+         Assert.True(StringManipulation.HasAllUniqueCharacters(unique));
+         Assert.True(StringManipulation.HasAllUniqueCharacters(unique2));
+         Assert.False(StringManipulation.HasAllUniqueCharacters(nonUnique));
+         Assert.False(StringManipulation.HasAllUniqueCharacters(nonUnique2));
       }
 
       [Fact]
       public void IsUnique_Medium()
       {
-         string nonUnique = "aabbcc";
-         string nonUnique2 = "1abc1";
-         string unique = "abcdefgh";
-         string unique2 = "123456";
+         CustomString nonUnique = new CustomString("aabbcc");
+         CustomString nonUnique2 = new CustomString("1abc1");
+         CustomString unique = new CustomString("abcdefgh");
+         CustomString unique2 = new CustomString("123456");
 
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(unique));
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(unique2));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(nonUnique));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_ASCII(nonUnique2));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique2));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_ASCII(nonUnique));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_ASCII(nonUnique2));
       }
 
       [Fact]
       public void IsUnique_Hard()
       {
-         string nonUnique = "aabbcc";
-         string nonUnique2 = "1abc1";
-         string unique = "abcdefgh";
-         string unique2 = "123456";
+         CustomString nonUnique = new CustomString("aabbcc");
+         CustomString nonUnique2 = new CustomString("1abc1");
+         CustomString unique = new CustomString("abcdefgh");
+         CustomString unique2 = new CustomString("123456");
 
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(unique));
-         Assert.True(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(unique2));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(nonUnique));
-         Assert.False(DataStructures.Core.Strings.String.HasAllUniqueCharacters_Linq(nonUnique2));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique2));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique));
+         Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique2));
       }
 
       #endregion
@@ -91,20 +92,20 @@ namespace DataStructures.Core.Tests.StringTests
 
          #region Easy
          // Empty set can be a permutation of empty set
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation(empty, empty));
+         Assert.True(StringManipulation.CheckPermutation(empty, empty));
          // Null set cannot have permutations
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation(nullString, nullString));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation(empty, nullString));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation(nullString, empty));
+         Assert.False(StringManipulation.CheckPermutation(nullString, nullString));
+         Assert.False(StringManipulation.CheckPermutation(empty, nullString));
+         Assert.False(StringManipulation.CheckPermutation(nullString, empty));
          #endregion 
 
          #region Medium
          // Empty set can be a permutation of empty set
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation_HashSet(empty, empty));
+         Assert.True(StringManipulation.CheckPermutation_HashSet(empty, empty));
          // Null set cannot have permutations
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_HashSet(nullString, nullString));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_HashSet(empty, nullString));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_HashSet(nullString, empty));
+         Assert.False(StringManipulation.CheckPermutation_HashSet(nullString, nullString));
+         Assert.False(StringManipulation.CheckPermutation_HashSet(empty, nullString));
+         Assert.False(StringManipulation.CheckPermutation_HashSet(nullString, empty));
          #endregion
       }
 
@@ -117,10 +118,10 @@ namespace DataStructures.Core.Tests.StringTests
          string almost = "bc";
          string irrelevant = "dfg";
 
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation(original, almost));
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation(original, permutationOne));
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation(original, permutationTwo));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation(original, irrelevant));
+         Assert.False(StringManipulation.CheckPermutation(original, almost));
+         Assert.True(StringManipulation.CheckPermutation(original, permutationOne));
+         Assert.True(StringManipulation.CheckPermutation(original, permutationTwo));
+         Assert.False(StringManipulation.CheckPermutation(original, irrelevant));
       }
 
       [Fact]
@@ -132,12 +133,12 @@ namespace DataStructures.Core.Tests.StringTests
          string permutationThree = "dacb";
 
          // The sets we are working with do not require unique elements, therefore duplicates can be found within
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_HashSet(original, permutationOne));
+         Assert.False(StringManipulation.CheckPermutation_HashSet(original, permutationOne));
          // permutationTwo does not have character 'a' therefore it is not considered a permutation of the original string
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_HashSet(original, permutationTwo));
+         Assert.False(StringManipulation.CheckPermutation_HashSet(original, permutationTwo));
 
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation_HashSet(original, permutationThree));
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation_HashSet(permutationThree, original));
+         Assert.True(StringManipulation.CheckPermutation_HashSet(original, permutationThree));
+         Assert.True(StringManipulation.CheckPermutation_HashSet(permutationThree, original));
       }
 
       [Fact]
@@ -148,11 +149,11 @@ namespace DataStructures.Core.Tests.StringTests
          string permutationTwo = "yzx";
          string notPermutation = "xxyyzz";
 
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation_Linq(original, permutationOne));
-         Assert.True(DataStructures.Core.Strings.String.CheckPermutation_Linq(original, permutationTwo));
+         Assert.True(StringManipulation.CheckPermutation_Linq(original, permutationOne));
+         Assert.True(StringManipulation.CheckPermutation_Linq(original, permutationTwo));
 
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_Linq(original, string.Empty));
-         Assert.False(DataStructures.Core.Strings.String.CheckPermutation_Linq(original, notPermutation));
+         Assert.False(StringManipulation.CheckPermutation_Linq(original, string.Empty));
+         Assert.False(StringManipulation.CheckPermutation_Linq(original, notPermutation));
       }
 
       #endregion
