@@ -11,7 +11,7 @@ namespace DataStructures.Core.Tests.ArrayTests
       public void GetThreeLargestElements()
       {
          int[] array = new int[6] { 10, 4, 3, 50, 23, 90 };
-         (int first, int second, int third) = DataStructures.Core.Arrays.Array.GetThreeLargestElements(array);
+         (int first, int second, int third) = Arrays.Array.GetThreeLargestElements(array);
 
          Assert.Equal(90, first);
          Assert.Equal(50, second);
@@ -19,7 +19,7 @@ namespace DataStructures.Core.Tests.ArrayTests
 
          array = new int[8] { 6, 8, 1, 9, 2, 1, 10, 10 };
 
-         (first, second, third) = DataStructures.Core.Arrays.Array.GetThreeLargestElements(array);
+         (first, second, third) = Arrays.Array.GetThreeLargestElements(array);
 
          Assert.Equal(10, first);
          Assert.Equal(10, second);
