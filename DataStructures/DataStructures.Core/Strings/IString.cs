@@ -2,7 +2,7 @@ using System;
 
 namespace DataStructures.Core.Strings
 {
-   interface IString
+   public interface IString : IEquatable<IString>
    {
       static IString Empty { get; }
 
