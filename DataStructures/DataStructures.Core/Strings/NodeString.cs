@@ -6,6 +6,13 @@ namespace DataStructures.Core.Strings
    public class NodeString : IString
    {
       public static IString Empty = new NodeString();
+      public static IString operator +(NodeString a, NodeString b)
+      {
+         // Join both linked list nodes
+         a.stringTail = b.stringHead;
+         // Return first string
+         return a;
+      }
 
       public int Length { get; private set; }
 
@@ -13,15 +20,28 @@ namespace DataStructures.Core.Strings
       {
          get
          {
-            return new char();
+            if (index < Length)
+            {
+               var runner = stringHead;
+               for (int i = 0; i <= index; i++)
+               {
+                  runner = runner.Next;
+               }
+
+               return runner.Data;
+            }
+
+            throw new Exception("Index out of range.");
          }
       }
 
       private Node<char> stringHead;
+      private Node<char> stringTail;
 
       public NodeString()
       {
          stringHead = null;
+         stringTail = null;
       }
 
       public NodeString(string value)
@@ -30,16 +50,13 @@ namespace DataStructures.Core.Strings
          {
             if (stringHead == null)
             {
-               stringHead = new Node<char>(value[i]);
+               stringHead = stringTail = new Node<char>(value[i]);
+               stringHead.Next = stringTail;
             }
             else
             {
-               var runner = stringHead;
-               while (runner.Next != null)
-               {
-                  runner = runner.Next;
-               }
-               runner.Next = new Node<char>(value[i]);
+               stringTail.Next = new Node<char>(value[i]);
+               stringTail = stringTail.Next;
             }
             Length++;
          }
@@ -47,6 +64,21 @@ namespace DataStructures.Core.Strings
 
       public char[] ToCharArray()
       {
+         if (Length > 0)
+         {
+            var result = new char[Length];
+            var runner = stringHead;
+            int index = 0;
+            while (runner != null)
+            {
+               result[index] = runner.Data;
+               runner = runner.Next;
+               index++;
+            }
+
+            return result;
+         }
+
          return new char[0];
       }
 
@@ -68,6 +100,28 @@ namespace DataStructures.Core.Strings
          }
 
          return false;
+      }
+
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="other"></param>
+      /// <returns></returns>
+      public override bool Equals(object other)
+      {
+         if (other is string)
+         {
+            var otherString = new NodeString((string)other);
+
+            return Equals(otherString);
+         }
+
+         return false;
+      }
+
+      public override int GetHashCode()
+      {
+         return base.GetHashCode();
       }
    }
 }

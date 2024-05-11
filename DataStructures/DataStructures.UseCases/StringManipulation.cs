@@ -1,10 +1,20 @@
 using System;
+using DataStructures.Core.Strings;
 using CustomString = DataStructures.Core.Strings.ArrayString;
 
 namespace DataStructures.UseCases
 {
    public class StringManipulation
    {
+      #region Node String Implementation 
+
+      public IString CreateNodeString(string value)
+      {
+         return new NodeString(value);
+      }
+
+      #endregion
+
       #region Chapter 1.1
 
       public static bool HasAllUniqueCharacters(CustomString value)

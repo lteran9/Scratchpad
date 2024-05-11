@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using DataStructures.UseCases;
+using DataStructures.Core.Strings;
 using CustomString = DataStructures.Core.Strings.ArrayString;
 
 namespace DataStructures.Core.Tests.StringTests
