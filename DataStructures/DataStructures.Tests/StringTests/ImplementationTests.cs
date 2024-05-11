@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using DataStructures.UseCases;
+using DataStructures.Core.Strings;
 
 namespace DataStructures.Tests.StringTests
 {
@@ -21,6 +22,19 @@ namespace DataStructures.Tests.StringTests
 
          Assert.False(nodeString.Equals(null));
          Assert.False(nodeString.Equals(1.0f));
+      }
+
+      [Fact]
+      public void NodeStringConcatenation()
+      {
+         NodeString stringA = new NodeString("abc");
+         NodeString stringB = new NodeString("def");
+
+         string result = "abcdef";
+
+         IString stringC = stringA + stringB;
+
+         Assert.Equal(result.ToCharArray(), stringC.ToCharArray());
       }
    }
 }

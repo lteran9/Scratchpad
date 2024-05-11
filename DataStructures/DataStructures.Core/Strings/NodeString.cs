@@ -9,7 +9,9 @@ namespace DataStructures.Core.Strings
       public static IString operator +(NodeString a, NodeString b)
       {
          // Join both linked list nodes
-         a.stringTail = b.stringHead;
+         a.stringTail.Next = b.stringHead;
+         a.stringTail = b.stringTail;
+         a.Length += b.Length;
          // Return first string
          return a;
       }
