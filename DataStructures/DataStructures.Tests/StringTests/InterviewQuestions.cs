@@ -8,6 +8,8 @@ namespace DataStructures.Core.Tests.StringTests
    /// Common Interview Questions for Strings
    public class InterviewQuestions
    {
+      private readonly StringFactory stringFactory = new StringFactory();
+
       #region Implement an algorithm to determine if a string has all unique characters.
 
       [Fact]
@@ -41,10 +43,10 @@ namespace DataStructures.Core.Tests.StringTests
       [Fact]
       public void IsUnique_Easy_NodeString()
       {
-         IString nonUnique = new NodeString("aáabbcc");
-         IString nonUnique2 = new NodeString("1abc1");
-         IString unique = new NodeString("ábcdéfgh");
-         IString unique2 = new NodeString("123456");
+         IString nonUnique = stringFactory.CreateNodeString("aáabbcc");
+         IString nonUnique2 = stringFactory.CreateNodeString("1abc1");
+         IString unique = stringFactory.CreateNodeString("ábcdéfgh");
+         IString unique2 = stringFactory.CreateNodeString("123456");
 
          Assert.True(StringManipulation.HasAllUniqueCharacters(unique));
          Assert.True(StringManipulation.HasAllUniqueCharacters(unique2));
@@ -55,10 +57,10 @@ namespace DataStructures.Core.Tests.StringTests
       [Fact]
       public void IsUnique_Medium_NodeString()
       {
-         IString nonUnique = new NodeString("aabbcc");
-         IString nonUnique2 = new NodeString("1abc1");
-         IString unique = new NodeString("abcdefgh");
-         IString unique2 = new NodeString("123456");
+         IString nonUnique = stringFactory.CreateNodeString("aabbcc");
+         IString nonUnique2 = stringFactory.CreateNodeString("1abc1");
+         IString unique = stringFactory.CreateNodeString("abcdefgh");
+         IString unique2 = stringFactory.CreateNodeString("123456");
 
          Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique));
          Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique2));
@@ -69,10 +71,10 @@ namespace DataStructures.Core.Tests.StringTests
       [Fact]
       public void IsUnique_Hard_NodeString()
       {
-         IString nonUnique = new NodeString("aabbcc");
-         IString nonUnique2 = new NodeString("1abc1");
-         IString unique = new NodeString("abcdefgh");
-         IString unique2 = new NodeString("123456");
+         IString nonUnique = stringFactory.CreateNodeString("aabbcc");
+         IString nonUnique2 = stringFactory.CreateNodeString("1abc1");
+         IString unique = stringFactory.CreateNodeString("abcdefgh");
+         IString unique2 = stringFactory.CreateNodeString("123456");
 
          Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique));
          Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique2));

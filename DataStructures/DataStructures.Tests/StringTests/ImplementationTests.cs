@@ -1,13 +1,12 @@
 using System;
-using DataStructures.Core.Strings;
-using DataStructures.UseCases;
 using Xunit;
+using DataStructures.UseCases;
 
 namespace DataStructures.Tests.StringTests
 {
    public class ImplementationTests
    {
-      private readonly StringManipulation stringFactory = new StringManipulation();
+      private readonly StringFactory stringFactory = new StringFactory();
 
       [Fact]
       public void NodeStringEquality()
