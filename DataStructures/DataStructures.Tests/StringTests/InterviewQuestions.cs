@@ -2,7 +2,6 @@ using System;
 using Xunit;
 using DataStructures.UseCases;
 using DataStructures.Core.Strings;
-using CustomString = DataStructures.Core.Strings.ArrayString;
 
 namespace DataStructures.Core.Tests.StringTests
 {
@@ -12,10 +11,10 @@ namespace DataStructures.Core.Tests.StringTests
       #region Implement an algorithm to determine if a string has all unique characters.
 
       [Fact]
-      public void Basic_UniqueTests()
+      public void Basic_UniqueTests_NodeString()
       {
-         CustomString empty = CustomString.Empty;
-         CustomString nullString = null;
+         IString empty = NodeString.Empty;
+         IString nullString = null;
 
          #region Easy
          // An empty string is unique by definition
@@ -39,13 +38,13 @@ namespace DataStructures.Core.Tests.StringTests
          #endregion
       }
 
-      //[Fact]
-      public void IsUnique_Easy()
+      [Fact]
+      public void IsUnique_Easy_NodeString()
       {
-         CustomString nonUnique = new CustomString("aabbcc");
-         CustomString nonUnique2 = new CustomString("1abc1");
-         CustomString unique = new CustomString("abcdefgh");
-         CustomString unique2 = new CustomString("123456");
+         IString nonUnique = new NodeString("aáabbcc");
+         IString nonUnique2 = new NodeString("1abc1");
+         IString unique = new NodeString("ábcdéfgh");
+         IString unique2 = new NodeString("123456");
 
          Assert.True(StringManipulation.HasAllUniqueCharacters(unique));
          Assert.True(StringManipulation.HasAllUniqueCharacters(unique2));
@@ -53,13 +52,13 @@ namespace DataStructures.Core.Tests.StringTests
          Assert.False(StringManipulation.HasAllUniqueCharacters(nonUnique2));
       }
 
-      //[Fact]
-      public void IsUnique_Medium()
+      [Fact]
+      public void IsUnique_Medium_NodeString()
       {
-         CustomString nonUnique = new CustomString("aabbcc");
-         CustomString nonUnique2 = new CustomString("1abc1");
-         CustomString unique = new CustomString("abcdefgh");
-         CustomString unique2 = new CustomString("123456");
+         IString nonUnique = new NodeString("aabbcc");
+         IString nonUnique2 = new NodeString("1abc1");
+         IString unique = new NodeString("abcdefgh");
+         IString unique2 = new NodeString("123456");
 
          Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique));
          Assert.True(StringManipulation.HasAllUniqueCharacters_ASCII(unique2));
@@ -67,18 +66,18 @@ namespace DataStructures.Core.Tests.StringTests
          Assert.False(StringManipulation.HasAllUniqueCharacters_ASCII(nonUnique2));
       }
 
-      //[Fact]
-      public void IsUnique_Hard()
+      [Fact]
+      public void IsUnique_Hard_NodeString()
       {
-         CustomString nonUnique = new CustomString("aabbcc");
-         CustomString nonUnique2 = new CustomString("1abc1");
-         CustomString unique = new CustomString("abcdefgh");
-         CustomString unique2 = new CustomString("123456");
+         IString nonUnique = new NodeString("aabbcc");
+         IString nonUnique2 = new NodeString("1abc1");
+         IString unique = new NodeString("abcdefgh");
+         IString unique2 = new NodeString("123456");
 
-         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique));
-         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique2));
          Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique));
          Assert.False(StringManipulation.HasAllUniqueCharacters_Linq(nonUnique2));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique));
+         Assert.True(StringManipulation.HasAllUniqueCharacters_Linq(unique2));
       }
 
       #endregion

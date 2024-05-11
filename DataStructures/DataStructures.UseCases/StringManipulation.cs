@@ -1,6 +1,6 @@
 using System;
 using DataStructures.Core.Strings;
-using CustomString = DataStructures.Core.Strings.ArrayString;
+using DataStructures.Core.Strings;
 
 namespace DataStructures.UseCases
 {
@@ -17,14 +17,14 @@ namespace DataStructures.UseCases
 
       #region Chapter 1.1
 
-      public static bool HasAllUniqueCharacters(CustomString value)
+      public static bool HasAllUniqueCharacters(IString value)
       {
          try
          {
             // Validate passed in value is not null
             if (value != null)
             {
-               // Only account for ASCII characters which have a maximum range of 128
+               // Keep a list of seen characters
                var seenCharacters = new List<char>();
                // Loop through string characters once
                foreach (var character in value.ToCharArray())
@@ -52,7 +52,7 @@ namespace DataStructures.UseCases
          return false;
       }
 
-      public static bool HasAllUniqueCharacters_Linq(CustomString value)
+      public static bool HasAllUniqueCharacters_Linq(IString value)
       {
          try
          {
@@ -71,7 +71,7 @@ namespace DataStructures.UseCases
          return false;
       }
 
-      public static bool HasAllUniqueCharacters_ASCII(CustomString value)
+      public static bool HasAllUniqueCharacters_ASCII(IString value)
       {
          try
          {

@@ -23,7 +23,7 @@ namespace DataStructures.Core.Strings
             if (index < Length)
             {
                var runner = stringHead;
-               for (int i = 0; i <= index; i++)
+               for (int i = 0; i < index; i++)
                {
                   runner = runner.Next;
                }
@@ -85,7 +85,7 @@ namespace DataStructures.Core.Strings
       public bool Equals(IString other)
       {
          // Only compare elements if strings match in length
-         if (Length == other.Length)
+         if (Length == other?.Length)
          {
             for (int i = 0; i < Length; i++)
             {

@@ -10,13 +10,18 @@ namespace DataStructures.Tests.StringTests
       private readonly StringManipulation stringFactory = new StringManipulation();
 
       [Fact]
-      public void CreateNodeString()
+      public void NodeStringEquality()
       {
          var original = "TestValue1";
          var nodeString = stringFactory.CreateNodeString(original);
 
          Assert.Equal(original.ToCharArray(), nodeString.ToCharArray());
+
          Assert.True(nodeString.Equals(original));
+         Assert.True(nodeString.Equals(nodeString));
+
+         Assert.False(nodeString.Equals(null));
+         Assert.False(nodeString.Equals(1.0f));
       }
    }
 }
