@@ -3,8 +3,10 @@ using System.Runtime.InteropServices;
 
 namespace DataStructures.Core.Arrays
 {
-   public static class Array
+   public class Array
    {
+
+
       public static (int, int, int) GetThreeLargestElements(int[] arr)
       {
          // Set initial values to miminum 

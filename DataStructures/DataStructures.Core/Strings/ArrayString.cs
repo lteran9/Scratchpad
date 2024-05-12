@@ -7,7 +7,11 @@ namespace DataStructures.Core.Strings
    /// </summary>
    public class ArrayString : IString
    {
-      public static ArrayString Empty = new ArrayString();
+      public static IString Empty = new ArrayString();
+      public static IString operator +(ArrayString a, ArrayString b)
+      {
+         return null;
+      }
 
       public int Length { get; private set; }
 

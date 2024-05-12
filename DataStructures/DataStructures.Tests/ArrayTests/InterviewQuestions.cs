@@ -1,10 +1,13 @@
 using System;
+using DataStructures.UseCases;
 using Xunit;
 
 namespace DataStructures.Core.Tests.ArrayTests
 {
    public class InterviewQuestions
    {
+      private readonly ArrayManipulation arrayFunctions = new ArrayManipulation();
+
       #region Easy
 
       [Fact]
@@ -63,6 +66,27 @@ namespace DataStructures.Core.Tests.ArrayTests
          int[] expected = new int[] { 2, 4, 6, 8, 5, 3, 1, 9, 7 };
 
          Assert.Equal(expected, output);
+      }
+
+      #endregion
+
+      #region Medium
+
+      [Fact]
+      public void ArrayPointerPractice()
+      {
+         // Sorted array of integers
+         int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+         // Target 6 = 1 + 5, 2 + 4, 
+         int target = 6;
+
+         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, target));
+         Assert.False(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, 1));
+
+         // 15 = 7 + 8
+         target = 15;
+
+         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, target));
       }
 
       #endregion
