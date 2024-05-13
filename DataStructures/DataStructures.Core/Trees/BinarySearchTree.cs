@@ -16,7 +16,7 @@ namespace DataStructures.Core.Trees
       /// <summary>
       /// Root node; starting point of the tree.
       /// </summary>
-      public Node<T> Root { get; set; }
+      public TreeNode<T> Root { get; set; }
       public Comparer<T> Comparer = Comparer<T>.Default;
 
       /// <summary>
@@ -24,7 +24,7 @@ namespace DataStructures.Core.Trees
       /// </summary>
       public BinarySearchTree(T data)
       {
-         Root = new Node<T>(data);
+         Root = new TreeNode<T>(data);
          Length = 1;
       }
 
@@ -41,7 +41,7 @@ namespace DataStructures.Core.Trees
                // If right child null then add data as right child
                if (node.RightChild == null)
                {
-                  node.RightChild = new Node<T>(data);
+                  node.RightChild = new TreeNode<T>(data);
                   Length++;
                   break;
                }
@@ -58,7 +58,7 @@ namespace DataStructures.Core.Trees
                // If left child null then add data as left child
                if (node.LeftChild == null)
                {
-                  node.LeftChild = new Node<T>(data);
+                  node.LeftChild = new TreeNode<T>(data);
                   Length++;
                   break;
                }
@@ -104,7 +104,7 @@ namespace DataStructures.Core.Trees
       ///   - The number of internal nodes is `l - 1`<br/>
       ///   - The number of leaves is at most `2^(a - 1)`
       /// </summary>
-      public bool IsFullBinaryTree(Node<T> node)
+      public bool IsFullBinaryTree(TreeNode<T> node)
       {
          if (node == null)
             return true;
@@ -125,7 +125,7 @@ namespace DataStructures.Core.Trees
       ///   - If a single node has no children, it is a perfect binary tree of height `h = 0`<br/>
       ///   - If a node has `h > 0`, it is a perfect binary tree if both of its subtrees are of height `h - 1` and are non-overlapping.
       /// </summary>
-      public bool IsPerfectBinaryTree(Node<T> root, int depth, int level = 0)
+      public bool IsPerfectBinaryTree(TreeNode<T> root, int depth, int level = 0)
       {
          if (root == null)
             return true;
@@ -155,7 +155,7 @@ namespace DataStructures.Core.Trees
          throw new NotImplementedException();
       }
 
-      private int GetHeight(Node<T> node)
+      private int GetHeight(TreeNode<T> node)
       {
          if (node == null)
          {
