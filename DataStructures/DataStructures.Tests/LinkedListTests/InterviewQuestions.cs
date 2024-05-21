@@ -1,5 +1,6 @@
 using System;
 using DataStructures.Core.LinkedLists;
+using DataStructures.UseCases;
 using Xunit;
 
 namespace DataStructures.Core.Tests.LinkedListTests
@@ -7,6 +8,8 @@ namespace DataStructures.Core.Tests.LinkedListTests
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions
    {
+      private readonly LinkedListManipulation _linkedListManipulation = new LinkedListManipulation();
+
       /// <summary>
       /// Remove duplicates from an unsorted singly linked list.
       /// </summary>
@@ -156,7 +159,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
          var firstNumber = new LinkedList<int>(7);
          var secondNumber = new LinkedList<int>(5);
 
-         var addition = LinkedList<int>.SumLists(firstNumber, secondNumber);
+         var addition = _linkedListManipulation.SumLists(firstNumber, secondNumber);
          Assert.Equal(2, addition.Count());
          Assert.Equal(2, addition.Root.Data);
          Assert.Equal(1, addition.Root.Next.Data);
@@ -175,7 +178,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
          secondNumber.Add(9);
          secondNumber.Add(2);
 
-         var addition = LinkedList<int>.SumLists(firstNumber, secondNumber);
+         var addition = _linkedListManipulation.SumLists(firstNumber, secondNumber);
          Assert.Equal(3, addition.Count());
          Assert.Equal(2, addition.Root.Data);
          Assert.Equal(1, addition.Root.Next.Data);

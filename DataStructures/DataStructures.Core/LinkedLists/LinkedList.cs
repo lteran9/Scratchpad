@@ -1,20 +1,18 @@
 using System;
-using System.Reflection.Metadata;
 
 namespace DataStructures.Core.LinkedLists
 {
-   public class LinkedList<T>
+   public class LinkedList<T> : ILinkedList<T>
    {
-      public int Size { get; private set; }
+      public int Size { get { return Count(); } }
 
-      public Node<T> Root { get; private set; }
+      public Node<T> Root { get; set; }
 
-      private LinkedList() { }
+      public LinkedList() { }
 
       public LinkedList(T head)
       {
          Root = new Node<T>(head);
-         Size = 1; // Head node counts as a node
       }
 
       public void Add(T value)
@@ -29,8 +27,6 @@ namespace DataStructures.Core.LinkedLists
             }
 
             runner.Next = new Node<T>(value);
-
-            Size++;
          }
       }
 
@@ -53,8 +49,6 @@ namespace DataStructures.Core.LinkedLists
 
                runner.Next = node;
             }
-
-            Size++;
          }
       }
 
@@ -119,7 +113,6 @@ namespace DataStructures.Core.LinkedLists
          if (Root.Data.Equals(value))
          {
             Root = Root.Next;
-            Size--;
          }
          else
          {
@@ -130,7 +123,6 @@ namespace DataStructures.Core.LinkedLists
                if (runner.Next.Data.Equals(value) == true)
                {
                   runner.Next = runner.Next.Next;
-                  Size--;
                   return;
                }
                runner = runner.Next;
@@ -160,7 +152,6 @@ namespace DataStructures.Core.LinkedLists
                if (runner.Next?.Data.Equals(value) == true)
                {
                   runner.Next = runner.Next?.Next;
-                  Size--;
                }
                else
                {
@@ -209,7 +200,6 @@ namespace DataStructures.Core.LinkedLists
             var overwrite = middle.Next;
             middle.Data = overwrite.Data;
             middle.Next = overwrite.Next;
-            Size--;
          }
       }
 
@@ -232,57 +222,7 @@ namespace DataStructures.Core.LinkedLists
 
       public void Clear()
       {
-         Size = 0;
          Root = null;
-      }
-
-      public static LinkedList<int> SumLists(LinkedList<int> a, LinkedList<int> b)
-      {
-         if (a != null && b != null)
-         {
-            var aLength = a.Count();
-            var bLength = b.Count();
-            var result = new LinkedList<int>();
-
-            result.Root = AddNodes(a.Root, b.Root, 0);
-
-            return result;
-         }
-
-         return null;
-      }
-
-      private static Node<int> AddNodes(Node<int> l1, Node<int> l2, int carry)
-      {
-         if (l1 == null && l2 == null && carry == 0)
-         {
-            return null;
-         }
-
-         var result = new Node<int>(0);
-         int value = carry;
-         if (l1 != null)
-         {
-            value += l1.Data;
-         }
-
-         if (l2 != null)
-         {
-            value += l2.Data;
-         }
-
-         result.Data = value % 10;
-
-         /* Recurse */
-         if (l1 != null || l2 != null)
-         {
-            result.Next = AddNodes(
-               l1 != null ? l1.Next : null,
-               l2 != null ? l2.Next : null,
-               value > 10 ? 1 : 0);
-         }
-
-         return result;
       }
    }
 }
