@@ -1,6 +1,7 @@
 using System;
 using DataStructures.Core.LinkedLists;
 using DataStructures.UseCases;
+using DataStructures.UseCases.Factory;
 using Xunit;
 
 namespace DataStructures.Core.Tests.LinkedListTests
@@ -16,7 +17,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       [Fact]
       public void RemoveDuplicates_Easy()
       {
-         var linkedList = new LinkedList<int>(3);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(3);
          linkedList.Add(1);
          linkedList.Add(7);
          linkedList.Add(5);
@@ -32,7 +33,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       [Fact]
       public void RemoveDuplicates_Medium()
       {
-         var linkedList = new LinkedList<int>(1);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(1);
          linkedList.Add(1);
          linkedList.Add(1);
          linkedList.Add(1);
@@ -50,7 +51,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       [Fact]
       public void RemoveDuplicates_Hard()
       {
-         var linkedList = new LinkedList<int>(0);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(0);
          linkedList.Add(0);
          linkedList.Add(27);
          linkedList.Add(19);
@@ -72,7 +73,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       public void ReturnKthToLast_Easy()
       {
          int k = 3;
-         var linkedList = new LinkedList<int>(0);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(0);
          linkedList.Add(1);
          linkedList.Add(2);
          linkedList.Add(3);
@@ -88,7 +89,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       {
          // First element, k is the size of the LinkedList
          int k = 7;
-         var linkedList = new LinkedList<int>(0);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(0);
          linkedList.Add(1);
          linkedList.Add(2);
          linkedList.Add(3);
@@ -105,7 +106,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       {
          // Last element, k is 0
          int k = 0;
-         var linkedList = new LinkedList<int>(0);
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList(0);
          linkedList.Add(1);
          linkedList.Add(2);
          linkedList.Add(3);
@@ -124,7 +125,7 @@ namespace DataStructures.Core.Tests.LinkedListTests
       [Fact]
       public void DeleteMiddleNode()
       {
-         var linkedList = new LinkedList<char>('a');
+         var linkedList = LinkedListFactory.CreateSinglyLinkedList('a');
          var bNode = new Node<char>('b');
          linkedList.Add(bNode);
          var cNode = new Node<char>('c');
@@ -156,8 +157,8 @@ namespace DataStructures.Core.Tests.LinkedListTests
       {
          // Single digit number
 
-         var firstNumber = new LinkedList<int>(7);
-         var secondNumber = new LinkedList<int>(5);
+         var firstNumber = LinkedListFactory.CreateSinglyLinkedList(7);
+         var secondNumber = LinkedListFactory.CreateSinglyLinkedList(5);
 
          var addition = _linkedListManipulation.SumLists(firstNumber, secondNumber);
          Assert.Equal(2, addition.Count());
@@ -170,11 +171,11 @@ namespace DataStructures.Core.Tests.LinkedListTests
       {
          // Same length lists 
 
-         var firstNumber = new LinkedList<int>(7);
+         var firstNumber = LinkedListFactory.CreateSinglyLinkedList(7);
          firstNumber.Add(1);
          firstNumber.Add(6);
 
-         var secondNumber = new LinkedList<int>(5);
+         var secondNumber = LinkedListFactory.CreateSinglyLinkedList(5);
          secondNumber.Add(9);
          secondNumber.Add(2);
 

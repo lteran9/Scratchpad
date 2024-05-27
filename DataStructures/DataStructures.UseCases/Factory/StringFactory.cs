@@ -1,7 +1,7 @@
 using System;
 using DataStructures.Core.Strings;
 
-namespace DataStructures.UseCases
+namespace DataStructures.UseCases.Factory
 {
    public class StringFactory
    {

@@ -4,13 +4,6 @@ namespace DataStructures.UseCases
 {
    public class LinkedListManipulation
    {
-      private ILinkedList<int> linkedList;
-
-      public LinkedListManipulation()
-      {
-         linkedList = new Core.LinkedLists.LinkedList<int>();
-      }
-
       public Core.LinkedLists.LinkedList<int>? SumLists(Core.LinkedLists.LinkedList<int> a, Core.LinkedLists.LinkedList<int> b)
       {
          if (a != null && b != null)
