@@ -1,0 +1,3 @@
+#  CSharp IDE warning
+[*.{cs,vb}]
+dotnet_diagnostic.IDE0047.severity = none
