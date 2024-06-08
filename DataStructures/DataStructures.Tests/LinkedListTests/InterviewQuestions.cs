@@ -1,6 +1,6 @@
 using System;
 using DataStructures.Core.LinkedLists;
-using DataStructures.UseCases;
+using DataStructures.UseCases.LinkedLists;
 using DataStructures.UseCases.Factory;
 using Xunit;
 

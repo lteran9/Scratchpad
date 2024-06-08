@@ -1,6 +1,6 @@
 using DataStructures.Core.LinkedLists;
 
-namespace DataStructures.UseCases
+namespace DataStructures.UseCases.LinkedLists
 {
    public class LinkedListManipulation
    {

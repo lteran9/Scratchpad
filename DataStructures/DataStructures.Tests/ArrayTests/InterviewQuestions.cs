@@ -1,5 +1,5 @@
 using System;
-using DataStructures.UseCases;
+using DataStructures.UseCases.Arrays;
 using Xunit;
 
 namespace DataStructures.Core.Tests.ArrayTests

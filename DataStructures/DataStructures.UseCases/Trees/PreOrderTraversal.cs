@@ -1,10 +1,11 @@
 using System;
+using System.Resources;
 using System.Text;
 using DataStructures.Core.Trees;
 
 namespace DataStructures.UseCases.Trees
 {
-   public class PreOrderTraversal
+   public class PreOrderTraversal : IUseCase<string>
    {
       private readonly TreeNode<int> _root;
 
@@ -15,11 +16,15 @@ namespace DataStructures.UseCases.Trees
 
       public string Execute()
       {
-         var sb = new StringBuilder();
+         return Traverse(_root).Trim();
+      }
 
+      private string Traverse(TreeNode<int> runner)
+      {
+         if (runner == null)
+            return string.Empty;
 
-
-         return sb.ToString();
+         return runner.Data + " " + Traverse(runner.LeftChild) + Traverse(runner.RightChild);
       }
    }
 }

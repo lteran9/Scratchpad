@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using DataStructures.Core.Strings;
-using DataStructures.UseCases;
+using DataStructures.UseCases.Strings;
 using DataStructures.UseCases.Factory;
 
 namespace DataStructures.Core.Tests.StringTests

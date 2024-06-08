@@ -1,7 +1,7 @@
 using System;
 using DataStructures.Core;
 
-namespace DataStructures.UseCases
+namespace DataStructures.UseCases.Arrays
 {
    public class ArrayManipulation
    {
