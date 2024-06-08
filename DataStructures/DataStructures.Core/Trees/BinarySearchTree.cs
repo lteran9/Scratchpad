@@ -41,7 +41,7 @@ namespace DataStructures.Core.Trees
                // If right child null then add data as right child
                if (node.RightChild == null)
                {
-                  node.RightChild = new TreeNode<T>(data);
+                  node.AddRightChild(new TreeNode<T>(data));
                   Length++;
                   break;
                }
@@ -58,7 +58,7 @@ namespace DataStructures.Core.Trees
                // If left child null then add data as left child
                if (node.LeftChild == null)
                {
-                  node.LeftChild = new TreeNode<T>(data);
+                  node.AddLeftChild(new TreeNode<T>(data));
                   Length++;
                   break;
                }

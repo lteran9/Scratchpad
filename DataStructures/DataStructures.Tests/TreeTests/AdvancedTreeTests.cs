@@ -4,7 +4,7 @@ using Xunit;
 
 namespace DataStructures.Core.Tests.TreeTests
 {
-   public class AdvancedTreeTests : BaseTree
+   public class AdvancedTreeTests
    {
       [Fact]
       public void IsBalancedBinaryTree()

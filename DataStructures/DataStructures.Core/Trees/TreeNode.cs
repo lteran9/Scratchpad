@@ -10,8 +10,8 @@ namespace DataStructures.Core.Trees
    {
       public T Data { get; set; }
 
-      public TreeNode<T> LeftChild { get; set; }
-      public TreeNode<T> RightChild { get; set; }
+      public TreeNode<T> LeftChild { get; private set; }
+      public TreeNode<T> RightChild { get; private set; }
 
       public TreeNode(T data)
       {
@@ -23,6 +23,16 @@ namespace DataStructures.Core.Trees
          Data = data;
          LeftChild = leftChild;
          RightChild = rightChild;
+      }
+
+      public void AddLeftChild(TreeNode<T> child)
+      {
+         LeftChild = child;
+      }
+
+      public void AddRightChild(TreeNode<T> child)
+      {
+         RightChild = child;
       }
    }
 }
