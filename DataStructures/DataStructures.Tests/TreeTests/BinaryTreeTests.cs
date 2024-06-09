@@ -7,13 +7,6 @@ namespace DataStructures.Core.Tests.TreeTests
    public class BinaryTreeTests
    {
       [Fact]
-      public void RebalanceTest()
-      {
-         /// Balanced Tree: the heights of the two child subtrees of any node differ by at most one.
-
-      }
-
-      [Fact]
       public void TreeHeightTests()
       {
          var tree = new BinarySearchTree<int>(2);
