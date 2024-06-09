@@ -4,4 +4,8 @@
 
 ### Pre Order Traversal
 
-Input Format
+[Print the preorder traversal of a tree.](https://www.hackerrank.com/challenges/tree-preorder-traversal/problem)
+
+### Post Order Traversal
+
+[Print the postorder traversal of a tree](https://www.hackerrank.com/challenges/tree-preorder-traversal/problem)
