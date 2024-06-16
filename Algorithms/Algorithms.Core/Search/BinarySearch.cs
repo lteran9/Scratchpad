@@ -50,7 +50,7 @@ namespace Algorithms.Core.Search
                }
             }
          }
-
+         // Not a good return value when needle is not found within array...
          return default(T);
       }
    }

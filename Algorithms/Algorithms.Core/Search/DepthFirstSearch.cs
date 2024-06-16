@@ -10,14 +10,22 @@ namespace Algorithms.Core.Search
    /// </summary>
    public class DepthFirstSearch<T>
    {
-      public AdjacencyList<T> Graph { get; private set; }
+      private readonly AdjacencyList<T> Graph;
 
       /// <summary>
       /// Create a new instance of the Depth First Search algorithm.
       /// </summary>
       public DepthFirstSearch()
       {
-         this.Graph = new AdjacencyList<T>();
+         Graph = new AdjacencyList<T>();
+      }
+
+      /// <summary>
+      /// Create a new instance of the Depth First Search algorithm using the passed in Graph data structure.
+      /// </summary>
+      public DepthFirstSearch(AdjacencyList<T> graph)
+      {
+         Graph = graph;
       }
 
       /// <summary>
@@ -25,7 +33,7 @@ namespace Algorithms.Core.Search
       /// </summary>
       public void AddEdge(T parent, T child)
       {
-         this.Graph.AddEdge(parent, child);
+         Graph.AddEdge(parent, child);
       }
 
       /// <summary>
@@ -75,7 +83,7 @@ namespace Algorithms.Core.Search
          }
          catch (Exception ex)
          {
-            System.Console.Out.WriteLine(ex.Message);
+            Console.Out.WriteLine(ex.Message);
          }
 
          return visited;

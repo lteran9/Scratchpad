@@ -5,8 +5,6 @@ namespace DataStructures.Core.Arrays
 {
    public class Array
    {
-
-
       public static (int, int, int) GetThreeLargestElements(int[] arr)
       {
          // Set initial values to miminum 
@@ -63,7 +61,7 @@ namespace DataStructures.Core.Arrays
          if (arr.Length > 0)
          {
             int count = 0;
-
+            // Put non-zero numbers first
             for (int i = 0; i < arr.Length; i++)
             {
                if (arr[i] != 0)
@@ -72,7 +70,7 @@ namespace DataStructures.Core.Arrays
                   count++;
                }
             }
-
+            // Write out zeroes for rest of length
             while (count < arr.Length)
             {
                arr[count] = 0;

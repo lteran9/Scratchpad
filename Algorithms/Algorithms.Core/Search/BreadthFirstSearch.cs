@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using DataStructures.Core.Graphs;
 
@@ -10,14 +9,14 @@ namespace Algorithms.Core.Search
    /// </summary>
    public class BreadthFirstSearch<T>
    {
-      private readonly AdjacencyList<T> Graph = default;
+      private readonly AdjacencyList<T> Graph;
 
       /// <summary>
       /// Create a new instance of the Breadth First Search algorithm.
       /// </summary>
       public BreadthFirstSearch()
       {
-         this.Graph = new AdjacencyList<T>();
+         Graph = new AdjacencyList<T>();
       }
 
       /// <summary>
@@ -25,7 +24,7 @@ namespace Algorithms.Core.Search
       /// </summary>
       public BreadthFirstSearch(AdjacencyList<T> graph)
       {
-         this.Graph = graph;
+         Graph = graph;
       }
 
       /// <summary>
@@ -33,7 +32,7 @@ namespace Algorithms.Core.Search
       /// </summary>
       public void AddEdge(T parent, T child)
       {
-         this.Graph.AddEdge(parent, child);
+         Graph.AddEdge(parent, child);
       }
 
       /// <summary>
@@ -74,7 +73,7 @@ namespace Algorithms.Core.Search
          }
          catch (Exception ex)
          {
-            System.Console.Out.WriteLine(ex.Message);
+            Console.Out.WriteLine(ex.Message);
          }
 
          return visited;
