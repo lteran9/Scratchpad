@@ -2,36 +2,49 @@ using System;
 using Algorithms.Core.Sorting;
 using System.Collections.Generic;
 using Xunit;
+using Algorithms.UseCases.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
    public class MergeSortTests : BaseSortTest
    {
+      #region TestData 
+
       private readonly List<int> _intCollection = new List<int>() { 32, 11, 857, 23, 9, 0, 333 };
       private readonly List<char> _charCollection = new List<char>() { 'Q', 'P', '<', '.', '1', 'T', '+' };
+
+      #endregion
 
       [Fact]
       public void Integer_AscendingOrderTest()
       {
-         BaseAscendingTest(_intCollection, MergeSort.Sort(_intCollection));
+         var integerSort = new IntCollection(_intCollection);
+
+         BaseAscendingTest(_intCollection, integerSort.MergeSort);
       }
 
       [Fact]
       public void Integer_DescendingOrderTest()
       {
-         BaseDescendingTest(_intCollection, MergeSort.Sort(_intCollection, SortOrder.DESC));
+         var integerSort = new IntCollection(_intCollection, SortOrder.DESC);
+
+         BaseDescendingTest(_intCollection, integerSort.MergeSort);
       }
 
       [Fact]
       public void Character_AscendingOrderTest()
       {
-         BaseAscendingTest(_charCollection, MergeSort.Sort(_charCollection));
+         var characterSort = new CharCollection(_charCollection);
+
+         BaseAscendingTest(_charCollection, characterSort.MergeSort);
       }
 
       [Fact]
       public void Character_DescendingOrderTest()
       {
-         BaseDescendingTest(_charCollection, MergeSort.Sort(_charCollection, SortOrder.DESC));
+         var characterSort = new CharCollection(_charCollection, SortOrder.DESC);
+
+         BaseDescendingTest(_charCollection, characterSort.MergeSort);
       }
    }
 }

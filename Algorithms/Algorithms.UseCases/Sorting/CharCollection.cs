@@ -3,12 +3,12 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting
 {
-   public class IntCollection
+   public class CharCollection
    {
       private readonly SortOrder _order;
-      private readonly List<int> _collection;
+      private readonly List<char> _collection;
 
-      public List<int> BubbleSort
+      public List<char> BubbleSort
       {
          get
          {
@@ -16,7 +16,7 @@ namespace Algorithms.UseCases.Sorting
          }
       }
 
-      public List<int> InsertionSort
+      public List<char> InsertionSort
       {
          get
          {
@@ -24,7 +24,7 @@ namespace Algorithms.UseCases.Sorting
          }
       }
 
-      public List<int> MergeSort
+      public List<char> MergeSort
       {
          get
          {
@@ -32,7 +32,7 @@ namespace Algorithms.UseCases.Sorting
          }
       }
 
-      public List<int> QuickSort
+      public List<char> QuickSort
       {
          get
          {
@@ -40,7 +40,7 @@ namespace Algorithms.UseCases.Sorting
          }
       }
 
-      public List<int> SelectionSort
+      public List<char> SelectionSort
       {
          get
          {
@@ -48,13 +48,13 @@ namespace Algorithms.UseCases.Sorting
          }
       }
 
-      public IntCollection(int[] collection, SortOrder order = SortOrder.ASC)
+      public CharCollection(char[] collection, SortOrder order = SortOrder.ASC)
       {
          _order = order;
          _collection = collection.ToList();
       }
 
-      public IntCollection(List<int> collection, SortOrder order = SortOrder.ASC)
+      public CharCollection(List<char> collection, SortOrder order = SortOrder.ASC)
       {
          _order = order;
          _collection = collection;
