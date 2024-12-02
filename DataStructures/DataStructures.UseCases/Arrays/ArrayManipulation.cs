@@ -1,5 +1,6 @@
 using System;
 using DataStructures.Core;
+using DataStructures.UseCases.Factory;
 
 namespace DataStructures.UseCases.Arrays
 {
@@ -73,7 +74,7 @@ namespace DataStructures.UseCases.Arrays
          return (first, second, third);
       }
 
-      public int GetSecondLargestElement(int[] arr)
+      public int GetSecondLargestElement(Core.Arrays.Array<int> arr)
       {
          int first = int.MinValue, second = int.MinValue;
 
@@ -95,7 +96,7 @@ namespace DataStructures.UseCases.Arrays
          return second;
       }
 
-      public int[] PushZeroesToEnd(int[] arr)
+      public Core.Arrays.Array<int> PushZeroesToEnd(Core.Arrays.Array<int> arr)
       {
          if (arr.Length > 0)
          {
@@ -120,11 +121,11 @@ namespace DataStructures.UseCases.Arrays
          return arr;
       }
 
-      public int[] RearrangeArrayInMaximumMinimumForm(int[] arr)
+      public Core.Arrays.Array<int> RearrangeArrayInMaximumMinimumForm(Core.Arrays.Array<int> arr)
       {
          if (arr.Length > 0)
          {
-            var result = new int[arr.Length];
+            var result = new Core.Arrays.Array<int>();
             int leftIdx = 0, rightIdx = arr.Length - 1;
 
             for (int i = 0; i < arr.Length; i++)
@@ -147,11 +148,11 @@ namespace DataStructures.UseCases.Arrays
          return arr;
       }
 
-      public int[] SegregateEvenAndOdd(int[] arr)
+      public Core.Arrays.Array<int> SegregateEvenAndOdd(Core.Arrays.Array<int> arr)
       {
          if (arr.Length > 0)
          {
-            int[] result = new int[arr.Length];
+            var result = ArrayFactory.CreateArray<int>(arr.Length);
             int start = 0, end = arr.Length - 1;
 
             for (int i = 0; i < result.Length; i++)

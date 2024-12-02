@@ -7,6 +7,11 @@ namespace DataStructures.Core.Arrays
    {
       private readonly T[] values;
 
+      public Array(int size)
+      {
+         values = new T[size];
+      }
+
       public Array(T[] arr)
       {
          if (arr == null)

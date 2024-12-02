@@ -1,5 +1,6 @@
 using System;
 using DataStructures.UseCases.Arrays;
+using DataStructures.UseCases.Factory;
 using Xunit;
 
 namespace DataStructures.Core.Tests.ArrayTests
@@ -13,14 +14,14 @@ namespace DataStructures.Core.Tests.ArrayTests
       [Fact]
       public void GetThreeLargestElements()
       {
-         var array = new Core.Arrays.Array<int>(new int[6] { 10, 4, 3, 50, 23, 90 });
+         var array = ArrayFactory.CreateArray(new int[6] { 10, 4, 3, 50, 23, 90 });
          (int first, int second, int third) = arrayFunctions.GetThreeLargestElements(array);
 
          Assert.Equal(90, first);
          Assert.Equal(50, second);
          Assert.Equal(23, third);
 
-         array = new Core.Arrays.Array<int>(new int[8] { 6, 8, 1, 9, 2, 1, 10, 10 });
+         array = ArrayFactory.CreateArray(new int[8] { 6, 8, 1, 9, 2, 1, 10, 10 });
 
          (first, second, third) = arrayFunctions.GetThreeLargestElements(array);
 
@@ -32,7 +33,7 @@ namespace DataStructures.Core.Tests.ArrayTests
       [Fact]
       public void GetSecondLargestElement()
       {
-         int[] array = new int[] { 12, 35, 1, 10, 34, -1 };
+         var array = ArrayFactory.CreateArray(new int[] { 12, 35, 1, 10, 34, -1 });
          int secondLargest = arrayFunctions.GetSecondLargestElement(array);
 
          Assert.Equal(34, secondLargest);
@@ -41,9 +42,9 @@ namespace DataStructures.Core.Tests.ArrayTests
       [Fact]
       public void PushZeroesToEnd()
       {
-         int[] array = new int[] { 1, 2, 0, 4, 3, 0, 5, 0 };
-         int[] output = arrayFunctions.PushZeroesToEnd(array);
-         int[] expected = new int[] { 1, 2, 4, 3, 5, 0, 0, 0 };
+         var array = ArrayFactory.CreateArray(new int[] { 1, 2, 0, 4, 3, 0, 5, 0 });
+         var output = arrayFunctions.PushZeroesToEnd(array);
+         var expected = ArrayFactory.CreateArray(new int[] { 1, 2, 4, 3, 5, 0, 0, 0 });
 
          Assert.Equal(expected, output);
       }
@@ -51,9 +52,9 @@ namespace DataStructures.Core.Tests.ArrayTests
       [Fact]
       public void RearrangeArrayInMaximumMinimumForm()
       {
-         int[] sample = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-         int[] output = arrayFunctions.RearrangeArrayInMaximumMinimumForm(sample);
-         int[] expected = new int[] { 7, 1, 6, 2, 5, 3, 4 };
+         var sample = ArrayFactory.CreateArray(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+         var output = arrayFunctions.RearrangeArrayInMaximumMinimumForm(sample);
+         var expected = ArrayFactory.CreateArray(new int[] { 7, 1, 6, 2, 5, 3, 4 });
 
          Assert.Equal(expected, output);
       }
@@ -61,9 +62,9 @@ namespace DataStructures.Core.Tests.ArrayTests
       [Fact]
       public void SegregateEvenAndOdd()
       {
-         int[] sample = new int[] { 7, 2, 9, 4, 6, 1, 3, 8, 5 };
-         int[] output = arrayFunctions.SegregateEvenAndOdd(sample);
-         int[] expected = new int[] { 2, 4, 6, 8, 5, 3, 1, 9, 7 };
+         var sample = ArrayFactory.CreateArray(new int[] { 7, 2, 9, 4, 6, 1, 3, 8, 5 });
+         var output = arrayFunctions.SegregateEvenAndOdd(sample);
+         var expected = ArrayFactory.CreateArray(new int[] { 2, 4, 6, 8, 5, 3, 1, 9, 7 });
 
          Assert.Equal(expected, output);
       }
