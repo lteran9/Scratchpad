@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace DataStructures.Core.Tests.GraphTests
+namespace DataStructures.Tests.GraphTests
 {
    public class AdjacencyMatrixTests
    {

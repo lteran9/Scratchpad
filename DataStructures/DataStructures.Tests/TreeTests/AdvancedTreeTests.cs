@@ -2,7 +2,7 @@ using DataStructures.Core.Trees;
 using System;
 using Xunit;
 
-namespace DataStructures.Core.Tests.TreeTests
+namespace DataStructures.Tests.TreeTests
 {
    public class AdvancedTreeTests
    {

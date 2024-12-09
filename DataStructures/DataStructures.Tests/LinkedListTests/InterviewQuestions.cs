@@ -4,7 +4,7 @@ using DataStructures.UseCases.LinkedLists;
 using DataStructures.UseCases.Factory;
 using Xunit;
 
-namespace DataStructures.Core.Tests.LinkedListTests
+namespace DataStructures.Tests.LinkedListTests
 {
    /// Common Interview Questions for Linked Lists
    public class InterviewQuestions

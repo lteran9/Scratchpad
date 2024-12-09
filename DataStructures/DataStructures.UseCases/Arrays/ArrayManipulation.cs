@@ -125,7 +125,7 @@ namespace DataStructures.UseCases.Arrays
       {
          if (arr.Length > 0)
          {
-            var result = new Core.Arrays.Array<int>();
+            var result = new Core.Arrays.Array<int>(arr.Length);
             int leftIdx = 0, rightIdx = arr.Length - 1;
 
             for (int i = 0; i < arr.Length; i++)

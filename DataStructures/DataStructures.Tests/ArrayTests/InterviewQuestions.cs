@@ -3,7 +3,7 @@ using DataStructures.UseCases.Arrays;
 using DataStructures.UseCases.Factory;
 using Xunit;
 
-namespace DataStructures.Core.Tests.ArrayTests
+namespace DataStructures.Tests.ArrayTests
 {
    public class InterviewQuestions
    {
@@ -46,7 +46,7 @@ namespace DataStructures.Core.Tests.ArrayTests
          var output = arrayFunctions.PushZeroesToEnd(array);
          var expected = ArrayFactory.CreateArray(new int[] { 1, 2, 4, 3, 5, 0, 0, 0 });
 
-         Assert.Equal(expected, output);
+         Assert.Equal(expected.ToString(), output.ToString());
       }
 
       [Fact]
@@ -56,7 +56,7 @@ namespace DataStructures.Core.Tests.ArrayTests
          var output = arrayFunctions.RearrangeArrayInMaximumMinimumForm(sample);
          var expected = ArrayFactory.CreateArray(new int[] { 7, 1, 6, 2, 5, 3, 4 });
 
-         Assert.Equal(expected, output);
+         Assert.Equal(expected.ToString(), output.ToString());
       }
 
       [Fact]
@@ -66,7 +66,7 @@ namespace DataStructures.Core.Tests.ArrayTests
          var output = arrayFunctions.SegregateEvenAndOdd(sample);
          var expected = ArrayFactory.CreateArray(new int[] { 2, 4, 6, 8, 5, 3, 1, 9, 7 });
 
-         Assert.Equal(expected, output);
+         Assert.Equal(expected.ToString(), output.ToString());
       }
 
       #endregion

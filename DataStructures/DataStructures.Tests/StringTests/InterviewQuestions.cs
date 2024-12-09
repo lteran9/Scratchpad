@@ -4,7 +4,7 @@ using DataStructures.Core.Strings;
 using DataStructures.UseCases.Strings;
 using DataStructures.UseCases.Factory;
 
-namespace DataStructures.Core.Tests.StringTests
+namespace DataStructures.Tests.StringTests
 {
    /// Common Interview Questions for Strings
    public class InterviewQuestions
