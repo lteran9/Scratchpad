@@ -2,6 +2,7 @@ using System;
 using Algorithms.Core.Sorting;
 using System.Collections.Generic;
 using Xunit;
+using Algorithms.UseCases;
 
 namespace Algorithms.Core.Tests.Sorting
 {
@@ -13,13 +14,17 @@ namespace Algorithms.Core.Tests.Sorting
       [Fact]
       public void Integer_AscendingOrderTest()
       {
-         BaseAscendingTest(_intCollection, BubbleSort.Sort(_intCollection));
+         var integerSort = new IntCollection(_intCollection);
+
+         BaseAscendingTest(_intCollection, integerSort.BubbleSort);
       }
 
       [Fact]
       public void Integer_DescendingOrderTest()
       {
-         BaseDescendingTest(_intCollection, BubbleSort.Sort(_intCollection, SortOrder.DESC));
+         var integerSort = new IntCollection(_intCollection, SortOrder.DESC);
+
+         BaseDescendingTest(_intCollection, integerSort.BubbleSort);
       }
 
       [Fact]
