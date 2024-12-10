@@ -3,7 +3,7 @@ using Algorithms.Core.Sorting;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Algorithms.Core.Tests.Sorting
+namespace Algorithms.Tests.Sorting
 {
    public class SelectionSortTests : BaseSortTest
    {

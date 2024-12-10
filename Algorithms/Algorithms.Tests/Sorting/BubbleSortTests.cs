@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Xunit;
 using Algorithms.UseCases;
 
-namespace Algorithms.Core.Tests.Sorting
+namespace Algorithms.Tests.Sorting
 {
    public class BubbleSortTests : BaseSortTest
    {
