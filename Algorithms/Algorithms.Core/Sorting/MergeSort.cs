@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Algorithms.Core.Sorting
 {
-   public class MergeSort
+   public static class MergeSort
    {
       private static SortOrder sortOrder = SortOrder.ASC;
 
