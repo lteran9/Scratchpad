@@ -55,7 +55,7 @@ namespace Algorithms.Core.Search
                {
                   var vertex = stack.Pop();
 
-                  if (vertex.Equals(targetVertex))
+                  if (vertex?.Equals(targetVertex) == true)
                   {
                      // Target vertex has been found
                      return visited;

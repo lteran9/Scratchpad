@@ -26,7 +26,7 @@ namespace Algorithms.Core.Search
       /// </summary>
       /// <param name="needle"></param>
       /// <returns></returns>
-      public T Find(T needle)
+      public T? Find(T needle)
       {
          if (Data.Length > 0)
          {
@@ -50,8 +50,9 @@ namespace Algorithms.Core.Search
                }
             }
          }
+
          // Not a good return value when needle is not found within array...
-         return default(T);
+         return default;
       }
    }
 }

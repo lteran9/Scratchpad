@@ -54,7 +54,7 @@ namespace Algorithms.Core.Search
                   var vertex = queue.Dequeue();
                   visited.Add(vertex);
 
-                  if (vertex.Equals(targetVertex))
+                  if (vertex?.Equals(targetVertex) == true)
                   {
                      return visited;
                   }
