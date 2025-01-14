@@ -1,5 +1,6 @@
 using System;
 using DataStructures.Core.LinkedLists;
+using DataStructures.UseCases.LinkedLists;
 using Xunit;
 
 namespace DataStructures.Tests.LinkedListTests
@@ -90,11 +91,11 @@ namespace DataStructures.Tests.LinkedListTests
 
          // REMOVE DUPLICATES 
          linkedList.Add(7);
-         linkedList.RemoveDuplicates();
+         var removeDuplicates = new RemoveDuplicates<short>(linkedList);
+         linkedList = removeDuplicates.Execute();
 
          Assert.Equal(3, linkedList.Size);
          Assert.Equal(linkedList.Size, linkedList.Count());
       }
-
    }
 }

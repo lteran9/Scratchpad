@@ -26,7 +26,8 @@ namespace DataStructures.Tests.LinkedListTests
          linkedList.Add(1);
 
          Assert.Equal(7, linkedList.Count());
-         linkedList.RemoveDuplicates();
+         var removeDuplicates = new RemoveDuplicates<int>(linkedList);
+         linkedList = removeDuplicates.Execute();
          Assert.Equal(5, linkedList.Count());
       }
 
@@ -44,7 +45,8 @@ namespace DataStructures.Tests.LinkedListTests
          linkedList.Add(1);
 
          Assert.Equal(9, linkedList.Size);
-         linkedList.RemoveDuplicates();
+         var removeDuplicates = new RemoveDuplicates<int>(linkedList);
+         linkedList = removeDuplicates.Execute();
          Assert.Equal(1, linkedList.Size);
       }
 
@@ -61,7 +63,8 @@ namespace DataStructures.Tests.LinkedListTests
          linkedList.Add(0);
 
          Assert.Equal(8, linkedList.Size);
-         linkedList.RemoveDuplicates();
+         var removeDuplicates = new RemoveDuplicates<int>(linkedList);
+         linkedList = removeDuplicates.Execute();
          Assert.Equal(5, linkedList.Size);
       }
 

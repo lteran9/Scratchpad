@@ -130,37 +130,6 @@ namespace DataStructures.Core.LinkedLists
          }
       }
 
-      public void RemoveDuplicates()
-      {
-         if (Root != null)
-         {
-            var current = Root;
-            while (current != null)
-            {
-               Remove(current, current.Data);
-               current = current.Next;
-            }
-         }
-      }
-
-      private void Remove(Node<T> runner, T value)
-      {
-         if (runner != null)
-         {
-            do
-            {
-               if (runner.Next?.Data.Equals(value) == true)
-               {
-                  runner.Next = runner.Next?.Next;
-               }
-               else
-               {
-                  runner = runner.Next;
-               }
-            } while (runner?.Next != null);
-         }
-      }
-
       public Node<T> ReturnKthToLast(int k)
       {
          if (Root != null)
