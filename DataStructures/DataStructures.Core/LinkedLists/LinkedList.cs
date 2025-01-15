@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace DataStructures.Core.LinkedLists
 {
@@ -192,6 +193,21 @@ namespace DataStructures.Core.LinkedLists
       public void Clear()
       {
          Root = null;
+      }
+
+      public override string ToString()
+      {
+         var result = new StringBuilder();
+
+         var runner = Root;
+
+         do
+         {
+            result.Append($"{runner.Data}->");
+            runner = runner.Next;
+         } while (runner != null);
+
+         return result.ToString().Substring(0, result.Length - 2);
       }
    }
 }

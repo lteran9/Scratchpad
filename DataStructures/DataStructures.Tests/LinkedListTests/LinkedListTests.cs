@@ -30,6 +30,9 @@ namespace DataStructures.Tests.LinkedListTests
       public void AddTest_1()
       {
          var list = new LinkedList<string>("HEAD");
+
+         Assert.Equal("HEAD", list.ToString());
+
          list.Add("A");
          list.Add("B");
          list.Add("C");
@@ -40,7 +43,7 @@ namespace DataStructures.Tests.LinkedListTests
          list.Add("H");
          list.Add("I");
 
-         //Assert.Equal("HEAD->A->B->C->D->E->F->G->H->I", list.Get());
+         Assert.Equal("HEAD->A->B->C->D->E->F->G->H->I", list.ToString());
       }
 
       [Fact]

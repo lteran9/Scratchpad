@@ -2,12 +2,12 @@ using System;
 
 namespace DataStructures.UseCases.LinkedLists
 {
-   public class AddtoList<T> : IUseCase<Core.LinkedLists.LinkedList<T>>
+   public class AddToList<T> : IUseCase<Core.LinkedLists.LinkedList<T>>
    {
       private readonly T _value;
       private readonly Core.LinkedLists.LinkedList<T> _linkedList;
 
-      public AddtoList(Core.LinkedLists.LinkedList<T> linkedList, T value)
+      public AddToList(Core.LinkedLists.LinkedList<T> linkedList, T value)
       {
          _value = value;
          _linkedList = linkedList;
