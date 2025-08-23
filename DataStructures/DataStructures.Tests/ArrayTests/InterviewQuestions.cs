@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DataStructures.UseCases.Arrays;
 using DataStructures.UseCases.Factory;
 using Xunit;
@@ -77,18 +78,48 @@ namespace DataStructures.Tests.ArrayTests
       public void ArrayPointerPractice()
       {
          // Sorted array of integers
-         var array = new Core.Arrays.Array<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+         var array = new Core.Arrays.Array<int>(1, 2, 3, 4, 5, 6, 7, 8, 9);
          // Target 6 = 1 + 5, 2 + 4, 
          int target = 6;
 
-         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, target));
-         Assert.False(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, 1));
+         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget_Sorted(array, target));
+         Assert.False(arrayFunctions.IsSumOfTwoDigitsEqualToTarget_Sorted(array, 1));
 
          // 15 = 7 + 8
          target = 15;
 
-         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget(array, target));
+         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget_Sorted(array, target));
       }
+
+      [Theory]
+      [MemberData(nameof(ArrayWithDigitsEqualToKey))]
+      public void IsSumOfTwoDigitsEqualToKey_True(Core.Arrays.Array<int> array, int key)
+      {
+         Assert.True(arrayFunctions.IsSumOfTwoDigitsEqualToTarget_NotSorted(array, key));
+      }
+
+      [Theory]
+      [MemberData(nameof(ArrayWithNoDigitsEqualToKey))]
+      public void IsSumOfTwoDigitsEqualToKey_False(Core.Arrays.Array<int> array, int key)
+      {
+         Assert.False(arrayFunctions.IsSumOfTwoDigitsEqualToTarget_NotSorted(array, key));
+      }
+
+      public static IEnumerable<object[]> ArrayWithDigitsEqualToKey =>
+        new List<object[]>
+        {
+            new object[] { new Core.Arrays.Array<int>(4, 7, 3, 8, 1, 9), 11 },
+            new object[] { new Core.Arrays.Array<int>(95, 5, 3, 8, 0, 4), 100 },
+            new object[] { new Core.Arrays.Array<int>(2, 6, 13, 71, 3, 53), 56 },
+        };
+
+      public static IEnumerable<object[]> ArrayWithNoDigitsEqualToKey =>
+        new List<object[]>
+        {
+            new object[] { new Core.Arrays.Array<int>(4, 7, 3, 8, 1, 9), 18 },
+            new object[] { new Core.Arrays.Array<int>(95, 5, 3, 8, 0, 4), 101 },
+            new object[] { new Core.Arrays.Array<int>(2, 6, 13, 71, 3, 53), 51 },
+        };
 
       #endregion
    }

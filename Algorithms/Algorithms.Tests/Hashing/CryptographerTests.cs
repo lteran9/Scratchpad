@@ -1,7 +1,7 @@
-using Algorithms.Core.Hashing;
 using System;
 using System.Text;
 using Xunit;
+using Algorithms.Core.Hashing;
 
 namespace Algorithms.Core.Tests.Hashing
 {

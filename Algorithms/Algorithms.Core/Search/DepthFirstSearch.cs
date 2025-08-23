@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using DataStructures.Core.Graphs;
 
 namespace Algorithms.Core.Search
@@ -68,7 +66,7 @@ namespace Algorithms.Core.Search
                         // Add new vertex to stack
                         visited.Add(vertex);
 
-                        foreach (var neighbor in this.Graph.OutEdges(vertex))
+                        foreach (var neighbor in Graph.OutEdges(vertex))
                         {
                            // Add neighboring vertices to stack
                            if (!visited.Contains(neighbor))

@@ -7,12 +7,12 @@ namespace DataStructures.UseCases.Arrays
    public class ArrayManipulation
    {
       /// <summary>
-      /// This method will determine if the sum of two elements in the array is equal to the target passed in.
+      /// This method will determine if the sum of two elements in a sorted array is equal to the target passed in.
       /// </summary>
       /// <param name="array">Sorted array of integers</param>
       /// <param name="target">Digit we are looking for</param>
       /// <returns></returns>
-      public bool IsSumOfTwoDigitsEqualToTarget(Core.Arrays.Array<int> array, int target)
+      public bool IsSumOfTwoDigitsEqualToTarget_Sorted(Core.Arrays.Array<int> array, int target)
       {
          if (array.Length > 0)
          {
@@ -31,6 +31,28 @@ namespace DataStructures.UseCases.Arrays
                   tailIndex--;
                }
                else
+               {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+
+      /// <summary>
+      /// Given an array of integers and a key, determine if the sum of any two integers equal the key
+      /// </summary>
+      /// <param name="array">Unsorted array of integers</param>
+      /// <param name="target">Digit we are looking for</param>
+      /// <returns></returns>
+      public bool IsSumOfTwoDigitsEqualToTarget_NotSorted(Core.Arrays.Array<int> array, int target)
+      {
+         for (int i = array.Length - 1; i > 0; i--)
+         {
+            for (int j = (i - 1); j >= 0; j--)
+            {
+               if (array[i] + array[j] == target)
                {
                   return true;
                }
