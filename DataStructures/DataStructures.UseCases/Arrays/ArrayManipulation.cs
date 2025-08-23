@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DataStructures.Core;
 using DataStructures.UseCases.Factory;
 
@@ -7,12 +8,12 @@ namespace DataStructures.UseCases.Arrays
    public class ArrayManipulation
    {
       /// <summary>
-      /// This method will determine if the sum of two elements in the array is equal to the target passed in.
+      /// This method will determine if the sum of two elements in a sorted array is equal to the target passed in.
       /// </summary>
       /// <param name="array">Sorted array of integers</param>
       /// <param name="target">Digit we are looking for</param>
       /// <returns></returns>
-      public bool IsSumOfTwoDigitsEqualToTarget(Core.Arrays.Array<int> array, int target)
+      public bool IsSumOfTwoDigitsEqualToTarget_Sorted(Core.Arrays.Array<int> array, int target)
       {
          if (array.Length > 0)
          {
@@ -31,6 +32,28 @@ namespace DataStructures.UseCases.Arrays
                   tailIndex--;
                }
                else
+               {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+
+      /// <summary>
+      /// Given an array of integers and a key, determine if the sum of any two integers equal the key
+      /// </summary>
+      /// <param name="array">Unsorted array of integers</param>
+      /// <param name="target">Digit we are looking for</param>
+      /// <returns></returns>
+      public bool IsSumOfTwoDigitsEqualToTarget_NotSorted(Core.Arrays.Array<int> array, int target)
+      {
+         for (int i = array.Length - 1; i > 0; i--)
+         {
+            for (int j = (i - 1); j >= 0; j--)
+            {
+               if (array[i] + array[j] == target)
                {
                   return true;
                }
@@ -175,6 +198,47 @@ namespace DataStructures.UseCases.Arrays
          }
 
          return arr;
+      }
+
+      public Core.Arrays.Array<int>? FindDuplicatesInArrayIfMultipleDuplicatesPresent(Core.Arrays.Array<int> haystack)
+      {
+         // Multiple duplicates can only be found if at least four elements are present (e.g. {2,2,4,4})
+         if (haystack.Length >= 4)
+         {
+            // Used to keep a count of digits seen
+            var hashTable = new Dictionary<int, int>();
+            // Loop over elements and track digits seen
+            for (int i = 0; i < haystack.Length; i++)
+            {
+               if (!hashTable.ContainsKey(haystack[i]))
+               {
+                  hashTable.Add(haystack[i], 1);
+               }
+               else
+               {
+                  hashTable[haystack[i]]++;
+               }
+            }
+
+            var size = hashTable.Values.Count(x => x > 1);
+            // Create return type
+            var duplicates = ArrayFactory.CreateArray<int>(size);
+            // Keep track of return type index
+            int index = 0;
+
+            foreach (var key in hashTable.Keys)
+            {
+               if (hashTable[key] > 1)
+               {
+                  duplicates[index] = hashTable[key];
+                  index++;
+               }
+            }
+
+            return duplicates;
+         }
+
+         return null;
       }
    }
 }

@@ -5,16 +5,20 @@ using Xunit;
 
 namespace Algorithms.Core.Tests.Search
 {
-
    public class BinarySearchTests
    {
+      private readonly int[] _sortedArray;
+
+      public BinarySearchTests()
+      {
+         _sortedArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+      }
+
       [Fact]
       public void NeedleNotInData_Test()
       {
-         // Sorted array
-         var haystack = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
          // Algorithm
-         var search = new BinarySearch<int>(haystack);
+         var search = new BinarySearch<int>(_sortedArray);
 
          Assert.False(search.HasValue(10));
       }
@@ -22,10 +26,8 @@ namespace Algorithms.Core.Tests.Search
       [Fact]
       public void NeedleInData_Test()
       {
-         // Sorted array
-         var haystack = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
          // Algorithm
-         var search = new BinarySearch<int>(haystack);
+         var search = new BinarySearch<int>(_sortedArray);
 
          Assert.True(search.HasValue(1));
          Assert.True(search.HasValue(2));

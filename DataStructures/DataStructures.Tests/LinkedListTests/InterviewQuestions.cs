@@ -3,6 +3,7 @@ using DataStructures.Core.LinkedLists;
 using DataStructures.UseCases.LinkedLists;
 using DataStructures.UseCases.Factory;
 using Xunit;
+using System.Collections.Generic;
 
 namespace DataStructures.Tests.LinkedListTests
 {
@@ -227,6 +228,40 @@ namespace DataStructures.Tests.LinkedListTests
       public void LoopDetection()
       {
          //
+      }
+
+      /// <summary>
+      /// Merge two sorted linked lists so that the resulting linked list is also sorted.
+      /// </summary>
+      [Theory]
+      [MemberData(nameof(SortedLinkedLists))]
+      public void JoinTwoSortedLists(Core.LinkedLists.LinkedList<int> aLinkedList, Core.LinkedLists.LinkedList<int> bLinkedList)
+      {
+         var sorted = _linkedListManipulation.SortTwoLists(aLinkedList, bLinkedList);
+
+         Assert.True(sorted.Root != null);
+      }
+
+      public static IEnumerable<object[]> SortedLinkedLists =>
+        new List<object[]>
+        {
+            new object[] { new Core.LinkedLists.LinkedList<int>(3, 7, 15, 18), new Core.LinkedLists.LinkedList<int>(2, 5, 21) },
+            new object[] { new Core.LinkedLists.LinkedList<int>(3, 7, 15, 18), new Core.LinkedLists.LinkedList<int>(2, 5, 21, 26, 34) },
+            new object[] { new Core.LinkedLists.LinkedList<int>(0, 2, 3, 5), new Core.LinkedLists.LinkedList<int>(0, 1, 4, 6) },
+            new object[] { new Core.LinkedLists.LinkedList<int>(10, 20, 30, 40), new Core.LinkedLists.LinkedList<int>(11, 21, 31, 40) }
+        };
+
+      [Fact]
+      public void InsertNodeAtPosition()
+      {
+         var llist = new Core.LinkedLists.LinkedList<int>(1, 2, 3);
+         var data = 4;
+         var position = 3;
+
+         var result = _linkedListManipulation.InsertNodeAtPosition(llist, data, position);
+
+         Assert.True(result.Count() == 4);
+         Assert.Equal("1->2->3->4", result.ToString());
       }
    }
 }
