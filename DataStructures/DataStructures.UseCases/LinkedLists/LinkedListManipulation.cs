@@ -20,6 +20,53 @@ namespace DataStructures.UseCases.LinkedLists
          return null;
       }
 
+      public Core.LinkedLists.LinkedList<int>? SortTwoLists(Core.LinkedLists.LinkedList<int> a, Core.LinkedLists.LinkedList<int> b)
+      {
+         if (a != null && b != null)
+         {
+            var sorted = new Core.LinkedLists.LinkedList<int>();
+
+            var firstHead = a.Root;
+            var secondHead = b.Root;
+
+            while (firstHead != null || secondHead != null)
+            {
+               if (firstHead == null)
+               {
+                  sorted.Add(secondHead!.Data);
+                  secondHead = secondHead.Next;
+               }
+               else if (secondHead == null)
+               {
+                  sorted.Add(firstHead!.Data);
+                  firstHead = firstHead.Next;
+               }
+               else if (firstHead.Data < secondHead.Data)
+               {
+                  sorted.Add(firstHead.Data);
+                  firstHead = firstHead.Next;
+               }
+               else if (firstHead.Data > secondHead.Data)
+               {
+                  sorted.Add(secondHead.Data);
+                  secondHead = secondHead.Next;
+               }
+               else
+               {
+                  // Both values are equal
+                  sorted.Add(firstHead.Data);
+                  // Advance both pointers
+                  firstHead = firstHead?.Next;
+                  secondHead = secondHead?.Next;
+               }
+            }
+
+            return sorted;
+         }
+
+         return null;
+      }
+
       private Node<int>? AddNodes(Node<int>? l1, Node<int>? l2, int carry)
       {
          if (l1 == null && l2 == null && carry == 0)

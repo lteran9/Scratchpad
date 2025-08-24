@@ -14,21 +14,24 @@ namespace DataStructures.Core.Graphs
 
       public AdjacencyList()
       {
-         this.List = new Dictionary<T, List<T>>();
+         List = new Dictionary<T, List<T>>();
       }
 
       public bool AddEdge(T source, T target, decimal weight = 0)
       {
          try
          {
+            // Check if this edge already exists
             if (!HasEdge(source, target))
             {
+               // If the source node isn't already part of the adjacency list add it
                if (!List.ContainsKey(source))
                {
                   List.Add(source, new List<T>() { target });
                }
                else
                {
+                  // Check if the target node already exist for the source to avoid duplicate entries
                   if (!List[source].Contains(target))
                   {
                      List[source].Add(target);
@@ -50,8 +53,10 @@ namespace DataStructures.Core.Graphs
       {
          try
          {
+            // Validate that the edge exists
             if (HasEdge(source, target))
             {
+               // Remove target from source
                List[source].Remove(target);
 
                return true;
@@ -88,6 +93,7 @@ namespace DataStructures.Core.Graphs
       {
          try
          {
+            // Get the nodes connected to the source
             if (List.ContainsKey(source))
             {
                return List[source];
@@ -104,12 +110,15 @@ namespace DataStructures.Core.Graphs
       public List<T> InEdges(T source)
       {
          var edges = new List<T>();
+
          try
          {
+            // Loop over all notes in the adjacency list
             foreach (var key in List.Keys)
             {
                if (List[key].Contains(source))
                {
+                  // Add the nodes connected to the source
                   edges.Add(key);
                }
             }

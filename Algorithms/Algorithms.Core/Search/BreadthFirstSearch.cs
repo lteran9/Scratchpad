@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using DataStructures.Core.Graphs;
 
 namespace Algorithms.Core.Search
@@ -44,6 +43,7 @@ namespace Algorithms.Core.Search
 
          try
          {
+            // Validate starting and target notes are part of the graph
             if (Graph.List.ContainsKey(startingVertex) && Graph.List.ContainsKey(targetVertex))
             {
                var queue = new Queue<T>();

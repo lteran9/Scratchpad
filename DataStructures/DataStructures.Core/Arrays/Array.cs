@@ -14,7 +14,7 @@ namespace DataStructures.Core.Arrays
          values = new T[size];
       }
 
-      public Array(T[] arr)
+      public Array(params T[] arr)
       {
          if (arr == null)
          {

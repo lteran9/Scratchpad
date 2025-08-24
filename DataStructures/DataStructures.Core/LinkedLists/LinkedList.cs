@@ -16,18 +16,41 @@ namespace DataStructures.Core.LinkedLists
          Root = new Node<T>(head);
       }
 
+      public LinkedList(params T[] values)
+      {
+         if (values.Length > 0)
+         {
+            Root = new Node<T>(values[0]);
+
+            if (values.Length > 1)
+            {
+               for (int i = 1; i < values.Length; i++)
+               {
+                  Add(values[i]);
+               }
+            }
+         }
+      }
+
       public void Add(T value)
       {
          if (value != null)
          {
-            var runner = Root;
-
-            while (runner.Next != null)
+            if (Root == null)
             {
-               runner = runner.Next;
+               Root = new Node<T>(value);
             }
+            else
+            {
+               var runner = Root;
 
-            runner.Next = new Node<T>(value);
+               while (runner.Next != null)
+               {
+                  runner = runner.Next;
+               }
+
+               runner.Next = new Node<T>(value);
+            }
          }
       }
 
