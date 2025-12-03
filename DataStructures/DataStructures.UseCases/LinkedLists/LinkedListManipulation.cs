@@ -67,6 +67,43 @@ namespace DataStructures.UseCases.LinkedLists
          return null;
       }
 
+      public Core.LinkedLists.LinkedList<int>? InsertNodeAtPosition(Core.LinkedLists.LinkedList<int> llist, int data, int position)
+      {
+         if (llist != null)
+         {
+            var runner = llist.Root;
+            var nlist = new Core.LinkedLists.LinkedList<int>();
+            int index = 0;
+
+            while (runner != null)
+            {
+               if (index == position)
+               {
+                  nlist.Add(data);
+                  // Signal that data has been added to linked list
+                  index = int.MinValue;
+               }
+               else
+               {
+                  nlist.Add(runner.Data);
+                  runner = runner.Next;
+               }
+
+               index++;
+            }
+
+            // If data has not been added to linked list add it to the last position
+            if (index != int.MinValue)
+            {
+               nlist.Add(data);
+            }
+
+            return nlist;
+         }
+
+         return null;
+      }
+
       private Node<int>? AddNodes(Node<int>? l1, Node<int>? l2, int carry)
       {
          if (l1 == null && l2 == null && carry == 0)

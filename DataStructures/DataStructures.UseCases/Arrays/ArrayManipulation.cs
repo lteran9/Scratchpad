@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DataStructures.Core;
 using DataStructures.UseCases.Factory;
 
@@ -197,6 +198,47 @@ namespace DataStructures.UseCases.Arrays
          }
 
          return arr;
+      }
+
+      public Core.Arrays.Array<int>? FindDuplicatesInArrayIfMultipleDuplicatesPresent(Core.Arrays.Array<int> haystack)
+      {
+         // Multiple duplicates can only be found if at least four elements are present (e.g. {2,2,4,4})
+         if (haystack.Length >= 4)
+         {
+            // Used to keep a count of digits seen
+            var hashTable = new Dictionary<int, int>();
+            // Loop over elements and track digits seen
+            for (int i = 0; i < haystack.Length; i++)
+            {
+               if (!hashTable.ContainsKey(haystack[i]))
+               {
+                  hashTable.Add(haystack[i], 1);
+               }
+               else
+               {
+                  hashTable[haystack[i]]++;
+               }
+            }
+
+            var size = hashTable.Values.Count(x => x > 1);
+            // Create return type
+            var duplicates = ArrayFactory.CreateArray<int>(size);
+            // Keep track of return type index
+            int index = 0;
+
+            foreach (var key in hashTable.Keys)
+            {
+               if (hashTable[key] > 1)
+               {
+                  duplicates[index] = hashTable[key];
+                  index++;
+               }
+            }
+
+            return duplicates;
+         }
+
+         return null;
       }
    }
 }
