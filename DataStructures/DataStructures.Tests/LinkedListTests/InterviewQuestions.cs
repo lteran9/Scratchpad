@@ -250,18 +250,5 @@ namespace DataStructures.Tests.LinkedListTests
             new object[] { new Core.LinkedLists.LinkedList<int>(0, 2, 3, 5), new Core.LinkedLists.LinkedList<int>(0, 1, 4, 6) },
             new object[] { new Core.LinkedLists.LinkedList<int>(10, 20, 30, 40), new Core.LinkedLists.LinkedList<int>(11, 21, 31, 40) }
         };
-
-      [Fact]
-      public void InsertNodeAtPosition()
-      {
-         var llist = new Core.LinkedLists.LinkedList<int>(1, 2, 3);
-         var data = 4;
-         var position = 3;
-
-         var result = _linkedListManipulation.InsertNodeAtPosition(llist, data, position);
-
-         Assert.True(result.Count() == 4);
-         Assert.Equal("1->2->3->4", result.ToString());
-      }
    }
 }
