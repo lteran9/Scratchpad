@@ -156,6 +156,12 @@ namespace DataStructures.UseCases.Strings
         {
             try
             {
+                // User should provide valid strings
+                if (str1 == null || str2 == null)
+                {
+                    return false;
+                }
+
                 // If lengths are different, they can't be permutations
                 if (str1.Length != str2.Length)
                 {
