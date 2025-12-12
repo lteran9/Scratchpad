@@ -18,7 +18,7 @@ namespace Algorithms.Core.Sorting
         {
             var i = leftIndex;
             var j = rightIndex;
-            T pivot = collection[rightIndex];
+            T pivot = collection[(leftIndex + rightIndex) / 2];
 
             while (i <= j)
             {

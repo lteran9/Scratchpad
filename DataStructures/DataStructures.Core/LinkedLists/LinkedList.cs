@@ -16,6 +16,11 @@ namespace DataStructures.Core.LinkedLists
             Root = new Node<T>(head);
         }
 
+        public LinkedList(Node<T> head)
+        {
+            Root = head;
+        }
+
         public LinkedList(params T[] values)
         {
             if (values.Length > 0)

@@ -19,6 +19,9 @@ namespace DataStructures.Tests.GraphTests
             orgStructure.AddEdge("Alpha", "Charlie");
             orgStructure.AddEdge("Bravo", "Delta");
             orgStructure.AddEdge("Bravo", "Echo");
+            orgStructure.AddEdge("Alpha", "Foxtrot");
+            orgStructure.AddEdge("Charlie", "Golf");
+            orgStructure.AddEdge("Delta", "Hotel");
 
             #endregion
 
