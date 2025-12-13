@@ -1,50 +1,47 @@
 using System;
-using Algorithms.Core.Sorting;
 using System.Collections.Generic;
 using Xunit;
-using Algorithms.UseCases.Sorting;
+using Algorithms.Core.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
-   public class BubbleSortTests : BaseSortTest
-   {
-      #region TestData
+    public class BubbleSortTests : BaseSortTest
+    {
+        [Theory]
+        [ClassData(typeof(IntegerCollectionDataClass))]
+        public void GivenIntegerCollection_WhenBubbleSortAscending_ThenSortedAscending(List<int> collection)
+        {
+            var useCase = new UseCases.Sorting.Integers.BubbleSortUseCase(collection);
 
-      private readonly List<int> _intCollection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6, 100 };
-      private readonly List<char> _charCollection = new List<char>() { 'F', 'C', 'D', 'A', 'G', '0', 'N' };
+            BaseAscendingTest(collection, useCase.Execute());
+        }
 
-      #endregion
+        [Theory]
+        [ClassData(typeof(IntegerCollectionDataClass))]
+        public void GivenIntegerCollection_WhenBubbleSortDescending_ThenSortedDescending(List<int> collection)
+        {
+            var useCase = new UseCases.Sorting.Integers.BubbleSortUseCase(collection, SortOrder.DESC);
 
-      [Fact]
-      public void Integer_AscendingOrderTest()
-      {
-         var integerSort = new IntCollection(_intCollection);
+            BaseDescendingTest(collection, useCase.Execute());
+        }
 
-         BaseAscendingTest(_intCollection, integerSort.BubbleSort);
-      }
+        [Theory]
+        [ClassData(typeof(CharacterCollectionDataClass))]
+        public void GivenCharacterCollection_WhenBubbleSortAscending_ThenSortedAscending(List<char> collection)
+        {
+            var useCase = new UseCases.Sorting.Characters.BubbleSortUseCase(collection);
 
-      [Fact]
-      public void Integer_DescendingOrderTest()
-      {
-         var integerSort = new IntCollection(_intCollection, SortOrder.DESC);
+            BaseAscendingTest(collection, useCase.Execute());
+        }
 
-         BaseDescendingTest(_intCollection, integerSort.BubbleSort);
-      }
+        [Theory]
+        [ClassData(typeof(CharacterCollectionDataClass))]
+        public void GivenCharacterCollection_WhenBubbleSortDescending_ThenSortedDescending(
+            List<char> collection)
+        {
+            var useCase = new UseCases.Sorting.Characters.BubbleSortUseCase(collection, SortOrder.DESC);
 
-      [Fact]
-      public void Character_AscendingOrderTest()
-      {
-         var characterSort = new CharCollection(_charCollection);
-
-         BaseAscendingTest(_charCollection, characterSort.BubbleSort);
-      }
-
-      [Fact]
-      public void Character_DescendingOrderTest()
-      {
-         var characterSort = new CharCollection(_charCollection, SortOrder.DESC);
-
-         BaseDescendingTest(_charCollection, characterSort.BubbleSort);
-      }
-   }
+            BaseDescendingTest(collection, useCase.Execute());
+        }
+    }
 }
