@@ -11,7 +11,14 @@ namespace Algorithms.Core.Sorting
         {
             sortOrder = order;
 
-            return Sort(collection, 0, collection.Count - 1);
+            if (collection.Count > 0)
+            {
+                return Sort(collection, 0, collection.Count - 1);
+            }
+            else
+            {
+                return collection;
+            }
         }
 
         private static List<T> Sort<T>(List<T> collection, int leftIndex, int rightIndex) where T : IComparable<T>

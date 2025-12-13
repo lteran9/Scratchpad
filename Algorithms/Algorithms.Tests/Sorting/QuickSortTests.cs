@@ -2,49 +2,45 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using Algorithms.Core.Sorting;
-using Algorithms.UseCases.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
-   public class QuickSortTests : BaseSortTest
-   {
-      #region TestData
+    public class QuickSortTests : BaseSortTest
+    {
+        [Theory]
+        [ClassData(typeof(IntegerCollectionDataClass))]
+        public void GivenIntegerCollection_WhenQuickSortAscending_ThenSortedAscending(List<int> collection)
+        {
+            var useCase = new UseCases.Sorting.Integers.QuickSortUseCase(collection);
 
-      private readonly List<int> _intCollection = new List<int>() { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6, 100 };
-      private readonly List<char> _charCollection = new List<char>() { 'F', 'C', 'D', 'A', 'G', '0', 'N' };
+            BaseAscendingTest(collection, useCase.Execute());
+        }
 
-      #endregion
+        [Theory]
+        [ClassData(typeof(IntegerCollectionDataClass))]
+        public void GivenIntegerCollection_WhenQuickSortDescending_ThenSortedDescending(List<int> collection)
+        {
+            var useCase = new UseCases.Sorting.Integers.QuickSortUseCase(collection, SortOrder.DESC);
 
-      [Fact]
-      public void Integer_AscendingOrderTest()
-      {
-         var integerSort = new IntCollection(_intCollection);
+            BaseDescendingTest(collection, useCase.Execute());
+        }
 
-         BaseAscendingTest(_intCollection, integerSort.QuickSort);
-      }
+        [Theory]
+        [ClassData(typeof(CharacterCollectionDataClass))]
+        public void GivenCharacterCollection_WhenQuickSortAscending_ThenSortedAscending(List<char> collection)
+        {
+            var useCase = new UseCases.Sorting.Characters.QuickSortUseCase(collection);
 
-      [Fact]
-      public void Integer_DescendingOrderTest()
-      {
-         var integerSort = new IntCollection(_intCollection, SortOrder.DESC);
+            BaseAscendingTest(collection, useCase.Execute());
+        }
 
-         BaseDescendingTest(_intCollection, integerSort.QuickSort);
-      }
+        [Theory]
+        [ClassData(typeof(CharacterCollectionDataClass))]
+        public void GivenCharacterCollection_WhenQuickSortDescending_ThenSortedDescending(List<char> collection)
+        {
+            var useCase = new UseCases.Sorting.Characters.QuickSortUseCase(collection, SortOrder.DESC);
 
-      [Fact]
-      public void Character_AscendingOrderTest()
-      {
-         var characterSort = new CharCollection(_charCollection);
-
-         BaseAscendingTest(_charCollection, characterSort.QuickSort);
-      }
-
-      [Fact]
-      public void Character_DescendingOrderTest()
-      {
-         var characterSort = new CharCollection(_charCollection, SortOrder.DESC);
-
-         BaseDescendingTest(_charCollection, characterSort.QuickSort);
-      }
-   }
+            BaseDescendingTest(collection, useCase.Execute());
+        }
+    }
 }
