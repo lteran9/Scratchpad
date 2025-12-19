@@ -3,55 +3,56 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.Queues
 {
-   /// <summary>
-   /// Queue implementation, first in first out.
-   /// </summary>
-   /// <typeparam name="T"></typeparam>
-   public class Queue<T> : IQueue<T>
-   {
-      private Node<T> Head { get; set; }
+    /// <summary>
+    /// Custom Queue implementation, first in first out.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class Queue<T> : IQueue<T>
+    {
+        // Using custom Node implementation for variable size q's
+        private Node<T> Head { get; set; }
 
-      public void Add(T item) 
-      {
-         if (Head == null)
-         {
-            Head = new Node<T>(item);
-         }
-         else 
-         {
-            var runner = Head;
-
-            while (runner.Next != null) 
+        public void Add(T item)
+        {
+            if (Head == null)
             {
-               runner = runner.Next;
+                Head = new Node<T>(item);
+            }
+            else
+            {
+                var runner = Head;
+
+                while (runner.Next != null)
+                {
+                    runner = runner.Next;
+                }
+
+                runner.Next = new Node<T>(item);
+            }
+        }
+
+        public T Peek()
+        {
+            if (Head != null)
+            {
+                return Head.Data;
             }
 
-            runner.Next = new Node<T>(item);
-         }
-      }
+            throw new Exception("Head is null.");
+        }
 
-      public T Peek() 
-      {
-         if (Head != null) 
-         {
-            return Head.Data;
-         }
+        public T Pop()
+        {
+            if (Head != null)
+            {
+                var temp = Head;
 
-         throw new Exception("Head is null.");
-      }
+                Head = Head.Next;
 
-      public T Pop() 
-      {
-         if (Head != null) 
-         {
-            var node = Head;
-            
-            Head = Head.Next;
+                return temp.Data;
+            }
 
-            return node.Data;
-         }
-
-         throw new Exception("Head is null.");
-      }
-   }
+            throw new Exception("Head is null.");
+        }
+    }
 }

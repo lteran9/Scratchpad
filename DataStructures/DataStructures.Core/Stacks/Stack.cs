@@ -3,46 +3,46 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.Stacks
 {
-   public class Stack<T> : IStack<T>
-   {
-      private Node<T> Head { get; set; }
+    public class Stack<T> : IStack<T>
+    {
+        private Node<T> Head { get; set; }
 
-      public void Add(T item)
-      {
-         if (Head == null)
-         {
-            Head = new Node<T>(item);
-         }
-         else
-         {
-            var newHead = new Node<T>(item);
-            newHead.Next = Head;
-            Head = newHead;
-         }
-      }
+        public void Add(T item)
+        {
+            if (Head == null)
+            {
+                Head = new Node<T>(item);
+            }
+            else
+            {
+                var newHead = new Node<T>(item);
+                newHead.Next = Head;
+                Head = newHead;
+            }
+        }
 
-      public T Peek()
-      {
-         if (Head != null)
-         {
-            return Head.Data;
-         }
+        public T Peek()
+        {
+            if (Head != null)
+            {
+                return Head.Data;
+            }
 
-         throw new Exception("Head is null.");
-      }
+            throw new Exception("Head is null.");
+        }
 
-      public T Pop()
-      {
-         if (Head != null)
-         {
-            var tempHead = Head;
+        public T Pop()
+        {
+            if (Head != null)
+            {
+                var temp = Head;
 
-            Head = Head.Next;
+                Head = Head.Next;
 
-            return tempHead.Data;
-         }
+                return temp.Data;
+            }
 
-         throw new Exception("Head is null.");
-      }
-   }
+            throw new Exception("Head is null.");
+        }
+    }
 }

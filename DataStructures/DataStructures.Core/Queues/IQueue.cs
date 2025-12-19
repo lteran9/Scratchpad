@@ -1,12 +1,12 @@
 using System;
 
-namespace DataStructures.Core.Queues 
+namespace DataStructures.Core.Queues
 {
-   public interface IQueue<T> 
-   {
-      void Add(T item);
+    public interface IQueue<T>
+    {
+        void Add(T item);
 
-      T Peek();
-      T Pop();
-   }
+        T Peek();
+        T Pop();
+    }
 }
