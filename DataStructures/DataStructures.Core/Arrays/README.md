@@ -4,27 +4,30 @@ An array data structure is a fundamental concept in computer science that stores
 
 ## Types of Array
 
-There are two main types of arrays: 
+There are two main types of arrays:
+
 - One-dimensional
-   - These arrays store a single row of elements
+  - These arrays store a single row of elements
 - Multidimensional
-   - These arrays store multiple rows of elements
+  - These arrays store multiple rows of elements
 
 ## Array Operations
 
-Common operations performed on arrays include: 
+Common operations performed on arrays include:
+
 - Traversal
-   - Visiting each element of an array in a specific order (e.g. sequential, reverse)
+  - Visiting each element of an array in a specific order (e.g. sequential, reverse)
 - Insertion
-   - Adding a new element to an array at a specific index
+  - Adding a new element to an array at a specific index
 - Deletion
-   - Remvoing an element from an array at a specific index
+  - Remvoing an element from an array at a specific index
 - Searching
-   - Finding the index of an element in an array
+  - Finding the index of an element in an array
 
 ## Applications of Array
 
 Arrays are used in a wide variety of applications, including:
+
 - Storing data for processing
 - Implementing data structures such as stacks, queues, linked lists, and trees
 - Representing data in tables and matrices
