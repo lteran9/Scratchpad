@@ -23,7 +23,7 @@ namespace DataStructures.Core.Graphs
         /// <returns></returns>
         public bool IsValid()
         {
-            return Edges.Keys.Count > 2;
+            return Edges.Keys.Count >= 2;
         }
 
         public bool AddEdge(T source, T target, decimal weight = 0)
@@ -52,7 +52,7 @@ namespace DataStructures.Core.Graphs
             }
             catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.Message);
             }
 
             return false;
@@ -73,7 +73,7 @@ namespace DataStructures.Core.Graphs
             }
             catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.Message);
             }
 
             return false;
@@ -87,7 +87,7 @@ namespace DataStructures.Core.Graphs
             }
             catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.Message);
             }
 
             return false;
@@ -110,7 +110,7 @@ namespace DataStructures.Core.Graphs
             }
             catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.Message);
             }
 
             return new List<T>();
@@ -134,7 +134,7 @@ namespace DataStructures.Core.Graphs
             }
             catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.Message);
             }
 
             return edges;

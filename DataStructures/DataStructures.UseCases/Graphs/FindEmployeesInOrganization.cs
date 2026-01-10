@@ -5,9 +5,9 @@ namespace DataStructures.UseCases.Graphs
 {
     public class FindEmployeesInOrganization : IUseCase<string>
     {
-        private AdjacencyList<string> _graphOrg;
+        private AdjacencyList<OrgDepartment> _graphOrg;
 
-        public FindEmployeesInOrganization(AdjacencyList<string> graphOrg)
+        public FindEmployeesInOrganization(AdjacencyList<OrgDepartment> graphOrg)
         {
             _graphOrg = graphOrg;
         }
@@ -24,6 +24,23 @@ namespace DataStructures.UseCases.Graphs
             }
 
             return string.Empty;
+        }
+
+        public struct OrgDepartment
+        {
+            public string Organization { get; set; }
+            public List<string> Employees { get; set; }
+
+            public OrgDepartment()
+            {
+                Organization = string.Empty;
+                Employees = new List<string>();
+            }
+
+            public override string ToString()
+            {
+                return Organization;
+            }
         }
     }
 }
