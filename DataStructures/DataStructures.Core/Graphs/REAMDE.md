@@ -17,16 +17,14 @@ There are several types of graphs, including:
 
 ## Graph Operations
 
-Common operations performed on graphs include:
+Common operations performed on graphs listed below.
 
-- Traversal
-  - Visiting each node in a graph using algorithms such as Depth-First Search (DFS) or Breadth-First Search (BFS).
-- Insertion
-  - Adding a new node or edge to the graph.
-- Deletion
-  - Removing a node or edge from the graph.
-- Searching
-  - Finding a specific node or path between nodes in the graph.
+| Operation | Description                                                        |
+| --------- | ------------------------------------------------------------------ |
+| Traversal | Visiting each node in a graph using algorithms such as DFS or BFS. |
+| Insertion | Adding a new node or edge to the graph.                            |
+| Deletion  | Removing a node or edge from the graph.                            |
+| Searching | Finding a specific node or path between nodes in the graph.        |
 
 ## Applications of Graphs
 
