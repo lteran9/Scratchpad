@@ -1,4 +1,4 @@
-# Has Map Data Structure
+# Hash Map Data Structure
 
 A hash map (also called a hash table) is a data structure that stores key–value pairs and allows fast lookup, insertion, and deletion, typically in O(1) average time.
 
