@@ -2,13 +2,18 @@ using System;
 
 namespace DataStructures.Core.HashMaps
 {
-   interface IHashMap<TKey, TValue> where TKey : IEquatable<TKey>
-   {
-      bool ContainsKey(TKey key);
+    interface IHashMap<TKey, TValue> where TKey : IEquatable<TKey>
+    {
+        int Size();
 
-      void Remove(TKey key);
-      void Push(TKey key, TValue value);
+        void Clear();
+        void Rehash();
+        void Delete(TKey key);
+        void Insert(TKey key, TValue value);
+        void Update(TKey key, TValue value);
 
-      TValue Get(TKey key);
-   }
+        bool Contains(TKey key);
+
+        TValue Lookup(TKey key);
+    }
 }
