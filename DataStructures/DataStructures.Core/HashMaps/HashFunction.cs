@@ -4,9 +4,9 @@ namespace DataStructures.Core.HashMaps
 {
     public class HashFunction<T>
     {
-        public int GetHashCode(T key)
+        public int GetHashCode(T key, int size)
         {
-            return 0;
+            return key.GetHashCode() % size;
         }
     }
 }

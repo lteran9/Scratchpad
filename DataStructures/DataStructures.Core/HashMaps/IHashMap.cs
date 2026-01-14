@@ -14,6 +14,6 @@ namespace DataStructures.Core.HashMaps
 
         bool Contains(TKey key);
 
-        TValue Lookup(TKey key);
+        bool Lookup(TKey key, out TValue value);
     }
 }

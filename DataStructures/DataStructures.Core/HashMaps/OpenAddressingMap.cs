@@ -1,22 +1,25 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.HashMaps
 {
     public class OpenAddressingMap<TKey, TValue> : IHashMap<TKey, TValue> where TKey : IEquatable<TKey>
     {
-        private readonly int _initialSize;
         private readonly HashFunction<TKey> _hashFunction;
 
         private int count;
-        private Node<TValue>[] array;
+        private int addressSpace;
+        private Node<(TKey, TValue)>[] array;
 
         public OpenAddressingMap(int size = 10)
         {
-            _initialSize = size;
             _hashFunction = new HashFunction<TKey>();
 
-            array = new Node<TValue>[_initialSize];
+            count = 0;
+            addressSpace = size;
+            array = new Node<(TKey, TValue)>[addressSpace];
         }
 
         public int Size()
@@ -26,48 +29,90 @@ namespace DataStructures.Core.HashMaps
 
         public void Clear()
         {
-            array = new Node<TValue>[_initialSize];
+            array = new Node<(TKey, TValue)>[addressSpace];
         }
 
         public void Rehash()
         {
-
+            // Increase address space by a factor of 3
+            addressSpace = count * 3;
         }
 
         public void Delete(TKey key)
         {
-            if (Lookup(key) != null)
+            var node = array[_hashFunction.GetHashCode(key, addressSpace)];
+            if (node != null)
             {
-
+                var runner = node;
+                while (runner != null)
+                {
+                    if (runner.Data.Item1.Equals(key))
+                    {
+                        runner = runner.Next;
+                        count--;
+                    }
+                }
             }
         }
 
         public void Insert(TKey key, TValue value)
         {
-            var llist = array[_hashFunction.GetHashCode(key)];
-            if (llist == null)
+            var node = array[_hashFunction.GetHashCode(key, addressSpace)];
+            if (node == null)
             {
-                array[_hashFunction.GetHashCode(key)] = new Node<TValue>(value);
+                array[_hashFunction.GetHashCode(key, addressSpace)] = new Node<(TKey, TValue)>((key, value));
             }
             else
             {
-                array[_hashFunction.GetHashCode(key)].Next = new Node<TValue>(value);
+                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+                while (runner.Next != null)
+                {
+                    runner = runner.Next;
+                }
+                runner.Next = new Node<(TKey, TValue)>((key, value));
             }
+            count++;
         }
 
         public void Update(TKey key, TValue value)
         {
-
+            if (array[_hashFunction.GetHashCode(key, addressSpace)] != null)
+            {
+                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+                while (runner != null)
+                {
+                    if (runner.Data.Item1.Equals(key))
+                    {
+                        var temp = runner.Next;
+                        runner = new Node<(TKey, TValue)>((key, value));
+                        runner.Next = temp;
+                    }
+                }
+            }
         }
 
         public bool Contains(TKey key)
         {
-            return array[_hashFunction.GetHashCode(key)] != null;
+            return Lookup(key, out TValue _);
         }
 
-        public TValue Lookup(TKey key)
+        public bool Lookup(TKey key, out TValue value)
         {
-            return default(TValue);
+            if (array[_hashFunction.GetHashCode(key, addressSpace)] != null)
+            {
+                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+                while (runner != null)
+                {
+                    if (runner.Data.Item1.Equals(key))
+                    {
+                        value = runner.Data.Item2;
+                        return true;
+                    }
+                }
+            }
+
+            value = default;
+            return false;
         }
     }
 }
