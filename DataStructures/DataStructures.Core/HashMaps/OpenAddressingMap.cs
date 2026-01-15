@@ -17,9 +17,8 @@ namespace DataStructures.Core.HashMaps
         {
             _hashFunction = new HashFunction<TKey>();
 
-            count = 0;
             addressSpace = size;
-            array = new Node<(TKey, TValue)>[addressSpace];
+            Clear();
         }
 
         public int Size()
@@ -29,6 +28,7 @@ namespace DataStructures.Core.HashMaps
 
         public void Clear()
         {
+            count = 0;
             array = new Node<(TKey, TValue)>[addressSpace];
         }
 
@@ -36,6 +36,8 @@ namespace DataStructures.Core.HashMaps
         {
             // Increase address space by a factor of 3
             addressSpace = count * 3;
+
+            throw new NotImplementedException("Still need to implement method.");
         }
 
         public void Delete(TKey key)
@@ -43,13 +45,24 @@ namespace DataStructures.Core.HashMaps
             var node = array[_hashFunction.GetHashCode(key, addressSpace)];
             if (node != null)
             {
-                var runner = node;
-                while (runner != null)
+                // First element in list special case
+                if (node.Data.Item1.Equals(key))
                 {
-                    if (runner.Data.Item1.Equals(key))
+                    array[_hashFunction.GetHashCode(key, addressSpace)] = null;
+                    count--;
+                }
+                else
+                {
+                    var runner = node;
+                    while (runner.Next != null)
                     {
+                        if (runner.Next.Data.Item1.Equals(key))
+                        {
+                            runner = runner.Next.Next;
+                            count--;
+                        }
+
                         runner = runner.Next;
-                        count--;
                     }
                 }
             }
