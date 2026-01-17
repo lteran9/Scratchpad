@@ -214,3 +214,6 @@ trim_trailing_whitespace = false
 #  CSharp IDE warning
 [*.{cs,vb}]
 dotnet_diagnostic.IDE0047.severity = none
+
+[*.{yml, yaml}]
+indent_size = 2

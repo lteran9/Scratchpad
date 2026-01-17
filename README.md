@@ -23,7 +23,7 @@ public struct Node<T>
 
     public Node()
     {
-
+        ...
     }
 }
 ```
