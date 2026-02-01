@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Algorithms.Core.Sorting;
 using System.Collections.Generic;
 using Xunit;

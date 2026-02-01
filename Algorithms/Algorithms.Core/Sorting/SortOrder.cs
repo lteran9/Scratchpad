@@ -1,8 +1,8 @@
-namespace Algorithms.Core.Sorting
+﻿namespace Algorithms.Core.Sorting
 {
-   public enum SortOrder
-   {
-      ASC,
-      DESC
-   }
+    public enum SortOrder
+    {
+        ASC,
+        DESC
+    }
 }

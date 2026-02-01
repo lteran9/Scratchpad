@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using DataStructures.Core.Graphs;
 
 namespace Algorithms.Core.Search
