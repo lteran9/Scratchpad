@@ -1,11 +1,14 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.HashMaps
 {
-    public class OpenAddressingMap<TKey, TValue> : IHashMap<TKey, TValue> where TKey : IEquatable<TKey>
+    /// <summary>
+    /// Closed addressing implementation. Collisions are handled by linked list in each bucket.
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
+    public class ClosedAddressingMap<TKey, TValue> : IHashMap<TKey, TValue> where TKey : IEquatable<TKey>
     {
         private readonly HashFunction<TKey> _hashFunction;
 
@@ -13,7 +16,7 @@ namespace DataStructures.Core.HashMaps
         private int addressSpace;
         private Node<(TKey, TValue)>[] array;
 
-        public OpenAddressingMap(int size = 10)
+        public ClosedAddressingMap(int size = 10)
         {
             _hashFunction = new HashFunction<TKey>();
 

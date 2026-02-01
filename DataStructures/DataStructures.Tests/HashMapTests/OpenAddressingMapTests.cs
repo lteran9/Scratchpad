@@ -11,7 +11,7 @@ namespace DataStructures.Tests.HashMapTests
         public void GivenEmptyHashMap_WhenSized_CountIsZero()
         {
             // Arrange
-            var hashMap = new OpenAddressingMap<int, string>();
+            var hashMap = new ClosedAddressingMap<int, string>();
 
             // Act
             var size = hashMap.Size();
@@ -26,7 +26,7 @@ namespace DataStructures.Tests.HashMapTests
         public void GivenHashMap_WhenInsertValue_UpdatesCount()
         {
             // Arrange
-            var hashMap = new OpenAddressingMap<int, string>();
+            var hashMap = new ClosedAddressingMap<int, string>();
 
             // Act
             hashMap.Insert(1234, "The quick brown fox jumped over the lazy dog.");
@@ -39,7 +39,7 @@ namespace DataStructures.Tests.HashMapTests
         public void GivenHashMap_WhenInsertMultipleValues_SizeIsCorrect()
         {
             // Arrange
-            var hashMap = new OpenAddressingMap<int, string>();
+            var hashMap = new ClosedAddressingMap<int, string>();
 
             // Act
             hashMap.Insert(1234, "The quick brown fox jumped over the lazy dog.");
@@ -56,7 +56,7 @@ namespace DataStructures.Tests.HashMapTests
         public void GivenHashMap_WhenDeleteAValue_ReturnsAccurateCount()
         {
             // Arrange
-            var hashMap = new OpenAddressingMap<int, string>();
+            var hashMap = new ClosedAddressingMap<int, string>();
 
             // Act
             hashMap.Insert(1234, "The quick brown fox jumped over the lazy dog.");
@@ -74,7 +74,7 @@ namespace DataStructures.Tests.HashMapTests
         public void GivenHashMap_WhenValueInserted_LookupReturnsValue()
         {
             // Arrange
-            var hashMap = new OpenAddressingMap<int, string>();
+            var hashMap = new ClosedAddressingMap<int, string>();
             hashMap.Insert(1234, "The quick brown fox jumped over the lazy dog.");
             hashMap.Insert(9874, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
             hashMap.Insert(5661, ""); // Empty string
