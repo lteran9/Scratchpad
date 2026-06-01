@@ -43,5 +43,23 @@ namespace Algorithms.Tests.Sorting
 
             BaseDescendingTest(collection, useCase.Execute());
         }
+
+        [Theory]
+        [ClassData(typeof(StringCollectionDataClass))]
+        public void GivenStringCollection_WhenSelectionSortAscending_ThenSortedAscending(List<string> collection)
+        {
+            var useCase = new UseCases.Sorting.Strings.SelectionSortUseCase(collection);
+
+            BaseAscendingTest(collection, useCase.Execute());
+        }
+
+        [Theory]
+        [ClassData(typeof(StringCollectionDataClass))]
+        public void GivenStringCollection_WhenSelectionSortDescending_ThenSortedDescending(List<string> collection)
+        {
+            var useCase = new UseCases.Sorting.Strings.SelectionSortUseCase(collection, SortOrder.DESC);
+
+            BaseDescendingTest(collection, useCase.Execute());
+        }
     }
 }
