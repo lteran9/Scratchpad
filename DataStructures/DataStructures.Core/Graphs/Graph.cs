@@ -1,14 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DataStructures.Core.Graphs
 {
-   interface Graph<T>
+   public interface IGraph<T> where T : notnull
    {
       bool AddEdge(T source, T target, decimal weight = 0);
       bool RemoveEdge(T source, T target);
       bool HasEdge(T source, T target);
+      bool ContainsVertex(T vertex);
 
       decimal GetWeight(T source, T target);
 

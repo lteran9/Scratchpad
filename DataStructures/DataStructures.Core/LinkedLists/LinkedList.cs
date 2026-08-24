@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace DataStructures.Core.LinkedLists
@@ -7,7 +8,7 @@ namespace DataStructures.Core.LinkedLists
     {
         public int Size { get { return Count(); } }
 
-        public Node<T> Root { get; set; }
+        public Node<T> Root { get; private set; }
 
         public LinkedList() { }
 
@@ -17,6 +18,11 @@ namespace DataStructures.Core.LinkedLists
         }
 
         public LinkedList(Node<T> head)
+        {
+            Root = head;
+        }
+
+        public void ReplaceRoot(Node<T> head)
         {
             Root = head;
         }
@@ -94,7 +100,7 @@ namespace DataStructures.Core.LinkedLists
 
                 while (runner != null)
                 {
-                    if (runner.Data.Equals(data))
+                    if (EqualityComparer<T>.Default.Equals(runner.Data, data))
                     {
                         return runner;
                     }
@@ -138,8 +144,12 @@ namespace DataStructures.Core.LinkedLists
         /// <returns></returns>
         public void Remove(T value)
         {
-            // Do not allow the removal of the Head node
-            if (Root.Data.Equals(value))
+            if (Root == null)
+            {
+                return;
+            }
+
+            if (EqualityComparer<T>.Default.Equals(Root.Data, value))
             {
                 Root = Root.Next;
             }
@@ -149,7 +159,7 @@ namespace DataStructures.Core.LinkedLists
 
                 while (runner.Next != null)
                 {
-                    if (runner.Next.Data.Equals(value) == true)
+                    if (EqualityComparer<T>.Default.Equals(runner.Next.Data, value))
                     {
                         runner.Next = runner.Next.Next;
                         return;
@@ -161,6 +171,11 @@ namespace DataStructures.Core.LinkedLists
 
         public void RemoveAtPosition(int index)
         {
+            if (index < 0 || Root == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
             if (index == 0)
             {
                 Root = Root.Next;
@@ -179,7 +194,7 @@ namespace DataStructures.Core.LinkedLists
 
                 if (runner == null || runner.Next == null)
                 {
-                    throw new Exception("Given position argument is out of range.");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
                 // Unlink node at the given position
@@ -189,13 +204,18 @@ namespace DataStructures.Core.LinkedLists
 
         public Node<T> ReturnKthToLast(int k)
         {
+            if (k < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(k));
+            }
+
             if (Root != null)
             {
                 var numberOfNodes = Count();
                 // Validate that K is a valid parameter
                 if (k > numberOfNodes)
                 {
-                    throw new Exception("Value of K is greater than number of Nodes in LinkedList.");
+                    throw new ArgumentOutOfRangeException(nameof(k));
                 }
                 else
                 {
@@ -221,7 +241,7 @@ namespace DataStructures.Core.LinkedLists
 
         public void DeleteMiddleNode(Node<T> middle)
         {
-            if (middle != null)
+            if (middle != null && middle.Next != null)
             {
                 var overwrite = middle.Next;
                 middle.Data = overwrite.Data;
@@ -253,6 +273,11 @@ namespace DataStructures.Core.LinkedLists
 
         public override string ToString()
         {
+            if (Root == null)
+            {
+                return string.Empty;
+            }
+
             var result = new StringBuilder();
 
             var runner = Root;

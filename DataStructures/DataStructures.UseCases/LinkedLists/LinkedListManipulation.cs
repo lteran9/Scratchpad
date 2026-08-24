@@ -10,7 +10,7 @@ namespace DataStructures.UseCases.LinkedLists
             {
                 var result = new Core.LinkedLists.LinkedList<int>();
 
-                result.Root = AddNodes(a.Root, b.Root, 0);
+                result.ReplaceRoot(AddNodes(a.Root, b.Root, 0));
 
                 return result;
             }

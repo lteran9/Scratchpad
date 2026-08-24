@@ -87,7 +87,7 @@ namespace DataStructures.Tests.LinkedListTests
             list.RemoveAtPosition(4);
             Assert.Equal(4, list.Size);
 
-            Assert.Throws<Exception>(() => list.RemoveAtPosition(5));
+            Assert.Throws<ArgumentOutOfRangeException>(() => list.RemoveAtPosition(5));
         }
 
         [Fact]
