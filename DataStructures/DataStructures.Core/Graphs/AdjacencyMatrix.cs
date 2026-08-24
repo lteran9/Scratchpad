@@ -8,7 +8,7 @@ namespace DataStructures.Core.Graphs
     /// Adjacenty Matrix Implementation
     /// - Represents an N vertex graph using an NxN matrix.
     /// </summary>
-    public class AdjacencyMatrix<T> : Graph<T>
+    public class AdjacencyMatrix<T> : IGraph<T> where T : notnull
     {
         public int NumberOfNodes { get; private set; }
         public decimal[,] Matrix { get; private set; }
@@ -76,49 +76,45 @@ namespace DataStructures.Core.Graphs
 
         public bool HasEdge(T source, T target)
         {
-            try
+            if (!ContainsVertex(source) || !ContainsVertex(target))
             {
-                return Matrix[LookUpTable[source], LookUpTable[target]] > 0 || Matrix[LookUpTable[target], LookUpTable[source]] > 0;
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
+                return false;
             }
 
-            return false;
+            return Matrix[LookUpTable[source], LookUpTable[target]] > 0 || Matrix[LookUpTable[target], LookUpTable[source]] > 0;
+        }
+
+        public bool ContainsVertex(T vertex)
+        {
+            return LookUpTable.ContainsKey(vertex);
         }
 
         public decimal GetWeight(T source, T target)
         {
-            try
+            if (!ContainsVertex(source) || !ContainsVertex(target))
             {
-                return Matrix[LookUpTable[source], LookUpTable[target]];
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
+                return decimal.Zero;
             }
 
-            return decimal.Zero;
+            return Matrix[LookUpTable[source], LookUpTable[target]];
         }
 
         public List<T> OutEdges(T source)
         {
             var edges = new List<T>();
 
-            try
+            if (!ContainsVertex(source))
             {
-                for (int j = 0; j < NumberOfNodes; j++)
-                {
-                    if (Matrix[LookUpTable[source], j] > 0)
-                    {
-                        edges.Add(LookUpTable.Keys.ToArray()[j]);
-                    }
-                }
+                return edges;
             }
-            catch (Exception ex)
+
+            var vertices = LookUpTable.Keys.ToArray();
+            for (int j = 0; j < NumberOfNodes && j < vertices.Length; j++)
             {
-                Console.Out.WriteLine(ex.Message);
+                if (Matrix[LookUpTable[source], j] > 0)
+                {
+                    edges.Add(vertices[j]);
+                }
             }
 
             return edges;
@@ -128,19 +124,18 @@ namespace DataStructures.Core.Graphs
         {
             var edges = new List<T>();
 
-            try
+            if (!ContainsVertex(source))
             {
-                for (int i = 0; i < NumberOfNodes; i++)
-                {
-                    if (Matrix[i, LookUpTable[source]] > 0)
-                    {
-                        edges.Add(LookUpTable.Keys.ToArray()[i]);
-                    }
-                }
+                return edges;
             }
-            catch (Exception ex)
+
+            var vertices = LookUpTable.Keys.ToArray();
+            for (int i = 0; i < NumberOfNodes && i < vertices.Length; i++)
             {
-                Console.Out.WriteLine(ex.Message);
+                if (Matrix[i, LookUpTable[source]] > 0)
+                {
+                    edges.Add(vertices[i]);
+                }
             }
 
             return edges;

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DataStructures.Core.Graphs
@@ -8,7 +7,7 @@ namespace DataStructures.Core.Graphs
     /// Adjacenty List Implementation
     /// - Represents a graph using a dictionary list.
     /// </summary>
-    public class AdjacencyList<T> : Graph<T>
+    public class AdjacencyList<T> : IGraph<T> where T : notnull
     {
         public Dictionary<T, List<T>> Edges { get; private set; }
 
@@ -36,15 +35,18 @@ namespace DataStructures.Core.Graphs
                     // If the source node isn't already part of the adjacency list add it
                     if (!Edges.ContainsKey(source))
                     {
-                        Edges.Add(source, new List<T>() { target });
+                        Edges.Add(source, new List<T>());
                     }
-                    else
+
+                    if (!Edges.ContainsKey(target))
                     {
-                        // Check if the target node already exist for the source to avoid duplicate entries
-                        if (!Edges[source].Contains(target))
-                        {
-                            Edges[source].Add(target);
-                        }
+                        Edges.Add(target, new List<T>());
+                    }
+
+                    // Check if the target node already exists for the source to avoid duplicates.
+                    if (!Edges[source].Contains(target))
+                    {
+                        Edges[source].Add(target);
                     }
 
                     return true;
@@ -93,6 +95,11 @@ namespace DataStructures.Core.Graphs
             return false;
         }
 
+        public bool ContainsVertex(T vertex)
+        {
+            return Edges.ContainsKey(vertex);
+        }
+
         public decimal GetWeight(T source, T target)
         {
             return decimal.Zero;
@@ -105,7 +112,7 @@ namespace DataStructures.Core.Graphs
                 // Get the nodes connected to the source
                 if (Edges.ContainsKey(source))
                 {
-                    return Edges[source];
+                    return new List<T>(Edges[source]);
                 }
             }
             catch (Exception ex)

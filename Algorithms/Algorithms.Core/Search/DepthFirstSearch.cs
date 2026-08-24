@@ -6,24 +6,24 @@ namespace Algorithms.Core.Search
     /// <summary>
     /// Depth First Search
     /// </summary>
-    public class DepthFirstSearch<T>
+    public class DepthFirstSearch<T> where T : notnull
     {
-        private readonly AdjacencyList<T> Graph;
+        private readonly IGraph<T> _graph;
 
         /// <summary>
         /// Create a new instance of the Depth First Search algorithm.
         /// </summary>
         public DepthFirstSearch()
         {
-            Graph = new AdjacencyList<T>();
+            _graph = new AdjacencyList<T>();
         }
 
         /// <summary>
         /// Create a new instance of the Depth First Search algorithm using the passed in Graph data structure.
         /// </summary>
-        public DepthFirstSearch(AdjacencyList<T> graph)
+        public DepthFirstSearch(IGraph<T> graph)
         {
-            Graph = graph;
+            _graph = graph ?? throw new ArgumentNullException(nameof(graph));
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Algorithms.Core.Search
         /// </summary>
         public void AddEdge(T parent, T child)
         {
-            Graph.AddEdge(parent, child);
+            _graph.AddEdge(parent, child);
         }
 
         /// <summary>
@@ -41,47 +41,32 @@ namespace Algorithms.Core.Search
         {
             var visited = new List<T>();
 
-            try
+            if (_graph.ContainsVertex(startingVertex) && _graph.ContainsVertex(targetVertex))
             {
-                // If starting and target vertex are part of the Graph
-                if (Graph.Edges.ContainsKey(startingVertex) && Graph.Edges.ContainsKey(targetVertex))
+                var stack = new Stack<T>();
+                var visitedSet = new HashSet<T>();
+                stack.Push(startingVertex);
+
+                while (stack.Count > 0)
                 {
-                    var stack = new Stack<T>();
-                    stack.Push(startingVertex);
+                    var vertex = stack.Pop();
 
-                    while (stack.Count > 0)
+                    if (!visitedSet.Add(vertex))
                     {
-                        var vertex = stack.Pop();
+                        continue;
+                    }
 
-                        if (vertex?.Equals(targetVertex) == true)
-                        {
-                            // Target vertex has been found
-                            return visited;
-                        }
-                        else
-                        {
-                            // Keep looking for target vertex
-                            if (!visited.Contains(vertex))
-                            {
-                                // Add new vertex to stack
-                                visited.Add(vertex);
+                    if (EqualityComparer<T>.Default.Equals(vertex, targetVertex))
+                    {
+                        return visited;
+                    }
 
-                                foreach (var neighbor in Graph.OutEdges(vertex))
-                                {
-                                    // Add neighboring vertices to stack
-                                    if (!visited.Contains(neighbor))
-                                    {
-                                        stack.Push(neighbor);
-                                    }
-                                }
-                            }
-                        }
+                    visited.Add(vertex);
+                    foreach (var neighbor in _graph.OutEdges(vertex))
+                    {
+                        stack.Push(neighbor);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
             }
 
             return visited;

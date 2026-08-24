@@ -6,24 +6,24 @@ namespace Algorithms.Core.Search
     /// <summary>
     /// Breadth First Search
     /// </summary>
-    public class BreadthFirstSearch<T>
+    public class BreadthFirstSearch<T> where T : notnull
     {
-        private readonly AdjacencyList<T> Graph;
+        private readonly IGraph<T> _graph;
 
         /// <summary>
         /// Create a new instance of the Breadth First Search algorithm.
         /// </summary>
         public BreadthFirstSearch()
         {
-            Graph = new AdjacencyList<T>();
+            _graph = new AdjacencyList<T>();
         }
 
         /// <summary>
         /// Create a new instance of the Breadth First Search algorithm using the passed in Graph data structure.
         /// </summary>
-        public BreadthFirstSearch(AdjacencyList<T> graph)
+        public BreadthFirstSearch(IGraph<T> graph)
         {
-            Graph = graph;
+            _graph = graph ?? throw new ArgumentNullException(nameof(graph));
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Algorithms.Core.Search
         /// </summary>
         public void AddEdge(T parent, T child)
         {
-            Graph.AddEdge(parent, child);
+            _graph.AddEdge(parent, child);
         }
 
         /// <summary>
@@ -40,40 +40,32 @@ namespace Algorithms.Core.Search
         public List<T> Find(T startingVertex, T targetVertex)
         {
             var visited = new List<T>();
+            var visitedSet = new HashSet<T>();
 
-            try
+            if (_graph.ContainsVertex(startingVertex) && _graph.ContainsVertex(targetVertex))
             {
-                // Validate starting and target notes are part of the graph
-                if (Graph.Edges.ContainsKey(startingVertex) && Graph.Edges.ContainsKey(targetVertex))
+                var queue = new Queue<T>();
+                visitedSet.Add(startingVertex);
+                queue.Enqueue(startingVertex);
+
+                while (queue.Count > 0)
                 {
-                    var queue = new Queue<T>();
-                    queue.Enqueue(startingVertex);
+                    var vertex = queue.Dequeue();
+                    visited.Add(vertex);
 
-                    while (queue.Count > 0)
+                    if (EqualityComparer<T>.Default.Equals(vertex, targetVertex))
                     {
-                        var vertex = queue.Dequeue();
-                        visited.Add(vertex);
+                        return visited;
+                    }
 
-                        if (vertex?.Equals(targetVertex) == true)
+                    foreach (var neighbor in _graph.OutEdges(vertex))
+                    {
+                        if (visitedSet.Add(neighbor))
                         {
-                            return visited;
-                        }
-                        else
-                        {
-                            foreach (var neighbor in Graph.OutEdges(vertex))
-                            {
-                                if (!visited.Contains(neighbor) && !queue.Contains(neighbor))
-                                {
-                                    queue.Enqueue(neighbor);
-                                }
-                            }
+                            queue.Enqueue(neighbor);
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
             }
 
             return visited;

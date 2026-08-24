@@ -5,7 +5,7 @@ namespace DataStructures.UseCases.Factory
 {
     public static class GraphFactory
     {
-        public static AdjacencyList<T> CreateGraph<T>()
+        public static AdjacencyList<T> CreateGraph<T>() where T : notnull
         {
             return new AdjacencyList<T>();
         }
