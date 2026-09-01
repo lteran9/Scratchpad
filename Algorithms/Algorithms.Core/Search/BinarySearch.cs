@@ -18,41 +18,52 @@ namespace Algorithms.Core.Search
 
         public bool HasValue(T value)
         {
-            return Comparer.Compare(Find(value), value) == 0;
+            return TryFind(value, out _);
         }
 
         /// <summary>
-        /// Will return true if needle is found in Data array, false otherwise.
+        /// Attempts to find a value in the sorted data array.
         /// </summary>
         /// <param name="needle"></param>
-        /// <returns></returns>
-        public T? Find(T needle)
+        /// <param name="value">The matching value when found; otherwise the default value for <typeparamref name="T"/>.</param>
+        /// <returns><see langword="true"/> when the value is found; otherwise <see langword="false"/>.</returns>
+        public bool TryFind(T needle, out T? value)
         {
-            if (Data.Length > 0)
+            int low = 0;
+            int high = Data.Length - 1;
+
+            while (low <= high)
             {
-                int low = 0, mid, high = Data.Length - 1;
+                int mid = low + (high - low) / 2;
+                int comparison = Comparer.Compare(needle, Data[mid]);
 
-                while (low <= high)
+                if (comparison < 0)
                 {
-                    mid = (low + high) / 2;
-
-                    if (Comparer.Compare(needle, Data[mid]) < 0)
-                    {
-                        high = mid - 1;
-                    }
-                    else if (Comparer.Compare(needle, Data[mid]) > 0)
-                    {
-                        low = mid + 1;
-                    }
-                    else
-                    {
-                        return Data[mid];
-                    }
+                    high = mid - 1;
+                }
+                else if (comparison > 0)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    value = Data[mid];
+                    return true;
                 }
             }
 
-            // Not a good return value when needle is not found within array...
-            return default;
+            value = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the matching value, or the default value when no match exists.
+        /// Use <see cref="TryFind"/> when absence must be distinguished from a default-valued match.
+        /// </summary>
+        public T? Find(T needle)
+        {
+            TryFind(needle, out T? value);
+            return value;
         }
     }
 }

@@ -44,6 +44,16 @@ namespace Algorithms.Core.Tests.Search
             Assert.True(binarySearch.HasValue(2048));
         }
 
+        [Fact]
+        public void TryFind_DistinguishesDefaultValueFromMissingValue()
+        {
+            var binarySearch = new BinarySearch<int>(new[] { 0, 1, 2 });
+
+            Assert.True(binarySearch.TryFind(0, out var found));
+            Assert.Equal(0, found);
+            Assert.False(binarySearch.TryFind(3, out _));
+        }
+
         public static IEnumerable<object[]> LowValueSortedArray =>
           new List<object[]>
           {
