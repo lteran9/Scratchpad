@@ -8,6 +8,7 @@ namespace DataStructures.UseCases.Arrays
 
         public MatrixRotation(int[,] matrix)
         {
+            ArgumentNullException.ThrowIfNull(matrix);
             _matrix = matrix;
         }
 
