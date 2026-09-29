@@ -11,7 +11,7 @@ namespace DataStructures.Tests.StackTests
       public void StackTest_01()
       {
          var queue = new Stack<int>();
-         queue.Add(1234);
+         queue.Push(1234);
 
          Assert.Equal(1234, queue.Peek());
       }
@@ -20,7 +20,7 @@ namespace DataStructures.Tests.StackTests
       public void StackTest_02()
       {
          var queue = new Stack<int>();
-         queue.Add(1234);
+         queue.Push(1234);
 
          Assert.Equal(1234, queue.Pop());
       }
@@ -40,15 +40,15 @@ namespace DataStructures.Tests.StackTests
          var sentence = "The quick brown fox jumped over the lazy dog.".Split(" ");
 
          var queue = new Stack<string>();
-         queue.Add("The");
-         queue.Add("quick");
-         queue.Add("brown");
-         queue.Add("fox");
-         queue.Add("jumped");
-         queue.Add("over");
-         queue.Add("the");
-         queue.Add("lazy");
-         queue.Add("dog.");
+         queue.Push("The");
+         queue.Push("quick");
+         queue.Push("brown");
+         queue.Push("fox");
+         queue.Push("jumped");
+         queue.Push("over");
+         queue.Push("the");
+         queue.Push("lazy");
+         queue.Push("dog.");
 
          for (int i = sentence.Length - 1; i >= 0; i--)
          {

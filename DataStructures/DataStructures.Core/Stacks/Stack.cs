@@ -3,41 +3,51 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.Stacks
 {
-    public class Stack<T> : IStack<T>
+    public class Stack<T> : IStack<T> where T : IComparable
     {
-        private Node<T> Head { get; set; }
+        private int count = 0;
+        private Node<T> head;
 
-        public void Add(T item)
+        public bool IsEmpty()
         {
-            if (Head == null)
+            return count == 0;
+        }
+
+        public void Push(T item)
+        {
+            if (head == null)
             {
-                Head = new Node<T>(item);
+                head = new Node<T>(item);
             }
             else
             {
                 var newHead = new Node<T>(item);
-                newHead.Next = Head;
-                Head = newHead;
+                newHead.Next = head;
+                head = newHead;
             }
+
+            count++;
         }
 
         public T Peek()
         {
-            if (Head != null)
+            if (head != null)
             {
-                return Head.Data;
+                return head.Data;
             }
 
-            throw new Exception("Head is null.");
+            throw new InvalidOperationException("The stack is empty.");
         }
 
         public T Pop()
         {
-            if (Head != null)
+            if (head != null)
             {
-                var temp = Head;
+                var temp = head;
 
-                Head = Head.Next;
+                head = head.Next;
+
+                count--;
 
                 return temp.Data;
             }
