@@ -30,8 +30,8 @@ namespace DataStructures.Tests.StackTests
       {
          var queue = new Stack<int>();
          // Exception is raised when there are no items in the queue
-         Assert.Throws<Exception>(() => queue.Peek());
-         Assert.Throws<Exception>(() => queue.Pop());
+         Assert.Throws<InvalidOperationException>(() => queue.Peek());
+         Assert.Throws<InvalidOperationException>(() => queue.Pop());
       }
 
       [Fact]

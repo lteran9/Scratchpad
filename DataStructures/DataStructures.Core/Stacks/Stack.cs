@@ -52,7 +52,7 @@ namespace DataStructures.Core.Stacks
                 return temp.Data;
             }
 
-            throw new Exception("Head is null.");
+            throw new InvalidOperationException("Head is null.");
         }
     }
 }
