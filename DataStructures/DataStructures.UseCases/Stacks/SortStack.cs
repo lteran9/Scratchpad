@@ -28,9 +28,6 @@ namespace DataStructures.UseCases.Stacks
         {
             var tempStack = new DSC.Stack<T>();
 
-            if (_values.IsEmpty())
-                return _values;
-
             while (!_values.IsEmpty())
             {
                 var temp = _values.Pop();
