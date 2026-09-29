@@ -2,9 +2,11 @@ using System;
 
 namespace DataStructures.Core.Stacks
 {
-    public interface IStack<T>
+    public interface IStack<T> where T : IComparable
     {
-        void Add(T item);
+        bool IsEmpty();
+
+        void Push(T item);
 
         T Peek();
         T Pop();
