@@ -5,6 +5,9 @@ using DataStructures.Core.Stacks;
 
 namespace DataStructures.Tests.StackTests
 {
+   /// <summary>
+   /// Tests stack implementations.
+   /// </summary>
    public class ImplementationTests
    {
       [Fact]

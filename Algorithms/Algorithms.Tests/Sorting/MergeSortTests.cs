@@ -5,6 +5,9 @@ using Xunit;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Tests merge sort behavior.
+    /// </summary>
     public class MergeSortTests : BaseSortTest
     {
         [Theory]

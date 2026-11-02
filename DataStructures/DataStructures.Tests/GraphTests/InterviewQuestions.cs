@@ -8,6 +8,9 @@ using Xunit;
 
 namespace DataStructures.Tests.GraphTests
 {
+    /// <summary>
+    /// Tests solutions to graph interview questions.
+    /// </summary>
     public class InterviewQuestions
     {
         [Theory]

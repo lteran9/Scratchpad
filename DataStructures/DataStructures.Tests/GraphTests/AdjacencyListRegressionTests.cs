@@ -5,6 +5,9 @@ using Xunit;
 
 namespace DataStructures.Tests.GraphTests
 {
+    /// <summary>
+    /// Tests graph behavior using an adjacency-list representation.
+    /// </summary>
     public class AdjacencyListRegressionTests
     {
         [Fact]

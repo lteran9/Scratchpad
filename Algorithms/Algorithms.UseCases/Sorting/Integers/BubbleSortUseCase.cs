@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Integers
 {
+    /// <summary>
+    /// Sorts an integer list using the bubble sort algorithm.
+    /// </summary>
     public class BubbleSortUseCase : IUseCase<List<int>>
     {
         private readonly SortOrder _order;

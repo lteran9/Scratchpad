@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Strings
 {
+    /// <summary>
+    /// Sorts a string list using the quicksort algorithm.
+    /// </summary>
     public class QuickSortUseCase : IUseCase<List<string>>
     {
         private readonly SortOrder _order;

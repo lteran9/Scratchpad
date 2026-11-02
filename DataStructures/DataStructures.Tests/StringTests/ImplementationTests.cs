@@ -5,6 +5,9 @@ using DataStructures.UseCases.Factory;
 
 namespace DataStructures.Tests.StringTests
 {
+   /// <summary>
+   /// Tests string data structure implementations.
+   /// </summary>
    public class ImplementationTests
    {
       private readonly StringFactory stringFactory = new StringFactory();

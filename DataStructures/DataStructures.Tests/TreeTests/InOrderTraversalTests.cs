@@ -5,6 +5,9 @@ using Xunit;
 
 namespace DataStructures.Tests.TreeTests
 {
+   /// <summary>
+   /// Tests in-order tree traversal.
+   /// </summary>
    public class InOrderTraversalTests
    {
       [Fact]

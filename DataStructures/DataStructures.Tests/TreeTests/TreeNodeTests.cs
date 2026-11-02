@@ -4,6 +4,9 @@ using Xunit;
 
 namespace DataStructures.Tests.TreeTests
 {
+   /// <summary>
+   /// Tests tree node behavior.
+   /// </summary>
    public class TreeNodeTests
    {
       [Fact]

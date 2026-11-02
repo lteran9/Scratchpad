@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Tests
 {
+    /// <summary>
+    /// Provides integer collections for sorting tests.
+    /// </summary>
     public class IntegerCollectionDataClass : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()

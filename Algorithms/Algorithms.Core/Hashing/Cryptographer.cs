@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Algorithms.Core.Hashing
 {
+    /// <summary>
+    /// Computes cryptographic hashes for text using the selected algorithm.
+    /// </summary>
     public sealed class Cryptographer
     {
         public byte[] Hash(HashType hash, string plainText)

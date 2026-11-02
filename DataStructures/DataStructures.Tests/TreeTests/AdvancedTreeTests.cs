@@ -4,6 +4,9 @@ using Xunit;
 
 namespace DataStructures.Tests.TreeTests
 {
+   /// <summary>
+   /// Tests advanced tree operations.
+   /// </summary>
    public class AdvancedTreeTests
    {
       [Fact]

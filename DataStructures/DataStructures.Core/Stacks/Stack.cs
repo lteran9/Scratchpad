@@ -3,6 +3,9 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.Stacks
 {
+    /// <summary>
+    /// Represents a last-in, first-out collection of comparable values.
+    /// </summary>
     public class Stack<T> : IStack<T> where T : IComparable
     {
         private int count = 0;

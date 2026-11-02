@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Strings
 {
+    /// <summary>
+    /// Sorts a string list using the merge sort algorithm.
+    /// </summary>
     public class MergeSortUseCase : IUseCase<List<string>>
     {
         private readonly SortOrder _order;

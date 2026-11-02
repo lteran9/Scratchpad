@@ -3,6 +3,9 @@ using DataStructures.Core.Graphs;
 
 namespace DataStructures.UseCases.Graphs
 {
+    /// <summary>
+    /// Holds an organization graph for an employee lookup use case.
+    /// </summary>
     public class FindEmployeesInOrganization : IUseCase<string>
     {
         private AdjacencyList<OrgDepartment> _graphOrg;

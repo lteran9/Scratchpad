@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.Factory
 {
+   /// <summary>
+   /// Creates linked lists for data structure use cases.
+   /// </summary>
    public class LinkedListFactory
    {
       #region Singly Linked List 

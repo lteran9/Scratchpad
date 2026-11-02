@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.LinkedLists
 {
+    /// <summary>
+    /// Detects whether a linked list contains a cycle.
+    /// </summary>
     public class DetectCycle<T> : IUseCase<bool>
     {
         private readonly Core.LinkedLists.LinkedList<T> _linkedList;

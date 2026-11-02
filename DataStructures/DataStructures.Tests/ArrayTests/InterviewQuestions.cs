@@ -6,6 +6,9 @@ using Xunit;
 
 namespace DataStructures.Tests.ArrayTests
 {
+   /// <summary>
+   /// Tests solutions to array interview questions.
+   /// </summary>
    public class InterviewQuestions
    {
       private readonly ArrayManipulation arrayFunctions = new ArrayManipulation();

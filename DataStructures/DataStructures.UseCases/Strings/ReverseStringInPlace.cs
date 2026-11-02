@@ -3,6 +3,9 @@ using System.Text;
 
 namespace DataStructures.UseCases.Strings
 {
+    /// <summary>
+/// Returns a reversed copy of the input string.
+    /// </summary>
     public class ReverseStringInPlace : IUseCase<string>
     {
         private readonly string _str;

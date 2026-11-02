@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.Arrays
 {
+    /// <summary>
+    /// Provides operations for rotating a matrix.
+    /// </summary>
     public class MatrixRotation
     {
         private readonly int[,] _matrix;

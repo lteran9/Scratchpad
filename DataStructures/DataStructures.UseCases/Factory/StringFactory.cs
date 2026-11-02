@@ -3,6 +3,9 @@ using DataStructures.Core.Strings;
 
 namespace DataStructures.UseCases.Factory
 {
+   /// <summary>
+   /// Creates string data structure instances.
+   /// </summary>
    public class StringFactory
    {
       #region Node String Implementation 

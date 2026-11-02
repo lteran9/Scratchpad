@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.LinkedLists
 {
+    /// <summary>
+    /// Reverses a singly linked list.
+    /// </summary>
     public class ReverseSinglyLinkedList<T> : IUseCase<Core.LinkedLists.LinkedList<T>>
     {
         private readonly Core.LinkedLists.LinkedList<T> _linkedList;

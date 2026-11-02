@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.Arrays
 {
+    /// <summary>
+    /// Counts array elements that are greater than the average of preceding elements.
+    /// </summary>
     public class CountElementsGreaterThanPreviousAverage : IUseCase<int>
     {
         /// <summary>

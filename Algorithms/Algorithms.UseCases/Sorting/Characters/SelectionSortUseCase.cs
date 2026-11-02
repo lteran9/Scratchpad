@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Characters
 {
+    /// <summary>
+    /// Sorts a character list using the selection sort algorithm.
+    /// </summary>
     public class SelectionSortUseCase : IUseCase<List<char>>
     {
         private readonly SortOrder _order;

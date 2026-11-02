@@ -2,6 +2,9 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.UseCases.LinkedLists
 {
+    /// <summary>
+    /// Provides use cases for manipulating linked lists.
+    /// </summary>
     public class LinkedListManipulation
     {
         public Core.LinkedLists.LinkedList<int>? SumLists(Core.LinkedLists.LinkedList<int> a, Core.LinkedLists.LinkedList<int> b)

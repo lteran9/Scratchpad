@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DataStructures.Core.LinkedLists
 {
+    /// <summary>
+    /// Represents a singly linked list of values.
+    /// </summary>
     public class LinkedList<T> : ILinkedList<T>
     {
         public int Size { get { return Count(); } }

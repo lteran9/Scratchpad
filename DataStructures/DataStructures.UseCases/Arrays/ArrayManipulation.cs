@@ -5,6 +5,9 @@ using DataStructures.UseCases.Factory;
 
 namespace DataStructures.UseCases.Arrays
 {
+    /// <summary>
+    /// Provides use cases for manipulating arrays.
+    /// </summary>
     public class ArrayManipulation
     {
         /// <summary>

@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.Arrays
 {
+    /// <summary>
+    /// Combines adjacent overlapping interval pairs in the order provided.
+    /// </summary>
     public class MergeAndSortIntervals : IUseCase<List<int[]>>
     {
         private readonly int _startTimeIndex = 0;

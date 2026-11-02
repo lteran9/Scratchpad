@@ -5,6 +5,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Tests bubble sort behavior.
+    /// </summary>
     public class BubbleSortTests : BaseSortTest
     {
         [Theory]

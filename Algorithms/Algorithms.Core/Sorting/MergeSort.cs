@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Core.Sorting
 {
+    /// <summary>
+    /// Sorts collections using the merge sort algorithm.
+    /// </summary>
     public static class MergeSort
     {
         private static SortOrder sortOrder = SortOrder.ASC;

@@ -5,6 +5,9 @@ using Xunit;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Provides shared test data and assertions for sorting tests.
+    /// </summary>
     public abstract class BaseSortTest
     {
         protected void BaseAscendingTest<T>(IEnumerable<T> original, IEnumerable<T> sorted) where T : IComparable

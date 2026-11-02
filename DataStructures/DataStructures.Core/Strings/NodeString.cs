@@ -3,6 +3,9 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.Core.Strings
 {
+   /// <summary>
+   /// Represents a string backed by linked character nodes.
+   /// </summary>
    public class NodeString : IString
    {
       public static IString Empty = new NodeString();

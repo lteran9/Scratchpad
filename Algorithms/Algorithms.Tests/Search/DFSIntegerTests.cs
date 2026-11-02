@@ -6,6 +6,9 @@ using Xunit;
 
 namespace Algorithms.Core.Tests.Search
 {
+    /// <summary>
+    /// Tests depth-first search with integer graph data.
+    /// </summary>
     public class DFSIntegerTests
     {
         private readonly DepthFirstSearch<int> _search = new DepthFirstSearch<int>();
