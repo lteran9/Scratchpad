@@ -4,7 +4,7 @@ using System.Text;
 namespace DataStructures.UseCases.Strings
 {
     /// <summary>
-    /// Reverses a string in place.
+/// Returns a reversed copy of the input string.
     /// </summary>
     public class ReverseStringInPlace : IUseCase<string>
     {
