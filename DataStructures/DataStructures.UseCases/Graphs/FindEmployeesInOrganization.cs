@@ -4,7 +4,7 @@ using DataStructures.Core.Graphs;
 namespace DataStructures.UseCases.Graphs
 {
     /// <summary>
-    /// Finds employees in an organization graph.
+    /// Holds an organization graph for an employee lookup use case.
     /// </summary>
     public class FindEmployeesInOrganization : IUseCase<string>
     {
