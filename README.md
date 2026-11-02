@@ -1,29 +1,40 @@
 # Data Structures & Algorithms
 
-This repository houses a .NET Core project with common data structures and algorithms.
+This repository is a personal learning and portfolio project: a place to practice implementing common data structures and algorithms in C#, and to demonstrate an understanding of the ideas behind them.
 
-## Test Driven Development (TDD)
+The implementations are organized as a .NET solution, with core implementations separated from example use cases and automated tests. The project is intended for learning and practice rather than as a production-ready library.
 
-Each project has it's own testing suite to help with development and testing.
+## What's inside
+
+### Data structures
+
+The `DataStructures` projects cover arrays, graphs, hash maps, linked lists, queues, stacks, strings, and trees. The use cases include examples such as linked-list cycle detection and reversal, stack sorting, string compression, tree traversals, graph traversal, and array manipulation.
+
+### Algorithms
+
+The `Algorithms` projects include Fibonacci calculation, binary search, breadth-first and depth-first search, hashing, and bubble, insertion, merge, quick, and selection sort implementations. Use cases apply the algorithms to sample data such as characters, strings, and integers.
+
+### Tests
+
+The `Algorithms.Tests` and `DataStructures.Tests` projects use xUnit to check the implementations and use cases.
+
+## Project layout
+
+- `Algorithms/Algorithms.Core` — algorithm implementations
+- `Algorithms/Algorithms.UseCases` — example applications of algorithms
+- `Algorithms/Algorithms.Tests` — algorithm tests
+- `DataStructures/DataStructures.Core` — data structure implementations
+- `DataStructures/DataStructures.UseCases` — example applications of data structures
+- `DataStructures/DataStructures.Tests` — data structure tests
+
+## Run the tests
+
+The projects target .NET 10. From the repository root, run:
+
+```sh
+dotnet test Scratchpad.sln
+```
 
 ## GitHub Actions
 
-Using GitHub Actions to automate tests on the master branch. Details can be found in the dotnet.yml file within the .github folder.
-
-## Discovery #3: Struct cannot be cyclic
-
-A "Node" datatype cannot be declared as a struct because it cannot contain a member reference to itself. Struct member 'Node&lsaquo;T&rsaquo;.Next' of type 'Node&lsaquo;T&rsaquo;' causes a cycle in the struct layout.
-
-```csharp
-public struct Node<T>
-{
-    public T Data { get; set; }
-
-    public Node<T> Next { get; set; }
-
-    public Node()
-    {
-        ...
-    }
-}
-```
+The GitHub Actions workflow restores and builds the solution, then runs the unit tests to help maintain code quality and catch regressions. It runs on pushes to `master` and pull requests targeting `master` when changes affect files under `Algorithms/` or `DataStructures/`.
