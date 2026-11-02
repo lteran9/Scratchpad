@@ -3,7 +3,7 @@ using System;
 namespace DataStructures.UseCases.Arrays
 {
     /// <summary>
-    /// Merges overlapping intervals and returns them in sorted order.
+    /// Combines adjacent overlapping interval pairs in the order provided.
     /// </summary>
     public class MergeAndSortIntervals : IUseCase<List<int[]>>
     {
