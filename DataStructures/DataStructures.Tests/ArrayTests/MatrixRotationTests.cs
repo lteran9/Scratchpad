@@ -4,6 +4,9 @@ using Xunit;
 
 namespace DataStructures.Tests.ArrayTests
 {
+    /// <summary>
+    /// Tests matrix rotation behavior.
+    /// </summary>
     public class MatrixRotationTests
     {
         public static object[][] InvalidNxYMatrix =>

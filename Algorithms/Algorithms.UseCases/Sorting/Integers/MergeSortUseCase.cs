@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Integers
 {
+    /// <summary>
+    /// Sorts an integer list using the merge sort algorithm.
+    /// </summary>
     public class MergeSortUseCase : IUseCase<List<int>>
     {
         private readonly SortOrder _order;

@@ -5,6 +5,9 @@ using Xunit;
 
 namespace Algorithms.Core.Tests.Search
 {
+    /// <summary>
+    /// Tests breadth-first search with integer graph data.
+    /// </summary>
     public class BFSIntegerTests
     {
         private readonly BreadthFirstSearch<int> _search = new BreadthFirstSearch<int>();

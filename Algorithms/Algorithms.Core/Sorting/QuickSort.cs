@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Core.Sorting
 {
+    /// <summary>
+    /// Sorts collections using the quicksort algorithm.
+    /// </summary>
     public static class QuickSort
     {
         private static SortOrder sortOrder = SortOrder.ASC;

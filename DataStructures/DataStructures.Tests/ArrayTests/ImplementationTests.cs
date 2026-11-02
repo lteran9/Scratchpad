@@ -4,6 +4,9 @@ using Xunit;
 
 namespace DataStructures.Tests.ArrayTests
 {
+   /// <summary>
+   /// Tests array use case implementations.
+   /// </summary>
    public class ImplementationTests
    {
       [Fact]

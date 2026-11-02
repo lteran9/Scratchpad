@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Tests insertion sort behavior.
+    /// </summary>
     public class InsertionSortTests : BaseSortTest
     {
         [Theory]

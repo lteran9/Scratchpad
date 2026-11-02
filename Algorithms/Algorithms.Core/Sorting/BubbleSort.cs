@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Core.Sorting
 {
+    /// <summary>
+    /// Sorts collections using the bubble sort algorithm.
+    /// </summary>
     public static class BubbleSort
     {
         public static List<T> Sort<T>(List<T> collection, SortOrder order = SortOrder.ASC) where T : IComparable

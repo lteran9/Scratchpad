@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Integers
 {
+    /// <summary>
+    /// Sorts an integer list using the quicksort algorithm.
+    /// </summary>
     public class QuickSortUseCase : IUseCase<List<int>>
     {
         private readonly SortOrder _order;

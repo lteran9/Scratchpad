@@ -5,6 +5,9 @@ using Xunit;
 
 namespace DataStructures.Tests.LinkedListTests
 {
+    /// <summary>
+    /// Tests linked list operations.
+    /// </summary>
     public class LinkedListTests
     {
         [Fact]

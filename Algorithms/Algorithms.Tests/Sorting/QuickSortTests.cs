@@ -5,6 +5,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Tests quicksort behavior.
+    /// </summary>
     public class QuickSortTests : BaseSortTest
     {
         [Theory]

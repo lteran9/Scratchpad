@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Strings
 {
+    /// <summary>
+    /// Sorts a string list using the selection sort algorithm.
+    /// </summary>
     public class SelectionSortUseCase : IUseCase<List<string>>
     {
         private readonly SortOrder _order;

@@ -5,6 +5,9 @@ using DataStructures.Core.Trees;
 
 namespace DataStructures.UseCases.Trees
 {
+   /// <summary>
+   /// Traverses a tree in pre-order and returns the traversal result.
+   /// </summary>
    public class PreOrderTraversal : IUseCase<string>
    {
       private readonly TreeNode<int> _root;

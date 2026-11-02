@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.Factory
 {
+   /// <summary>
+   /// Creates arrays used by data structure use cases.
+   /// </summary>
    public class ArrayFactory
    {
       public static Core.Arrays.Array<T> CreateArray<T>(int size)

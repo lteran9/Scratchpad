@@ -3,6 +3,9 @@ using Algorithms.Core.Sorting;
 
 namespace Algorithms.UseCases.Sorting.Integers
 {
+    /// <summary>
+    /// Sorts an integer list using the insertion sort algorithm.
+    /// </summary>
     public class InsertionSortUseCase : IUseCase<List<int>>
     {
         private readonly SortOrder _order;

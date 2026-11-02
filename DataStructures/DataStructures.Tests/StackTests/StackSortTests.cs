@@ -5,6 +5,9 @@ using Xunit;
 
 namespace DataStructures.Tests.StackTests
 {
+    /// <summary>
+    /// Tests sorting values using a stack.
+    /// </summary>
     public class StackSortTests
     {
         [Fact]

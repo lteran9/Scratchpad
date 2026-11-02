@@ -4,6 +4,9 @@ using Algorithms.Core.Hashing;
 
 namespace Algorithms.Core.Tests.Hashing
 {
+    /// <summary>
+    /// Tests cryptographic hash computation.
+    /// </summary>
     public class CryptographerTests
     {
         private readonly Cryptographer _cryptographer = new Cryptographer();

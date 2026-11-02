@@ -4,6 +4,9 @@ using DataStructures.Core.Strings;
 
 namespace DataStructures.UseCases.Strings
 {
+    /// <summary>
+    /// Compresses a string by encoding repeated characters.
+    /// </summary>
     public class StringCompression : IUseCase<string>
     {
         private readonly string _str;

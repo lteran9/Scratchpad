@@ -4,6 +4,9 @@ using DataStructures.Core.HashMaps;
 
 namespace DataStructures.Tests.HashMapTests
 {
+    /// <summary>
+    /// Tests hash map behavior using open addressing.
+    /// </summary>
     public class OpenAddressingMapTests
     {
         #region Count

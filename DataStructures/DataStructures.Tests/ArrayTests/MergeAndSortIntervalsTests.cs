@@ -6,6 +6,9 @@ using Xunit;
 namespace DataStructures.Tests.ArrayTests
 {
     // TODO: Still need to add more test cases and improve on algorithm
+    /// <summary>
+    /// Tests merging and sorting intervals.
+    /// </summary>
     public class MergeAndSortIntervalsTests
     {
         [Fact]

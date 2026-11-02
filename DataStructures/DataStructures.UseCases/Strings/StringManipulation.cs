@@ -3,6 +3,9 @@ using DataStructures.Core.Strings;
 
 namespace DataStructures.UseCases.Strings
 {
+    /// <summary>
+    /// Provides use cases for manipulating strings.
+    /// </summary>
     public class StringManipulation
     {
         #region Chapter 1.1

@@ -5,6 +5,9 @@ using DataStructures.UseCases.Trees;
 
 namespace DataStructures.Tests.TreeTests
 {
+   /// <summary>
+   /// Tests post-order tree traversal.
+   /// </summary>
    public class PostOrderTraversalTests
    {
       [Fact]

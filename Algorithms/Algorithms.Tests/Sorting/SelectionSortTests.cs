@@ -6,6 +6,9 @@ using Algorithms.UseCases.Sorting;
 
 namespace Algorithms.Tests.Sorting
 {
+    /// <summary>
+    /// Tests selection sort behavior.
+    /// </summary>
     public class SelectionSortTests : BaseSortTest
     {
         [Theory]

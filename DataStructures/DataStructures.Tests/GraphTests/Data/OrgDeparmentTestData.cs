@@ -6,6 +6,9 @@ using DataStructures.UseCases.Graphs;
 
 namespace DataStructures.Tests.GraphTests.Data
 {
+    /// <summary>
+    /// Provides organization department data for graph tests.
+    /// </summary>
     public class OrgDepartmentTestData : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()

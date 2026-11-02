@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Core.Search
 {
+    /// <summary>
+    /// Searches an ordered collection for a value using binary search.
+    /// </summary>
     public class BinarySearch<T>
     {
         /// <summary>

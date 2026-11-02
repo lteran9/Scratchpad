@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.Core.LinkedLists
 {
+    /// <summary>
+    /// Represents a node in a linked list.
+    /// </summary>
     public class Node<T>
     {
         public T Data { get; set; }

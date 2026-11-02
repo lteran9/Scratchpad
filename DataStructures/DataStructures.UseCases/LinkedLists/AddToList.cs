@@ -2,6 +2,9 @@ using System;
 
 namespace DataStructures.UseCases.LinkedLists
 {
+   /// <summary>
+   /// Adds values to a linked list.
+   /// </summary>
    public class AddToList<T> : IUseCase<Core.LinkedLists.LinkedList<T>>
    {
       private readonly T _value;

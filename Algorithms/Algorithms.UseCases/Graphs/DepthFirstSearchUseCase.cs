@@ -6,6 +6,9 @@ using Algorithms.Core.Search;
 
 namespace Algorithms.UseCases.Graphs
 {
+    /// <summary>
+    /// Runs depth-first search and returns its traversal result.
+    /// </summary>
     public class DepthFirstSearchUseCase : IUseCase<string>
     {
         private readonly string _origin;

@@ -4,7 +4,10 @@ using DataStructures.Core.Queues;
 
 namespace DataStructures.Tests.QueueTests
 {
-   public class ImplementationTests 
+   /// <summary>
+   /// Tests queue implementations.
+   /// </summary>
+   public class ImplementationTests
    {
       [Fact]
       public void QueueTest_01() 

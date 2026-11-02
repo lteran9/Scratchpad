@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Algorithms.Tests
 {
+    /// <summary>
+    /// Provides character collections for sorting tests.
+    /// </summary>
     public class CharacterCollectionDataClass : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()

@@ -5,6 +5,9 @@ using Xunit;
 
 namespace Algorithms.Core.Tests.Search
 {
+    /// <summary>
+    /// Tests binary search behavior.
+    /// </summary>
     public class BinarySearchTests
     {
         [Theory]

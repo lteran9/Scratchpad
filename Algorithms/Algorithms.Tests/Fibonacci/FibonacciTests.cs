@@ -4,6 +4,9 @@ using Algorithms.Core.Fibonacci;
 
 namespace Algorithms.Tests.Fibonacci
 {
+    /// <summary>
+    /// Tests Fibonacci number computation.
+    /// </summary>
     public class FibonacciTests
     {
         [Theory]

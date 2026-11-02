@@ -3,6 +3,9 @@ using Algorithms.UseCases;
 
 namespace Algorithms.Core.Fibonacci
 {
+    /// <summary>
+    /// Computes a Fibonacci number for the requested sequence position.
+    /// </summary>
     public class ComputeFibonacciNumberUseCase : IUseCase<long>
     {
         private readonly int _position;

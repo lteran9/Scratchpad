@@ -5,6 +5,9 @@ using DataStructures.Core.Graphs;
 
 namespace Algorithms.UseCases.Graphs
 {
+    /// <summary>
+    /// Runs breadth-first search and returns its traversal result.
+    /// </summary>
     public class BreadthFirstSearchUseCase : IUseCase<string>
     {
         private readonly string _origin;

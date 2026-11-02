@@ -3,6 +3,9 @@ using DataStructures.Core.Trees;
 
 namespace DataStructures.UseCases.Trees
 {
+   /// <summary>
+   /// Traverses a tree in in-order and returns the traversal result.
+   /// </summary>
    public class InOrderTraversal : IUseCase<string>
    {
       private readonly TreeNode<int> _head;

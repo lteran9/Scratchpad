@@ -4,6 +4,9 @@ using Xunit;
 
 namespace DataStructures.Tests.ArrayTests
 {
+    /// <summary>
+    /// Tests counting elements greater than the average of preceding elements.
+    /// </summary>
     public class CountElementsGreaterThanPreviousAverageTests
     {
         [Theory]

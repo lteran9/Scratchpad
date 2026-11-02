@@ -3,6 +3,9 @@ using DataStructures.Core.LinkedLists;
 
 namespace DataStructures.UseCases.LinkedLists
 {
+    /// <summary>
+    /// Removes duplicate values from a linked list.
+    /// </summary>
     public class RemoveDuplicates<T> : IUseCase<Core.LinkedLists.LinkedList<T>>
     {
         private readonly Core.LinkedLists.LinkedList<T> _linkedList;
