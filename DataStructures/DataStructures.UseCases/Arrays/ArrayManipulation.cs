@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using DataStructures.Core;
 using DataStructures.UseCases.Factory;
 
 namespace DataStructures.UseCases.Arrays
@@ -100,6 +98,11 @@ namespace DataStructures.UseCases.Arrays
             return (first, second, third);
         }
 
+        /// <summary>
+        /// Finds the second-largest distinct value in an array.
+        /// </summary>
+        /// <param name="arr">The array of integers to search.</param>
+        /// <returns>The second-largest distinct value, or <see cref="int.MinValue"/> if fewer than two distinct values are present.</returns>
         public int GetSecondLargestElement(Core.Arrays.Array<int> arr)
         {
             int first = int.MinValue, second = int.MinValue;
@@ -122,6 +125,11 @@ namespace DataStructures.UseCases.Arrays
             return second;
         }
 
+        /// <summary>
+        /// Moves all zeroes to the end of the array in place, preserving the relative order of nonzero elements.
+        /// </summary>
+        /// <param name="arr">The array of integers to modify.</param>
+        /// <returns>The modified input array.</returns>
         public Core.Arrays.Array<int> PushZeroesToEnd(Core.Arrays.Array<int> arr)
         {
             if (arr.Length > 0)
@@ -147,6 +155,11 @@ namespace DataStructures.UseCases.Arrays
             return arr;
         }
 
+        /// <summary>
+        /// Rearranges an array sorted in ascending order by alternating the largest and smallest remaining elements.
+        /// </summary>
+        /// <param name="arr">The array of integers sorted in ascending order.</param>
+        /// <returns>A new rearranged array, or the input array if it is empty.</returns>
         public Core.Arrays.Array<int> RearrangeArrayInMaximumMinimumForm(Core.Arrays.Array<int> arr)
         {
             if (arr.Length > 0)
@@ -174,6 +187,11 @@ namespace DataStructures.UseCases.Arrays
             return arr;
         }
 
+        /// <summary>
+        /// Places even elements before odd elements, preserving the order of even elements and reversing the order of odd elements.
+        /// </summary>
+        /// <param name="arr">The array of integers to rearrange.</param>
+        /// <returns>A new array containing the segregated elements, or the input array if it is empty.</returns>
         public Core.Arrays.Array<int> SegregateEvenAndOdd(Core.Arrays.Array<int> arr)
         {
             if (arr.Length > 0)
@@ -203,6 +221,15 @@ namespace DataStructures.UseCases.Arrays
             return arr;
         }
 
+        /// <summary>
+        /// Counts occurrences of each repeated value in an array containing at least four elements.
+        /// </summary>
+        /// <param name="haystack">The array of integers to examine.</param>
+        /// <returns>
+        /// An array containing the occurrence count for each distinct value that appears more than once,
+        /// or <see langword="null"/> if the input contains fewer than four elements.
+        /// The result is empty if no values are repeated.
+        /// </returns>
         public Core.Arrays.Array<int>? FindDuplicatesInArrayIfMultipleDuplicatesPresent(Core.Arrays.Array<int> haystack)
         {
             // Multiple duplicates can only be found if at least four elements are present (e.g. {2,2,4,4})
