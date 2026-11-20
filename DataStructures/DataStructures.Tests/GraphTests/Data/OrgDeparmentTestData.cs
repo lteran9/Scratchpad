@@ -11,12 +11,12 @@ namespace DataStructures.Tests.GraphTests.Data
     /// </summary>
     public class OrgDepartmentTestData : IEnumerable<object[]>
     {
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return GetOrgDeparmentData();
         }
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private List<string> Departments
         {
@@ -76,7 +76,7 @@ namespace DataStructures.Tests.GraphTests.Data
                     });
             }
 
-            return new object[] { data };
+            return [data];
         }
     }
 }

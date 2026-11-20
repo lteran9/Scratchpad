@@ -57,43 +57,51 @@ namespace DataStructures.Core.Trees
 
         public void DeleteNode(T data)
         {
-            Root = DeleteNode(Root, data);
+            var deleted = false;
+            Root = DeleteNode(Root, data, ref deleted);
+            if (deleted)
+            {
+                Length--;
+            }
         }
 
-        private TreeNode<T> DeleteNode(TreeNode<T> root, T data)
+        private TreeNode<T> DeleteNode(TreeNode<T> root, T data, ref bool deleted)
         {
             if (root == null)
             {
                 return null;
             }
 
-            if (Comparer.Compare(data, root.Data) < 0)
+            var comparison = Comparer.Compare(data, root.Data);
+            if (comparison < 0)
             {
-                return DeleteNode(root.LeftChild, data);
+                root.AddLeftChild(DeleteNode(root.LeftChild, data, ref deleted));
             }
-            else if (Comparer.Compare(data, root.Data) > 0)
+            else if (comparison > 0)
             {
-                return DeleteNode(root.RightChild, data);
+                root.AddRightChild(DeleteNode(root.RightChild, data, ref deleted));
             }
             else
             {
-                // We found the node
-
-                // CASE 1: There is no left child
+                deleted = true;
                 if (root.LeftChild == null)
                 {
                     return root.RightChild;
                 }
 
-                // CASE 2: There is no right child
                 if (root.RightChild == null)
                 {
                     return root.LeftChild;
                 }
 
-                // CASE 3: There are two children
-                // Find inorder successor (smallest value in right subtree)
+                var successor = root.RightChild;
+                while (successor.LeftChild != null)
+                {
+                    successor = successor.LeftChild;
+                }
 
+                root.Data = successor.Data;
+                root.AddRightChild(DeleteNode(root.RightChild, successor.Data, ref deleted));
             }
 
             return root;

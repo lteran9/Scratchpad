@@ -10,7 +10,7 @@ namespace DataStructures.Tests.ArrayTests
    public class ImplementationTests
    {
       [Fact]
-      public void ArrayTest_01()
+      public void GivenDefaultArray_WhenCreated_ThenHasZeroLengthAndIndexingThrows()
       {
          var arr = new Array<int>();
 
@@ -19,7 +19,7 @@ namespace DataStructures.Tests.ArrayTests
       }
 
       [Fact]
-      public void ArrayTest_02()
+      public void GivenPositiveLength_WhenCreated_ThenInitializesElementsAndSupportsAssignment()
       {
          var length = 20;
          var arr = new Array<int>(length);

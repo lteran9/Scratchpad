@@ -10,7 +10,7 @@ namespace DataStructures.Tests.QueueTests
    public class ImplementationTests
    {
       [Fact]
-      public void QueueTest_01() 
+      public void GivenQueueWithItem_WhenPeeking_ThenReturnsFrontItem()
       {
          var queue = new Queue<int>();
          queue.Add(1234);
@@ -19,7 +19,7 @@ namespace DataStructures.Tests.QueueTests
       }
 
       [Fact]
-      public void QueueTest_02() 
+      public void GivenQueueWithItem_WhenPopping_ThenReturnsFrontItem()
       {
          var queue = new Queue<int>();
          queue.Add(1234);
@@ -28,7 +28,7 @@ namespace DataStructures.Tests.QueueTests
       }
 
       [Fact]
-      public void QueueTest_03() 
+      public void GivenEmptyQueue_WhenPeekingOrPopping_ThenThrowsException()
       {
          var queue = new Queue<int>();
          // Exception is raised when there are no items in the queue
@@ -37,7 +37,7 @@ namespace DataStructures.Tests.QueueTests
       }
 
       [Fact]
-      public void QueueTest_04() 
+      public void GivenQueueWithWords_WhenPoppingItems_ThenReturnsThemInInsertionOrder()
       {
          var sentence = "The quick brown fox jumped over the lazy dog.".Split(" ");
 
