@@ -102,5 +102,27 @@ namespace DataStructures.Tests.TreeTests
             Assert.Equal(10, rightChildTree.Root.RightChild.Data);
             Assert.Equal(2, rightChildTree.Length);
         }
+
+        [Fact]
+        public void GivenTwoChildNodeWithDeeperSuccessor_WhenDeleted_ThenPreservesSuccessorRightChild()
+        {
+            var tree = new BinarySearchTree<int>(7);
+            tree.AddNode(4);
+            tree.AddNode(10);
+            tree.AddNode(8);
+            tree.AddNode(9);
+
+            tree.DeleteNode(7);
+
+            Assert.Equal(8, tree.Root.Data);
+            Assert.Equal(10, tree.Root.RightChild.Data);
+            Assert.Equal(9, tree.Root.RightChild.LeftChild.Data);
+            Assert.False(tree.HasNode(7));
+            foreach (var value in new[] { 4, 8, 9, 10 })
+            {
+                Assert.True(tree.HasNode(value));
+            }
+            Assert.Equal(4, tree.Length);
+        }
     }
 }
