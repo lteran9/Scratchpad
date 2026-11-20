@@ -76,9 +76,53 @@ namespace DataStructures.Tests.TreeTests
             tree.AddNode(8);
             tree.AddNode(1);
 
-            //tree.DeleteNode(1);
+            tree.DeleteNode(1);
+            Assert.False(tree.HasNode(1));
+            Assert.Equal(4, tree.Length);
+            Assert.Equal(7, tree.Root.Data);
 
-            //Assert.Equal(4, tree.Length);
+            tree.DeleteNode(9);
+            Assert.False(tree.HasNode(9));
+            Assert.Equal(8, tree.Root.RightChild.Data);
+            Assert.Equal(3, tree.Length);
+
+            tree.DeleteNode(7);
+            Assert.Equal(8, tree.Root.Data);
+            Assert.True(tree.HasNode(4));
+            Assert.True(tree.HasNode(8));
+            Assert.Equal(2, tree.Length);
+
+            tree.DeleteNode(99);
+            Assert.Equal(2, tree.Length);
+
+            var rightChildTree = new BinarySearchTree<int>(7);
+            rightChildTree.AddNode(9);
+            rightChildTree.AddNode(10);
+            rightChildTree.DeleteNode(9);
+            Assert.Equal(10, rightChildTree.Root.RightChild.Data);
+            Assert.Equal(2, rightChildTree.Length);
+        }
+
+        [Fact]
+        public void GivenTwoChildNodeWithDeeperSuccessor_WhenDeleted_ThenPreservesSuccessorRightChild()
+        {
+            var tree = new BinarySearchTree<int>(7);
+            tree.AddNode(4);
+            tree.AddNode(10);
+            tree.AddNode(8);
+            tree.AddNode(9);
+
+            tree.DeleteNode(7);
+
+            Assert.Equal(8, tree.Root.Data);
+            Assert.Equal(10, tree.Root.RightChild.Data);
+            Assert.Equal(9, tree.Root.RightChild.LeftChild.Data);
+            Assert.False(tree.HasNode(7));
+            foreach (var value in new[] { 4, 8, 9, 10 })
+            {
+                Assert.True(tree.HasNode(value));
+            }
+            Assert.Equal(4, tree.Length);
         }
     }
 }

@@ -91,5 +91,74 @@ namespace DataStructures.Tests.HashMapTests
             Assert.Equal("The quick brown fox jumped over the lazy dog.", lookupResult);
         }
         #endregion
+
+        [Fact]
+        public void GivenCollidingKeys_WhenLookingUpOrMissingKey_TraversesBucket()
+        {
+            var hashMap = new ClosedAddressingMap<int, string>(3);
+            hashMap.Insert(1, "one");
+            hashMap.Insert(4, "four");
+            hashMap.Insert(7, "seven");
+
+            Assert.True(hashMap.Lookup(7, out var lookupResult));
+            Assert.Equal("seven", lookupResult);
+            Assert.True(hashMap.Contains(4));
+            Assert.False(hashMap.Lookup(10, out var missingValue));
+            Assert.Null(missingValue);
+        }
+
+        [Fact]
+        public void GivenCollidingKeys_WhenUpdatingExistingAndMissingKeys_PreservesEntries()
+        {
+            var hashMap = new ClosedAddressingMap<int, string>(3);
+            hashMap.Insert(1, "one");
+            hashMap.Insert(4, "four");
+            hashMap.Insert(7, "seven");
+
+            hashMap.Update(4, "updated");
+            hashMap.Update(10, "missing");
+
+            Assert.True(hashMap.Lookup(4, out var updatedValue));
+            Assert.Equal("updated", updatedValue);
+            Assert.True(hashMap.Lookup(7, out var otherValue));
+            Assert.Equal("seven", otherValue);
+            Assert.Equal(3, hashMap.Size());
+        }
+
+        [Fact]
+        public void GivenCollidingKeys_WhenDeletingHeadMiddleTailAndMissingKey_UpdatesBucket()
+        {
+            var hashMap = new ClosedAddressingMap<int, string>(3);
+            hashMap.Insert(1, "one");
+            hashMap.Insert(4, "four");
+            hashMap.Insert(7, "seven");
+
+            hashMap.Delete(4);
+            Assert.False(hashMap.Contains(4));
+            Assert.True(hashMap.Contains(1));
+            Assert.True(hashMap.Contains(7));
+            Assert.Equal(2, hashMap.Size());
+
+            hashMap.Delete(1);
+            hashMap.Delete(10);
+            Assert.False(hashMap.Contains(1));
+            Assert.True(hashMap.Contains(7));
+            Assert.Equal(1, hashMap.Size());
+
+            hashMap.Delete(7);
+            Assert.Equal(0, hashMap.Size());
+        }
+
+        [Fact]
+        public void GivenHashMap_WhenCleared_RemovesAllEntries()
+        {
+            var hashMap = new ClosedAddressingMap<int, string>();
+            hashMap.Insert(1, "one");
+
+            hashMap.Clear();
+
+            Assert.Equal(0, hashMap.Size());
+            Assert.False(hashMap.Lookup(1, out _));
+        }
     }
 }

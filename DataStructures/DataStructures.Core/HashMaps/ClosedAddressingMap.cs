@@ -45,42 +45,43 @@ namespace DataStructures.Core.HashMaps
 
         public void Delete(TKey key)
         {
-            var node = array[_hashFunction.GetHashCode(key, addressSpace)];
-            if (node != null)
-            {
-                // First element in list special case
-                if (node.Data.Item1.Equals(key))
-                {
-                    array[_hashFunction.GetHashCode(key, addressSpace)] = null;
-                    count--;
-                }
-                else
-                {
-                    var runner = node;
-                    while (runner.Next != null)
-                    {
-                        if (runner.Next.Data.Item1.Equals(key))
-                        {
-                            runner = runner.Next.Next;
-                            count--;
-                        }
+            var index = _hashFunction.GetHashCode(key, addressSpace);
+            var current = array[index];
+            Node<(TKey, TValue)> previous = null;
 
-                        runner = runner.Next;
+            while (current != null)
+            {
+                if (current.Data.Item1.Equals(key))
+                {
+                    if (previous == null)
+                    {
+                        array[index] = current.Next;
                     }
+                    else
+                    {
+                        previous.Next = current.Next;
+                    }
+
+                    count--;
+                    return;
                 }
+
+                previous = current;
+                current = current.Next;
             }
         }
 
         public void Insert(TKey key, TValue value)
         {
-            var node = array[_hashFunction.GetHashCode(key, addressSpace)];
+            var index = _hashFunction.GetHashCode(key, addressSpace);
+            var node = array[index];
             if (node == null)
             {
-                array[_hashFunction.GetHashCode(key, addressSpace)] = new Node<(TKey, TValue)>((key, value));
+                array[index] = new Node<(TKey, TValue)>((key, value));
             }
             else
             {
-                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+                var runner = node;
                 while (runner.Next != null)
                 {
                     runner = runner.Next;
@@ -92,18 +93,16 @@ namespace DataStructures.Core.HashMaps
 
         public void Update(TKey key, TValue value)
         {
-            if (array[_hashFunction.GetHashCode(key, addressSpace)] != null)
+            var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+            while (runner != null)
             {
-                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
-                while (runner != null)
+                if (runner.Data.Item1.Equals(key))
                 {
-                    if (runner.Data.Item1.Equals(key))
-                    {
-                        var temp = runner.Next;
-                        runner = new Node<(TKey, TValue)>((key, value));
-                        runner.Next = temp;
-                    }
+                    runner.Data = (key, value);
+                    return;
                 }
+
+                runner = runner.Next;
             }
         }
 
@@ -114,17 +113,16 @@ namespace DataStructures.Core.HashMaps
 
         public bool Lookup(TKey key, out TValue value)
         {
-            if (array[_hashFunction.GetHashCode(key, addressSpace)] != null)
+            var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
+            while (runner != null)
             {
-                var runner = array[_hashFunction.GetHashCode(key, addressSpace)];
-                while (runner != null)
+                if (runner.Data.Item1.Equals(key))
                 {
-                    if (runner.Data.Item1.Equals(key))
-                    {
-                        value = runner.Data.Item2;
-                        return true;
-                    }
+                    value = runner.Data.Item2;
+                    return true;
                 }
+
+                runner = runner.Next;
             }
 
             value = default;

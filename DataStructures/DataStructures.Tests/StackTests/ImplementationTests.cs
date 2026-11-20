@@ -11,7 +11,7 @@ namespace DataStructures.Tests.StackTests
    public class ImplementationTests
    {
       [Fact]
-      public void StackTest_01()
+      public void GivenStackWithItem_WhenPeeking_ThenReturnsTopItem()
       {
          var queue = new Stack<int>();
          queue.Push(1234);
@@ -20,7 +20,7 @@ namespace DataStructures.Tests.StackTests
       }
 
       [Fact]
-      public void StackTest_02()
+      public void GivenStackWithItem_WhenPopping_ThenReturnsTopItem()
       {
          var queue = new Stack<int>();
          queue.Push(1234);
@@ -29,7 +29,7 @@ namespace DataStructures.Tests.StackTests
       }
 
       [Fact]
-      public void StackTest_03()
+      public void GivenEmptyStack_WhenPeekingOrPopping_ThenThrowsInvalidOperationException()
       {
          var queue = new Stack<int>();
          // Exception is raised when there are no items in the queue
@@ -38,7 +38,7 @@ namespace DataStructures.Tests.StackTests
       }
 
       [Fact]
-      public void StackTest_04()
+      public void GivenStackWithWords_WhenPoppingItems_ThenReturnsThemInReverseInsertionOrder()
       {
          var sentence = "The quick brown fox jumped over the lazy dog.".Split(" ");
 

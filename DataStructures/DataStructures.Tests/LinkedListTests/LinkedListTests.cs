@@ -11,7 +11,7 @@ namespace DataStructures.Tests.LinkedListTests
     public class LinkedListTests
     {
         [Fact]
-        public void DefaultTest()
+        public void GivenLinkedListWithHead_WhenAddingAndRemovingItems_ThenSizeReflectsItemCount()
         {
             var list = new LinkedList<string>("HEAD");
 
@@ -30,7 +30,7 @@ namespace DataStructures.Tests.LinkedListTests
         }
 
         [Fact]
-        public void AddTest_1()
+        public void GivenLinkedListWithHead_WhenAddingItems_ThenItemsAreListedInOrder()
         {
             var list = new LinkedList<string>("HEAD");
 
@@ -50,7 +50,7 @@ namespace DataStructures.Tests.LinkedListTests
         }
 
         [Fact]
-        public void RemoveTest_1()
+        public void GivenLinkedListWithHead_WhenRemovingMissingAndHeadItems_ThenSizeReflectsRemainingItems()
         {
             var list = new LinkedList<string>("HEAD");
 
@@ -62,7 +62,7 @@ namespace DataStructures.Tests.LinkedListTests
         }
 
         [Fact]
-        public void RemoveTest_2()
+        public void GivenLinkedListWithItems_WhenRemovingAllAddedItems_ThenHeadRemains()
         {
             var list = new LinkedList<string>("HEAD");
             list.Add("A");
@@ -77,7 +77,7 @@ namespace DataStructures.Tests.LinkedListTests
         }
 
         [Fact]
-        public void RemoveAtPosition()
+        public void GivenLinkedListWithItems_WhenRemovingAtPosition_ThenSizeUpdatesAndInvalidPositionThrows()
         {
             var list = new LinkedList<int>(0);
             list.Add(1);
@@ -94,7 +94,7 @@ namespace DataStructures.Tests.LinkedListTests
         }
 
         [Fact]
-        public void SizeMatchesCount()
+        public void GivenLinkedList_WhenAddingRemovingAndDeduplicating_ThenSizeMatchesCount()
         {
             var linkedList = new LinkedList<short>(0);
 

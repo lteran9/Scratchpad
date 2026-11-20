@@ -16,7 +16,6 @@ namespace DataStructures.Tests.ArrayTests
                     new int[,] { { 0, 1, 2, 4 }, { 4, 5, 6, 7 } }
                 ]
             ];
-
         public static object[][] SmallestNxNMatrix =>
             [
                 [
@@ -24,7 +23,6 @@ namespace DataStructures.Tests.ArrayTests
                     new int[,] { { 0, 1 }, { 2, 3 } }
                 ]
             ];
-
         public static object[][] RegularNxNMatrix =>
             [
                 [
@@ -32,14 +30,12 @@ namespace DataStructures.Tests.ArrayTests
                     new int[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } }
                 ]
             ];
-
         public static object[][] OddMatrixWithNegativeAndDuplicateValues =>
             [
                 [
                     new int[,] { { -1, 2, 2 }, { 3, 0, 4 }, { 5, 6, -7 } }
                 ]
             ];
-
         public static object[][] MatrixForIndependenceCheck =>
             [
                 [

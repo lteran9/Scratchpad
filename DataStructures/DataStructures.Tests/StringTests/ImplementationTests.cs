@@ -13,7 +13,7 @@ namespace DataStructures.Tests.StringTests
       private readonly StringFactory stringFactory = new StringFactory();
 
       [Fact]
-      public void NodeStringEquality()
+      public void GivenNodeString_WhenComparedToEqualAndUnequalObjects_ThenReportsEqualityCorrectly()
       {
          var original = "TestValue1";
          var nodeString = stringFactory.CreateNodeString(original);
@@ -28,7 +28,7 @@ namespace DataStructures.Tests.StringTests
       }
 
       [Fact]
-      public void NodeStringConcatenation()
+      public void GivenTwoNodeStrings_WhenConcatenated_ThenCombinesTheirContents()
       {
          NodeString stringA = new NodeString("abc");
          NodeString stringB = new NodeString("def");
